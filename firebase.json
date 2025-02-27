@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/liyo-dev-web",
+    "public": "dist/liyo-dev-web/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
