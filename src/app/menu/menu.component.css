@@ -1,0 +1,26 @@
+nav {
+    background-color: #333;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  nav a {
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  nav a.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }  
+
+  .special-message {
+    color: #ffcc00;
+    font-style: italic;
+    margin-top: 1rem;
+  }

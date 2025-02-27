@@ -1,0 +1,9 @@
+<footer class="footer">
+    <p>© 2025 [Liyodev]. Todos los derechos reservados.</p>
+    <p>
+      @for (link of socialLinks; track link.url) {
+        <a [href]="link.url" target="_blank">{{ link.label }}</a>
+        @if (!$last) { | }
+      }
+    </p>
+  </footer>

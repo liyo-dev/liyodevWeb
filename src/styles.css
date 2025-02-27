@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+/* Estilos globales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e; /* Fondo oscuro para un estilo moderno */
+    color: #ffffff; /* Texto blanco */
+  }
+  
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .workarea {
+    flex: 1;
+    padding: 2rem;
+  }

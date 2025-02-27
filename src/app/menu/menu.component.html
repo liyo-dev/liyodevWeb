@@ -1,0 +1,9 @@
+<nav>
+    @for (item of menuItems; track item.path) {
+      <a [routerLink]="item.path" routerLinkActive="active">{{ item.label }}</a>
+    }
+  
+    @if (isHomePage()) {
+      <p class="special-message">¡Bienvenido a mi portfolio!</p>
+    }
+  </nav>

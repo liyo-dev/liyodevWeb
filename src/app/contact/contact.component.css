@@ -1,0 +1,31 @@
+.contact-section {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    margin-top: 1rem;
+  }
+  
+  input, textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .btn {
+    background-color: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
