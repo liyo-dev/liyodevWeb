@@ -1,0 +1,9 @@
+<div class="game-container" (click)="jump()">
+  <div class="capsule" [ngStyle]="{'bottom.px': capsuleY}"></div>
+  <div *ngFor="let obstacle of obstacles" class="obstacle" [ngStyle]="{'left.px': obstacle.x}"></div>
+  <div class="score">Puntos: {{ score }}</div>
+  <div class="energy-bar">
+    <div class="energy-fill" [ngStyle]="{'width.%': energy}"></div>
+  </div>
+  <div class="game-over" *ngIf="gameOver">Game Over</div>
+</div>
