@@ -9,6 +9,8 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
+  menuOpen = false;
+
   menuItems = [
     { path: '/', label: 'Inicio' },
     { path: '/about', label: 'Sobre mí' },
@@ -20,5 +22,13 @@ export class MenuComponent {
 
   isHomePage(): boolean {
     return this.router.url === '/';
+  }
+  
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
   }
 }

@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   socialLinks = [
-    { url: 'https://github.com/tu-usuario', label: 'GitHub' },
-    { url: 'https://linkedin.com/in/tu-usuario', label: 'LinkedIn' },
-    { url: 'https://itch.io/tu-usuario', label: 'Itch.io' }
+    { url: 'https://github.com/liyo-dev', label: 'GitHub' },
+    { url: 'https://www.linkedin.com/in/liyodev', label: 'LinkedIn' },
+    { url: 'https://liyodev.itch.io/', label: 'Itch.io' }
   ];
 }

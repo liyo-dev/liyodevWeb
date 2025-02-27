@@ -1,9 +1,19 @@
 <nav>
+  <!-- Botón de menú para móviles -->
+  <button class="menu-toggle" (click)="toggleMenu()">
+    ☰
+  </button>
+
+  <div class="menu-links" [class.open]="menuOpen">
     @for (item of menuItems; track item.path) {
-      <a [routerLink]="item.path" routerLinkActive="active">{{ item.label }}</a>
+      <a [routerLink]="item.path" routerLinkActive="active" (click)="closeMenu()">
+        {{ item.label }}
+      </a>
     }
-  
+  </div>
+  <div>
     @if (isHomePage()) {
       <p class="special-message">¡Bienvenido a mi portfolio!</p>
     }
-  </nav>
+  </div>
+</nav>
