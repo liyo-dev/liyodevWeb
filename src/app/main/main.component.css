@@ -1,0 +1,25 @@
+/* 📌 Contenedor principal de la app */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 🔹 Ocupa toda la altura de la pantalla */
+    width: 100vw;  /* 🔹 Ocupa todo el ancho disponible */
+    overflow: hidden; /* 🔹 Evita que se genere scroll */
+  }
+  
+  /* 📌 Área de trabajo */
+  .workarea {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* 🔹 Centra contenido horizontalmente */
+    align-items: center;  /* 🔹 Centra contenido verticalmente */
+    padding: 2rem;
+    overflow: hidden; /* 🔹 Evita desbordamientos */
+  }
+  
+  /* 📌 Menú y footer también deben ocupar su espacio sin desbordar */
+  nav, footer {
+    flex-shrink: 0;
+    width: 100%;
+  }
+  
