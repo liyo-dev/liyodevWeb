@@ -1,20 +1,20 @@
 .game-container {
   position: relative;
-  width: 50%; /* 🔹 Se mantiene el ancho al 50% */
-  height: 200px; /* 🔹 Altura fija tipo banner */
+  width: 50%;
+  height: 200px;
   background-color: #222;
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center; /* 🔹 Centra el contenido internamente */
-  margin: 0 auto; /* 🔹 Centra el banner en la fila */
-  border-bottom: 4px solid white; /* 🔹 Borde para separar visualmente */
+  justify-content: center;
+  margin: 0 auto;
+  border-bottom: 4px solid white;
 }
 
 /* Cápsula (Jugador) */
 .capsule {
   position: absolute;
-  left: 50px; /* 🔹 Ajustado para empezar dentro del contenedor */
+  left: 50px;
   width: 40px;
   height: 40px;
   background-color: red;
@@ -28,6 +28,23 @@
   height: 40px;
   background-color: white;
   bottom: 0;
+}
+
+/* Enemigos voladores */
+.flying-enemy {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+/* Balas disparadas */
+.bullet {
+  position: absolute;
+  width: 10px;
+  height: 5px;
+  background-color: orange;
 }
 
 /* Puntaje */
@@ -56,6 +73,7 @@
   text-align: center;
 }
 
+/* Barra de energía */
 .energy-bar {
   position: absolute;
   top: 10px;
@@ -68,6 +86,7 @@
   overflow: hidden;
 }
 
+/* Indicador de energía */
 .energy-fill {
   height: 100%;
   background: limegreen;

@@ -1,9 +1,23 @@
 <div class="game-container" (click)="jump()">
   <div class="capsule" [ngStyle]="{'bottom.px': capsuleY}"></div>
+  
+  <!-- Obstáculos en el suelo -->
   <div *ngFor="let obstacle of obstacles" class="obstacle" [ngStyle]="{'left.px': obstacle.x}"></div>
+
+  <!-- Enemigos voladores -->
+  <div *ngFor="let enemy of flyingEnemies" class="flying-enemy" [ngStyle]="{'left.px': enemy.x, 'bottom.px': enemy.y}"></div>
+
+  <!-- Balas disparadas -->
+  <div *ngFor="let bullet of bullets" class="bullet" [ngStyle]="{'left.px': bullet.x, 'bottom.px': bullet.y}"></div>
+
+  <!-- Puntaje -->
   <div class="score">Puntos: {{ score }}</div>
+
+  <!-- Barra de energía -->
   <div class="energy-bar">
     <div class="energy-fill" [ngStyle]="{'width.%': energy}"></div>
   </div>
+
+  <!-- Mensaje de Game Over -->
   <div class="game-over" *ngIf="gameOver">Game Over</div>
 </div>
