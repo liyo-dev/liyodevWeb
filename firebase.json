@@ -11,6 +11,22 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "headers": [
+      {
+        "source": "/assets/unity-game/Build/*.br",
+        "headers": [
+          { "key": "Content-Encoding", "value": "br" },
+          { "key": "Content-Type", "value": "application/javascript" }
+        ]
+      },
+      {
+        "source": "/assets/unity-game/Build/*.gz",
+        "headers": [
+          { "key": "Content-Encoding", "value": "gzip" },
+          { "key": "Content-Type", "value": "application/javascript" }
+        ]
+      }
     ]
   }
 }
