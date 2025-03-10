@@ -16,14 +16,33 @@
       {
         "source": "/assets/unity-game/Build/*.br",
         "headers": [
-          { "key": "Content-Encoding", "value": "br" },
-          { "key": "Content-Type", "value": "application/javascript" }
+          { "key": "Content-Encoding", "value": "br" }
         ]
       },
       {
         "source": "/assets/unity-game/Build/*.gz",
         "headers": [
-          { "key": "Content-Encoding", "value": "gzip" },
+          { "key": "Content-Encoding", "value": "gzip" }
+        ]
+      },
+      {
+        "source": "/assets/unity-game/Build/*.data.br",
+        "headers": [
+          { "key": "Content-Encoding", "value": "br" },
+          { "key": "Content-Type", "value": "application/octet-stream" }
+        ]
+      },
+      {
+        "source": "/assets/unity-game/Build/*.wasm.br",
+        "headers": [
+          { "key": "Content-Encoding", "value": "br" },
+          { "key": "Content-Type", "value": "application/wasm" }
+        ]
+      },
+      {
+        "source": "/assets/unity-game/Build/*.js.br",
+        "headers": [
+          { "key": "Content-Encoding", "value": "br" },
           { "key": "Content-Type", "value": "application/javascript" }
         ]
       }
