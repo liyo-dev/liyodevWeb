@@ -1,11 +1,12 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import gsap from 'gsap';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, MenuComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })

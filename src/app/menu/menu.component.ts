@@ -1,34 +1,47 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Component, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import gsap from 'gsap';
 
 @Component({
   selector: 'app-menu',
-  imports: [CommonModule, RouterModule],
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+  standalone: true
 })
-export class MenuComponent {
+export class MenuComponent implements AfterViewInit {
+  @ViewChild('menu', { static: true }) menu!: ElementRef;
+
+  isMobile = false;
   menuOpen = false;
 
-  menuItems = [
-    { path: '/', label: 'Inicio' },
-    { path: '/about', label: 'Sobre mí' },
-    { path: '/portfolio', label: 'Portfolio' },
-    { path: '/contact', label: 'Contacto' }
-  ];
-
-  constructor(private router: Router) {}
-
-  isHomePage(): boolean {
-    return this.router.url === '/';
-  }
-  
-  toggleMenu(): void {
-    this.menuOpen = !this.menuOpen;
+  ngAfterViewInit(): void {
+    this.isMobile = window.innerWidth < 768;
+    this.animateMenuItems();
   }
 
-  closeMenu(): void {
+  @HostListener('window:resize')
+  onResize() {
+    this.isMobile = window.innerWidth < 768;
     this.menuOpen = false;
   }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+
+    if (this.menuOpen) {
+      this.animateMenuItems();
+    }
+  }
+
+  closeMenu() {
+    this.menuOpen = false;
+  }
+
+  private animateMenuItems() {
+    gsap.fromTo(
+      this.menu.nativeElement.querySelectorAll('a'),
+      { x: -60, opacity: 0 },
+      { x: 0, opacity: 1, stagger: .2, duration: 1, ease: 'power3.out' }
+    );
+  }
+
 }

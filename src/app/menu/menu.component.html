@@ -1,19 +1,27 @@
-<nav>
-  <!-- Botón de menú para móviles -->
-  <button class="menu-toggle" (click)="toggleMenu()">
-    ☰
-  </button>
+@if (isMobile) {
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <div [class.open]="menuOpen" class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+}
 
-  <div class="menu-links" [class.open]="menuOpen">
-    @for (item of menuItems; track item.path) {
-      <a [routerLink]="item.path" routerLinkActive="active" (click)="closeMenu()">
-        {{ item.label }}
-      </a>
-    }
-  </div>
-  <div>
-    @if (isHomePage()) {
-      <p class="special-message">¡Bienvenido a mi portfolio!</p>
-    }
-  </div>
+<nav
+  #menu
+  [class.floating-menu]="!isMobile"
+  [class.mobile-menu]="isMobile"
+  [class.mobile-menu--open]="menuOpen && isMobile"
+>
+  <a routerLink="/" routerLinkActive="active" (click)="closeMenu()">
+    <img src="/assets/icons/home.svg" alt="Home" />
+  </a>
+  <a routerLink="/portfolio" routerLinkActive="active" (click)="closeMenu()">
+    <img src="/assets/icons/projects.svg" alt="Portfolio" />
+  </a>
+  <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">
+    <img src="/assets/icons/about.svg" alt="Sobre mí" />
+  </a>
+  <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">
+    <img src="/assets/icons/contact.svg" alt="Contacto" />
+  </a>
 </nav>

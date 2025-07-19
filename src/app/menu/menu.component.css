@@ -1,78 +1,41 @@
-nav {
-  background-color: #333;
-  padding: 1rem;
-  text-align: center;
+.floating-menu {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* 👈 fuerza alineación izquierda */
+  gap: 20px;
+  z-index: 999;
 }
 
-/* Estilo del botón de hamburguesa */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-/* Contenedor del menú */
-.menu-links {
+.floating-menu a {
   display: flex;
-  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
-/* Enlaces del menú */
-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  transition: color 0.3s;
+.floating-menu a:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-nav a:hover {
-  text-decoration: underline;
+.floating-menu img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(1.2);
 }
 
-nav a.active {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-/* 📌 Mensaje de bienvenida centrado debajo del menú */
-.special-message {
-  color: #ffcc00;
-  font-style: italic;
-  margin-top: 0.5rem;
-  text-align: center;
-}
-
-/* ✅ Responsive para móviles */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .menu-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-    background-color: #333;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    padding: 1rem 0;
-  }
-
-  .menu-links.open {
-    display: flex;
-  }
-
-  nav a {
-    display: block;
-    padding: 1rem;
-  }
+a.active {
+  background-color: #00d4ff !important;
+  box-shadow: 0 0 12px #00d4ff;
 }
