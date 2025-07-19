@@ -1,12 +1,17 @@
-<section class="home-section">  
+<section class="home-section">
+  <div class="background"></div>
+
   <div class="home-content">
-    <h1>¡Hola, soy Liyodev!</h1>
+    <img
+      class="avatar"
+      src="https://avatars.githubusercontent.com/u/77936857?s=400&u=a748a1ec6bc40e6ec277cb309ddfd85d7f4ff8cb&v=4"
+      alt="Foto de Liyodev"
+    />
+
+    <h1>¡Hola, soy <span class="highlight">Liyodev</span>!</h1>
     <p class="tagline">Desarrollador de software y creador de videojuegos.</p>
 
-    <!-- Botón de acción con animación -->
-    <a routerLink="/portfolio" class="cta-button">Explora mis proyectos</a>
 
-    <!-- Sección de redes sociales -->
     <div class="social-links">
       @for (link of socialLinks; track link.url) {
         @if (link.icon) {
