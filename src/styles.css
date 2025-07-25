@@ -3,7 +3,21 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* 🔹 Evita el scroll horizontal y vertical */
   background-color: #1e1e1e;
   color: #ffffff;
+}
+
+/* Desktop: sin scroll */
+@media (min-width: 769px) {
+  html, body {
+    overflow: hidden;
+  }
+}
+
+/* Mobile: permitir scroll vertical para navegación */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 }

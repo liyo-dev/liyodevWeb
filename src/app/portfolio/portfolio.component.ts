@@ -69,6 +69,12 @@ export class PortfolioComponent implements AfterViewInit {
   }
 
   private animatePortfolio() {
+    // Primero asegurar que las cards estén en su posición final
+    gsap.set('.project-card', {
+      y: 0,
+      opacity: 1
+    });
+
     gsap.from('.section-title h2', {
       y: -50,
       opacity: 0,
@@ -77,12 +83,12 @@ export class PortfolioComponent implements AfterViewInit {
     });
 
     gsap.from('.project-card', {
-      y: 50,
+      scale: 0.8,
       opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
+      duration: 0.6,
+      stagger: 0.1,
       ease: 'back.out(1.2)',
-      delay: 0.5
+      delay: 0.3
     });
   }
 
