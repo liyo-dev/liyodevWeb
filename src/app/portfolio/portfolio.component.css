@@ -18,6 +18,13 @@
   .portfolio-section {
     padding-left: 0;
     padding-top: 80px; /* Espacio para el menú hamburguesa */
+    padding-right: 0;
+    padding-bottom: 20px;
+  }
+  
+  .carousel-controls {
+    padding-top: 80px; /* Ajustado para móvil */
+    padding-bottom: 20px;
   }
 }
 

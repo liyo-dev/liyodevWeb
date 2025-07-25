@@ -24,9 +24,9 @@ export class MainComponent implements AfterViewInit {
 
   readonly scrollRoutes = ['/', '/portfolio', '/about', '/contact'];
   
-  // Gradientes para cada sección
+  // Gradientes para cada sección - unificados
   private readonly sectionBackgrounds = [
-    'linear-gradient(135deg, #1f1c2c, #928dab)', // Home
+    'linear-gradient(135deg, #2c3e50, #4ca1af)', // Home - unificado
     'linear-gradient(135deg, #2c3e50, #4ca1af)', // Portfolio
     'linear-gradient(135deg, #2c3e50, #4ca1af)', // About
     'linear-gradient(135deg, #2c3e50, #4ca1af)'  // Contact

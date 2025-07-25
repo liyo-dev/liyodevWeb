@@ -141,13 +141,15 @@ a.active {
   align-items: center;
   text-decoration: none;
   color: #ffffff;
-  padding: 20px;
+  padding: 16px;
   border-radius: 15px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  width: 120px;
+  width: 110px;
   text-align: center;
+  min-height: 80px;
+  justify-content: center;
 }
 
 .mobile-menu a:hover {
