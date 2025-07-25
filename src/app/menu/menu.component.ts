@@ -1,11 +1,13 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import gsap from 'gsap';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css'],
-  standalone: true
+  standalone: true,
+  imports: [RouterModule]
 })
 export class MenuComponent implements AfterViewInit {
   @ViewChild('menu', { static: true }) menu!: ElementRef;
@@ -25,6 +27,7 @@ export class MenuComponent implements AfterViewInit {
   }
 
   toggleMenu() {
+    console.log('Toggle menu clicked, current state:', this.menuOpen);
     this.menuOpen = !this.menuOpen;
 
     if (this.menuOpen) {
@@ -33,7 +36,13 @@ export class MenuComponent implements AfterViewInit {
   }
 
   closeMenu() {
+    console.log('Close menu called');
     this.menuOpen = false;
+  }
+
+  onLinkClick(route: string) {
+    console.log(`Link clicked: ${route}`);
+    this.closeMenu();
   }
 
   private animateMenuItems() {

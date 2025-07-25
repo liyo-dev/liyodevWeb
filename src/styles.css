@@ -18,6 +18,6 @@ html, body {
 @media (max-width: 768px) {
   html, body {
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden; /* Controlar con touch events */
   }
 }

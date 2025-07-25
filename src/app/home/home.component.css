@@ -9,16 +9,14 @@
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
   text-align: center;
-  background: radial-gradient(circle at top left, #1f1c2c, #928dab);
 }
 
 .background {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(135deg, #2c3e50, #4ca1af);
-  animation: backgroundShift 15s ease infinite;
-  opacity: 0.9;
+  opacity: 0.1; /* Solo un overlay sutil */
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
 }
 
 @keyframes backgroundShift {

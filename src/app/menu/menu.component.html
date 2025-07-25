@@ -12,16 +12,28 @@
   [class.mobile-menu]="isMobile"
   [class.mobile-menu--open]="menuOpen && isMobile"
 >
-  <a routerLink="/" routerLinkActive="active" (click)="closeMenu()">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="onLinkClick('home')">
     <img src="/assets/icons/home.svg" alt="Home" />
+    @if (isMobile) {
+      <span>Inicio</span>
+    }
   </a>
-  <a routerLink="/portfolio" routerLinkActive="active" (click)="closeMenu()">
+  <a routerLink="/portfolio" routerLinkActive="active" (click)="onLinkClick('portfolio')">
     <img src="/assets/icons/projects.svg" alt="Portfolio" />
+    @if (isMobile) {
+      <span>Portfolio</span>
+    }
   </a>
-  <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">
+  <a routerLink="/about" routerLinkActive="active" (click)="onLinkClick('about')">
     <img src="/assets/icons/about.svg" alt="Sobre mí" />
+    @if (isMobile) {
+      <span>Sobre mí</span>
+    }
   </a>
-  <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">
+  <a routerLink="/contact" routerLinkActive="active" (click)="onLinkClick('contact')">
     <img src="/assets/icons/contact.svg" alt="Contacto" />
+    @if (isMobile) {
+      <span>Contacto</span>
+    }
   </a>
 </nav>

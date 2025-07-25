@@ -128,7 +128,7 @@ a.active {
   align-items: center;
   gap: 40px;
   transition: right 0.3s ease;
-  z-index: 1000;
+  z-index: 1002; /* Mayor que el toggle */
 }
 
 .mobile-menu--open {
