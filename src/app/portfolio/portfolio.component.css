@@ -1,0 +1,152 @@
+.portfolio-section {
+  height: 100vh;
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  color: #ffffff;
+  padding-left: 100px; /* Espacio para el menú lateral */
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-title {
+  position: fixed;
+  left: 100px;
+  top: 2rem;
+  z-index: 10;
+}
+
+.section-title h2 {
+  font-size: 3rem;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  margin: 0;
+}
+
+/* 🔄 Controles de carrusel */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.nav-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* 🚫 Ocultar flechas en móvil */
+@media (max-width: 768px) {
+  .nav-button {
+    display: none;
+  }
+}
+
+/* 📦 Carrusel horizontal */
+.carousel-wrapper {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  padding: 2rem 0;
+  scrollbar-width: none;
+  margin: 0 1rem;
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel {
+  display: flex;
+  gap: 2rem;
+  padding: 0 2rem; /* Márgenes laterales para evitar corte */
+}
+
+/* 🃏 Tarjeta de proyecto */
+.project-card {
+  flex: 0 0 300px;
+  scroll-snap-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2);
+}
+
+.project-card h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  color: #00d4ff;
+  text-align: center;
+}
+
+.project-card p {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #f0f0f0;
+}
+
+/* 🏷️ Tipo de proyecto */
+.type-badge {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+/* 🔘 Botón de acción */
+.btn {
+  background: linear-gradient(45deg, #00d4ff, #00ff9d);
+  color: white;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* 🕳️ Mensaje sin proyectos */
+.no-projects {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 4rem;
+}
