@@ -1,28 +1,188 @@
 <section class="portfolio-section">
   <div class="section-title">
-    <h2>Proyectos</h2>
+    <h2>Portfolio</h2>
   </div>
 
-  @if (projects.length > 0) {
-    <div class="carousel-controls">
-      <button class="nav-button prev" (click)="scrollCarousel(-1)">‹</button>
+  <!-- Floating Tab Navigation -->
+  <div class="floating-tabs" #tabsContainer>
+    <div class="tab-indicator" #tabIndicator></div>
+    <button 
+      class="tab-item" 
+      [class.active]="activeCategory === 'steam'"
+      (click)="switchCategory('steam')"
+      #steamTab>
+      <div class="tab-icon">🎮</div>
+      <span class="tab-label">Steam</span>
+    </button>
+    <button 
+      class="tab-item" 
+      [class.active]="activeCategory === 'playStore'"
+      (click)="switchCategory('playStore')"
+      #mobileTab>
+      <div class="tab-icon">📱</div>
+      <span class="tab-label">Play Store</span>
+    </button>
+    <button 
+      class="tab-item" 
+      [class.active]="activeCategory === 'apps'"
+      (click)="switchCategory('apps')"
+      #appsTab>
+      <div class="tab-icon">💻</div>
+      <span class="tab-label">Apps</span>
+    </button>
+    <button 
+      class="tab-item" 
+      [class.active]="activeCategory === 'games'"
+      (click)="switchCategory('games')"
+      #gamesTab>
+      <div class="tab-icon">🎯</div>
+      <span class="tab-label">Juegos</span>
+    </button>
+  </div>
 
-      <div class="carousel-wrapper" #carousel>
-        <div class="carousel">
-          @for (project of projects; track project.title) {
-            <div class="project-card">
-              <span class="type-badge">{{ project.type }}</span>
-              <h3>{{ project.title }}</h3>
-              <p>{{ project.description }}</p>
-              <a [href]="project.link" target="_blank" class="btn">Probar</a>
-            </div>
-          }
-        </div>
+  <!-- Dynamic Content Container -->
+  <div class="content-container" #contentContainer>
+    
+    <!-- Steam Projects -->
+    <div class="content-panel steam-panel" [class.active]="activeCategory === 'steam'" #steamPanel>
+      <div class="panel-header">
+        <h3>Próximamente en Steam</h3>
+        <p>Mis próximos lanzamientos en la plataforma líder de gaming</p>
       </div>
-
-      <button class="nav-button next" (click)="scrollCarousel(1)">›</button>
+      <div class="content-grid">
+        @for (game of steamGames; track game.title) {
+          <div class="content-card steam-card" (click)="navigateToGame(game.link)">
+            <div class="card-status">{{ game.status }}</div>
+            <div class="card-body">
+              <h4>{{ game.title }}</h4>
+              <p>{{ game.description }}</p>
+              <div class="card-footer">
+                <span class="platform-tag steam">Steam</span>
+                <span class="action-text">Conocer más →</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
     </div>
-  } @else {
-    <p class="no-projects">No hay proyectos disponibles en este momento.</p>
-  }
+
+    <!-- Mobile Games -->
+    <div class="content-panel mobile-panel" [class.active]="activeCategory === 'playStore'" #mobilePanel>
+      <div class="panel-header">
+        <h3>Juegos Mobile</h3>
+        <p>Experiencias optimizadas para dispositivos móviles</p>
+      </div>
+      <div class="content-grid">
+        @for (game of googlePlayGames; track game.title) {
+          <div class="content-card mobile-card" (click)="navigateToGame(game.link)">
+            <div class="card-status">{{ game.status }}</div>
+            <div class="card-body">
+              <h4>{{ game.title }}</h4>
+              <p>{{ game.description }}</p>
+              <div class="card-footer">
+                <span class="platform-tag mobile">{{ game.type }}</span>
+                <a [href]="game.itchLink" target="_blank" class="action-link" (click)="$event.stopPropagation()">
+                  itch.io →
+                </a>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Applications -->
+    <div class="content-panel apps-panel" [class.active]="activeCategory === 'apps'" #appsPanel>
+      <div class="panel-header">
+        <h3>Aplicaciones & Herramientas</h3>
+        <p>Proyectos de desarrollo y utilidades</p>
+      </div>
+      @if (applications.length > 0) {
+        <div class="apps-showcase">
+          <div class="showcase-controls">
+            <button class="showcase-btn" (click)="navigateAppsShowcase(-1)" [disabled]="currentAppIndex === 0">‹</button>
+            <div class="showcase-counter">{{ currentAppIndex + 1 }} / {{ applications.length }}</div>
+            <button class="showcase-btn" (click)="navigateAppsShowcase(1)" [disabled]="currentAppIndex >= applications.length - 1">›</button>
+          </div>
+          
+          <div class="showcase-content">
+            @for (app of applications; track app.title; let i = $index) {
+              <div class="showcase-card app-showcase-card" [class.active]="i === currentAppIndex" (click)="navigateToApp(app.link)">
+                <div class="showcase-image">
+                  <div class="image-placeholder">💻</div>
+                  <div class="app-overlay">
+                    <div class="view-btn">
+                      <span>Ver en GitHub</span>
+                      <span>→</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="showcase-info">
+                  <div class="app-meta">
+                    <span class="app-type-tag">{{ app.type }}</span>
+                  </div>
+                  <h4>{{ app.title }}</h4>
+                  <p>{{ app.description }}</p>
+                  <div class="tech-stack">
+                    @for (tech of app.tech; track tech) {
+                      <span class="tech-badge">{{ tech }}</span>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      } @else {
+        <div class="empty-state">
+          <div class="empty-icon">💻</div>
+          <p>Próximamente nuevas aplicaciones...</p>
+        </div>
+      }
+    </div>
+
+    <!-- Published Games -->
+    <div class="content-panel games-panel" [class.active]="activeCategory === 'games'" #gamesPanel>
+      <div class="panel-header">
+        <h3>Juegos Publicados</h3>
+        <p>Proyectos completados y disponibles para jugar</p>
+      </div>
+      @if (publishedGames.length > 0) {
+        <div class="games-showcase">
+          <div class="showcase-controls">
+            <button class="showcase-btn" (click)="navigateShowcase(-1)" [disabled]="currentGameIndex === 0">‹</button>
+            <div class="showcase-counter">{{ currentGameIndex + 1 }} / {{ publishedGames.length }}</div>
+            <button class="showcase-btn" (click)="navigateShowcase(1)" [disabled]="currentGameIndex >= publishedGames.length - 1">›</button>
+          </div>
+          
+          <div class="showcase-content">
+            @for (game of publishedGames; track game.title; let i = $index) {
+              <div class="showcase-card" [class.active]="i === currentGameIndex" (click)="navigateToGame(game.link)">
+                <div class="showcase-image">
+                  <div class="image-placeholder">🎮</div>
+                  <div class="game-overlay">
+                    <span class="play-btn">▶ Jugar</span>
+                  </div>
+                </div>
+                <div class="showcase-info">
+                  <div class="game-meta">
+                    <span class="game-type">{{ game.type }}</span>
+                    <span class="game-year">{{ game.year }}</span>
+                  </div>
+                  <h4>{{ game.title }}</h4>
+                  <p>{{ game.description }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      } @else {
+        <div class="empty-state">
+          <div class="empty-icon">🎮</div>
+          <p>No hay juegos disponibles en este momento</p>
+        </div>
+      }
+    </div>
+
+  </div>
 </section>
