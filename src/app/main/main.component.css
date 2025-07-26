@@ -1,8 +1,9 @@
-/* Reseteo general */
+/* Reseteo general con ajustes para diferentes resoluciones */
 body, html {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-size: clamp(14px, 1.2vw, 18px); /* Escalado base para diferentes resoluciones */
 }
 
 /* Desktop: sin scroll */
@@ -12,11 +13,25 @@ body, html {
   }
 }
 
+/* Monitores de alta resolución */
+@media (min-width: 1440px) and (min-height: 900px) {
+  body, html {
+    font-size: clamp(16px, 1vw, 20px);
+  }
+}
+
+@media (min-width: 1920px) and (min-height: 1080px) {
+  body, html {
+    font-size: clamp(18px, 0.8vw, 22px);
+  }
+}
+
 /* Mobile: permitir navegación */
 @media (max-width: 768px) {
   body, html {
     overflow-x: hidden;
     overflow-y: hidden; /* Cambiado para controlar con touch events */
+    font-size: clamp(14px, 4vw, 16px);
   }
 }
 

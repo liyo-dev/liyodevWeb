@@ -4,6 +4,8 @@
   font-family: 'Poppins', sans-serif;
   position: relative;
   overflow: hidden;
+  padding-bottom: 4rem; /* Footer invisible más grande */
+  box-sizing: border-box;
 }
 
 /* Desktop */
@@ -19,12 +21,12 @@
     padding-left: 0;
     padding-top: 80px; /* Espacio para el menú hamburguesa */
     padding-right: 0;
-    padding-bottom: 20px;
+    padding-bottom: 4rem; /* Footer invisible en móvil también */
   }
   
   .carousel-controls {
     padding-top: 80px; /* Ajustado para móvil */
-    padding-bottom: 20px;
+    padding-bottom: 4rem; /* Footer invisible */
   }
 }
 
@@ -65,9 +67,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: calc(100vh - 3rem); /* Reducir altura para el padding inferior */
   padding-top: 100px;
-  padding-bottom: 20px;
+  padding-bottom: 40px; /* Más espacio inferior */
   position: absolute;
   top: 0;
   right: 0;

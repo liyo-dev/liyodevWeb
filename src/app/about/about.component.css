@@ -1,11 +1,24 @@
 .about-section {
     height: 100vh;
     color: #ffffff;
-    padding: 2rem;
-    padding-left: 100px; /* Espacio para el menú flotante */
+    padding: clamp(2rem, 4vh, 4rem) clamp(2rem, 4vw, 4rem) 4rem clamp(100px, 8vw, 150px);
     font-family: 'Poppins', sans-serif;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Ajustes para monitores grandes */
+@media (min-width: 1440px) and (min-height: 900px) {
+  .about-section {
+    padding: clamp(2rem, 5vh, 6rem) clamp(4rem, 6vw, 8rem) 4rem clamp(150px, 10vw, 200px);
+  }
+}
+
+@media (min-width: 1920px) {
+  .about-section {
+    padding: clamp(3rem, 4vh, 6rem) clamp(6rem, 8vw, 10rem) 4rem clamp(200px, 12vw, 250px);
+  }
 }
 
 .section-title {
@@ -16,7 +29,7 @@
 }
 
 .section-title h2 {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
     background: linear-gradient(45deg, #4ca1af, #ffffff);
     -webkit-background-clip: text;
     background-clip: text;
@@ -28,7 +41,8 @@
 
 /* Ajustar el contenido principal */
 .about-content {
-    margin-top: 80px;
+    margin-top: clamp(60px, 8vh, 100px);
+    scale: clamp(0.8, 1vw + 0.5, 1.1);
 }
 
 .about-section::-webkit-scrollbar {
@@ -268,10 +282,9 @@
 
 @media (max-width: 768px) {
     .about-section {
-        padding: 1rem;
+        padding: 1rem 20px 4rem 20px; /* Footer invisible en móvil */
         padding-top: 80px; /* Espacio para menú hamburguesa */
-        padding-left: 20px; /* Margen lateral en móvil */
-        padding-right: 20px;
+        min-height: 100vh;
     }
 
     .about-content {
