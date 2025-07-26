@@ -8,58 +8,88 @@
   box-sizing: border-box;
 }
 
-/* Desktop */
+/* Desktop - ajustes para diferentes resoluciones */
 @media (min-width: 769px) {
   .portfolio-section {
-    padding-left: 100px; /* Espacio para el menú lateral */
+    padding-left: 100px;
+    padding-right: 2rem;
+    padding-top: 2rem;
+  }
+}
+
+/* Monitores grandes (1440p y superiores) */
+@media (min-width: 1440px) and (min-height: 900px) {
+  .portfolio-section {
+    padding-left: clamp(100px, 8vw, 150px);
+    padding-right: clamp(2rem, 4vw, 6rem);
+    padding-top: clamp(2rem, 3vh, 4rem);
+  }
+}
+
+/* Monitores ultra anchos */
+@media (min-width: 1920px) {
+  .portfolio-section {
+    padding-left: clamp(150px, 10vw, 200px);
+    padding-right: clamp(4rem, 6vw, 8rem);
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .portfolio-section {
-    padding-left: 0;
-    padding-top: 80px; /* Espacio para el menú hamburguesa */
-    padding-right: 0;
-    padding-bottom: 4rem; /* Footer invisible en móvil también */
-  }
-  
-  .carousel-controls {
-    padding-top: 80px; /* Ajustado para móvil */
-    padding-bottom: 4rem; /* Footer invisible */
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 80px;
+    padding-bottom: 4rem;
   }
 }
 
+/* Título elegante con gradiente */
 .section-title {
   position: fixed;
   top: 2rem;
   z-index: 10;
 }
 
-/* Desktop */
 @media (min-width: 769px) {
   .section-title {
     left: 100px;
   }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .section-title {
     left: 20px;
     top: 20px;
   }
-  
-  .section-title h2 {
-    font-size: 2rem !important;
-  }
 }
 
 .section-title h2 {
-  font-size: 3rem;
-  color: #ffffff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  background: linear-gradient(135deg, #00d4ff, #00ff9d, #4ca1af);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
   margin: 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% {
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 30px rgba(0, 255, 157, 0.5));
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
 }
 
 /* 🔄 Controles de carrusel */

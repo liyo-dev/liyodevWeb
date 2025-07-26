@@ -1,349 +1,362 @@
 .about-section {
     height: 100vh;
     color: #ffffff;
-    padding: clamp(2rem, 4vh, 4rem) clamp(2rem, 4vw, 4rem) 4rem clamp(100px, 8vw, 150px);
     font-family: 'Poppins', sans-serif;
     position: relative;
     overflow: hidden;
+    padding-bottom: 4rem;
     box-sizing: border-box;
 }
 
-/* Ajustes para monitores grandes */
+/* Desktop - ajustes para diferentes resoluciones */
+@media (min-width: 769px) {
+  .about-section {
+    padding-left: clamp(100px, 8vw, 150px);
+    padding-right: clamp(2rem, 4vw, 6rem);
+    padding-top: clamp(2rem, 3vh, 4rem);
+  }
+}
+
+/* Monitores grandes (1440p y superiores) */
 @media (min-width: 1440px) and (min-height: 900px) {
   .about-section {
-    padding: clamp(2rem, 5vh, 6rem) clamp(4rem, 6vw, 8rem) 4rem clamp(150px, 10vw, 200px);
+    padding-left: clamp(150px, 10vw, 200px);
+    padding-right: clamp(4rem, 6vw, 8rem);
+    padding-top: clamp(3rem, 4vh, 6rem);
   }
 }
 
+/* Monitores ultra anchos */
 @media (min-width: 1920px) {
   .about-section {
-    padding: clamp(3rem, 4vh, 6rem) clamp(6rem, 8vw, 10rem) 4rem clamp(200px, 12vw, 250px);
+    padding-left: clamp(200px, 12vw, 250px);
+    padding-right: clamp(6rem, 8vw, 10rem);
   }
 }
 
+/* Mobile */
+@media (max-width: 768px) {
+  .about-section {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 80px;
+  }
+}
+
+/* Título elegante con gradiente */
 .section-title {
     position: fixed;
-    left: 100px;
     top: 2rem;
     z-index: 10;
 }
 
+@media (min-width: 769px) {
+  .section-title {
+    left: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    left: 20px;
+    top: 20px;
+  }
+}
+
 .section-title h2 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    background: linear-gradient(45deg, #4ca1af, #ffffff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 2px 2px 10px rgba(76, 161, 175, 0.3);
-    margin: 0;
-    font-weight: bold;
+    font-size: clamp(2.5rem, 5vw, 4rem) !important;
+    background: linear-gradient(135deg, #00d4ff, #00ff9d, #4ca1af) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3) !important;
+    margin: 0 !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    animation: titleGlow 3s ease-in-out infinite alternate !important;
+}
+
+@keyframes titleGlow {
+  0% {
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 30px rgba(0, 255, 157, 0.5));
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
 }
 
 /* Ajustar el contenido principal */
 .about-content {
-    margin-top: clamp(60px, 8vh, 100px);
-    scale: clamp(0.8, 1vw + 0.5, 1.1);
-}
-
-.about-section::-webkit-scrollbar {
-    height: 8px;
-}
-
-.about-section::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.about-section::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-}
-
-.section-container {
-    display: flex;
-    gap: 2rem;
-    padding: 1rem;
-}
-
-.about-content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-top: 100px;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - clamp(4rem, 8vh, 8rem));
+    max-width: min(1400px, 90vw);
+    margin: 0 auto;
     padding: 0 2rem;
-    height: calc(100vh - 140px);
+    gap: clamp(1.5rem, 3vh, 2.5rem);
+    scale: clamp(0.85, 1vw + 0.6, 1);
+    animation: fadeInUp 0.8s ease-out;
 }
 
-.about-section h2 {
-    font-size: 3rem;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Resumen del perfil compacto */
+.profile-summary {
     text-align: center;
-    margin-bottom: 2rem;
-    color: #ffffff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .intro-text {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    color: #f0f0f0;
-    text-align: center;
-    margin: 0 auto 2rem;
-    padding: 0;
-    max-width: 800px;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.3;
+    color: #ffffff;
+    margin: 0 0 clamp(0.8rem, 1.5vh, 1.2rem) 0;
     font-weight: 300;
-    letter-spacing: 0.3px;
 }
 
-.profile-info p {
-    font-size: 1.2rem;
-    line-height: 1.8;
+.description {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    line-height: 1.4;
     color: #f0f0f0;
-    margin-bottom: 1.5rem;
-    white-space: normal;
-    max-width: 600px;
-    text-align: justify;
+    margin: 0;
+    font-weight: 300;
 }
 
+/* Sección de skills con glassmorphism */
 .skills-section {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transform: translateZ(0);
-    margin: 0 auto;
-    max-width: 900px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: clamp(20px, 3vw, 30px);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    animation: slideInUp 0.8s ease-out 0.2s both;
 }
 
-.skills-section h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(45deg, #4ca1af, #ffffff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: bold;
-    text-align: center;
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skills-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00d4ff, #00ff9d, #4ca1af);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
     justify-content: center;
 }
 
+/* Categorías de skills con colores únicos */
 .skill-category {
     background: rgba(255, 255, 255, 0.05);
-    padding: 1.2rem;
+    padding: clamp(1rem, 2vw, 1.5rem);
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+.skill-category:hover::before {
+  left: 100%;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+}
+
+/* Colores específicos para cada categoría */
+.skill-category.frontend:hover {
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+}
+
+.skill-category.backend:hover {
+    border-color: rgba(0, 255, 157, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 255, 157, 0.2);
+}
+
+.skill-category.devops:hover {
+    border-color: rgba(255, 165, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(255, 165, 0, 0.2);
+}
+
+.skill-category.gamedev:hover {
+    border-color: rgba(138, 43, 226, 0.4);
+    box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
 }
 
 .skill-category h4 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    margin-bottom: clamp(0.8rem, 1.5vh, 1rem);
     color: #ffffff;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: clamp(0.4rem, 1vw, 0.6rem);
     justify-content: center;
 }
 
 .skill-tag {
     background: rgba(76, 161, 175, 0.2);
-    padding: 0.4rem 0.8rem;
+    padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 1.5vw, 0.8rem);
     border-radius: 20px;
-    font-size: 0.9rem;
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
+    white-space: nowrap;
+    font-weight: 500;
 }
 
 .skill-tag:hover {
-    background: rgba(76, 161, 175, 0.3);
+    background: rgba(0, 212, 255, 0.3);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+    border-color: rgba(0, 212, 255, 0.5);
 }
 
-.skill-category h4 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
-    text-shadow: 0 0 10px rgba(76, 161, 175, 0.3);
+/* Estilos para resaltar palabras importantes */
+.intro-text strong,
+.description strong {
+    background: linear-gradient(45deg, #00d4ff, #00ff9d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
 }
 
-.skill-category ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* Ajustes específicos para monitores grandes */
+@media (min-width: 1440px) and (min-height: 900px) {
+  .about-content {
+    scale: clamp(0.9, 0.5vw + 0.7, 1.1);
+    gap: clamp(2rem, 4vh, 3rem);
+  }
 }
 
-.skill-category li {
-    font-size: 1.1rem;
-    color: #f0f0f0;
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
+@media (min-width: 1920px) and (min-height: 1080px) {
+  .about-content {
+    scale: clamp(1, 0.3vw + 0.8, 1.2);
+    max-width: min(1600px, 85vw);
+  }
 }
 
-.skill-category li::before {
-    content: '▹';
-    color: #4ca1af;
-    margin-right: 10px;
-    font-size: 1.2rem;
-}
 
-.skills-grid {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: nowrap;
-}
 
-.skill-category {
-    flex: 0 0 300px;
-}
-
-.skill-category {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.skill-category h4 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-    text-align: center;
-}
-
-.skill-category ul {
-    list-style: none;
-    padding: 0;
-}
-
-.skill-category li {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.skill-category li:hover {
-    transform: translateX(10px);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.experience-section {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.experience-section h3 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #ff8e53;
-    text-align: center;
-}
-
-.experience-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.experience-section li {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-.experience-section li:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.15);
-}
-
+/* Mobile responsive */
 @media (max-width: 768px) {
     .about-section {
-        padding: 1rem 20px 4rem 20px; /* Footer invisible en móvil */
-        padding-top: 80px; /* Espacio para menú hamburguesa */
-        min-height: 100vh;
+        padding: 1rem 20px 2rem 20px;
+        padding-top: 80px;
     }
 
     .about-content {
-        margin-top: 20px;
-        gap: 1.5rem;
-        padding: 0;
-        height: auto;
-        min-height: calc(100vh - 120px);
-    }
-
-    .about-section h2 {
-        font-size: 2.2rem !important;
-        margin-bottom: 1.5rem !important;
+        height: calc(100vh - clamp(100px, 15vh, 140px));
+        gap: clamp(1rem, 3vh, 1.5rem);
+        scale: 1;
+        padding: 0 1rem;
     }
 
     .intro-text {
-        font-size: 1.1rem !important;
-        line-height: 1.5 !important;
-        margin-bottom: 1.5rem !important;
+        font-size: clamp(1.2rem, 6vw, 1.6rem);
+        margin-bottom: 0.8rem;
+    }
+
+    .description {
+        font-size: clamp(0.9rem, 4vw, 1.1rem);
+        line-height: 1.3;
     }
 
     .skills-section {
-        padding: 1.2rem !important;
-        margin: 0 !important;
-        max-width: none !important;
-    }
-
-    .skills-section h3 {
-        font-size: 1.5rem !important;
-        margin-bottom: 1.2rem !important;
+        padding: 1.5rem 1rem;
     }
 
     .skills-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-        flex-direction: column !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
     .skill-category {
-        flex: none !important;
-        padding: 1rem !important;
+        padding: 1rem 0.8rem;
     }
 
     .skill-category h4 {
-        font-size: 1.2rem !important;
-    }
-
-    .skill-category li {
-        font-size: 0.95rem !important;
-        margin-bottom: 0.6rem !important;
-        padding: 0.4rem 0.8rem !important;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
     }
 
     .skill-tags {
-        gap: 0.4rem !important;
+        gap: 0.4rem;
     }
 
     .skill-tag {
-        font-size: 0.8rem !important;
-        padding: 0.3rem 0.6rem !important;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
     }
 }
