@@ -74,32 +74,32 @@ export class PortfolioComponent implements AfterViewInit {
   // Aplicaciones y herramientas desarrolladas
   applications = [
     {
-      title: 'Portfolio Generator',
-      description: 'Herramienta para generar portfolios dinámicos con Angular. Automatiza la creación de sitios web profesionales.',
-      link: 'https://github.com/liyodev', // Reemplazar con tu enlace real
-      type: 'Web Tool',
-      tech: ['Angular', 'TypeScript', 'SCSS']
+      title: 'Lanzador Microservicios',
+      description: 'Herramienta para gestionar y lanzar múltiples microservicios de forma coordinada. Automatiza el proceso de desarrollo y despliegue.',
+      link: 'https://github.com/liyo-dev/lanzador-microservicios',
+      type: 'DevOps Tool',
+      tech: ['Node.js', 'Docker', 'Microservices']
     },
     {
-      title: 'Game Analytics Dashboard',
-      description: 'Dashboard para analizar métricas de juegos. Visualización de datos en tiempo real para desarrolladores.',
-      link: 'https://github.com/liyodev', // Reemplazar con tu enlace real
-      type: 'Analytics',
-      tech: ['React', 'Chart.js', 'Node.js']
+      title: 'Last Time Visit',
+      description: 'Aplicación para rastrear y recordar la última vez que visitaste lugares importantes. Útil para seguimiento personal.',
+      link: 'https://github.com/liyo-dev/last-time-visit',
+      type: 'Personal Tool',
+      tech: ['JavaScript', 'Local Storage', 'PWA']
     },
     {
-      title: 'Level Editor Tool',
-      description: 'Editor de niveles visual para juegos 2D. Interfaz drag & drop con exportación a JSON.',
-      link: 'https://github.com/liyodev', // Reemplazar con tu enlace real
-      type: 'Game Dev Tool',
-      tech: ['Unity', 'C#', 'JSON']
+      title: 'Pixel Wars',
+      description: 'Juego de estrategia por turnos con gráficos pixelados. Combate táctico con mecánicas innovadoras.',
+      link: 'https://github.com/liyo-dev/pixel-wars',
+      type: 'Game',
+      tech: ['Unity', 'C#', 'Pixel Art']
     },
     {
-      title: 'Asset Manager',
-      description: 'Gestor de assets para proyectos de juegos. Organización automática y optimización de recursos.',
-      link: 'https://github.com/liyodev', // Reemplazar con tu enlace real
-      type: 'Utility',
-      tech: ['Python', 'SQLite', 'PyQt']
+      title: 'Chat Application',
+      description: 'Sistema de chat en tiempo real con múltiples salas y funcionalidades avanzadas de mensajería.',
+      link: 'https://github.com/liyo-dev/chat',
+      type: 'Web App',
+      tech: ['Socket.io', 'Node.js', 'React']
     }
   ];
 
@@ -170,12 +170,21 @@ export class PortfolioComponent implements AfterViewInit {
         steamTab: this.steamTab?.nativeElement,
         tabIndicator: this.tabIndicator?.nativeElement
       });
+      
+      // Asegurar que el panel inicial esté visible
+      const initialPanelClass = this.activeCategory === 'playStore' ? 'mobile' : this.activeCategory;
+      const initialPanel = document.querySelector(`.${initialPanelClass}-panel`);
+      if (initialPanel) {
+        initialPanel.classList.add('active');
+        console.log('✅ Initial panel activated:', `.${initialPanelClass}-panel`);
+      }
+      
       this.updateTabIndicator();
       
       // Animar las cards del panel inicial después de un pequeño delay
       setTimeout(() => {
         this.animateContentCardsForPanel(this.activeCategory);
-      }, 800);
+      }, 300);
     }, 200);
   }
 
@@ -220,48 +229,41 @@ export class PortfolioComponent implements AfterViewInit {
     
     this.isAnimating = true;
     const previousCategory = this.activeCategory;
+    
+    // Mapear categoría a nombre de panel CSS
+    const getPanelClass = (cat: string) => cat === 'playStore' ? 'mobile' : cat;
+    const previousPanelClass = getPanelClass(previousCategory);
+    const newPanelClass = getPanelClass(category);
 
-    // Animar salida del contenido anterior
-    gsap.to(`.${previousCategory}-panel`, {
-      opacity: 0,
-      y: 20,
-      duration: 0.3,
-      ease: "power2.in",
-      onComplete: () => {
-        // Cambiar la categoría después de que termine la animación de salida
-        this.activeCategory = category;
-        console.log('✅ Category changed to:', this.activeCategory);
+    // Ocultar panel anterior inmediatamente
+    const previousPanel = document.querySelector(`.${previousPanelClass}-panel`);
+    if (previousPanel) {
+      previousPanel.classList.remove('active');
+    }
+
+    // Cambiar la categoría
+    this.activeCategory = category;
+    console.log('✅ Category changed to:', this.activeCategory);
+    
+    // Actualizar indicador de tab
+    this.updateTabIndicator();
+    
+    // Mostrar nuevo panel después de un breve delay
+    setTimeout(() => {
+      const newPanel = document.querySelector(`.${newPanelClass}-panel`);
+      if (newPanel) {
+        newPanel.classList.add('active');
         
-        // Actualizar indicador de tab DESPUÉS del cambio
-        this.updateTabIndicator();
-        
-        // Preparar el nuevo panel invisible con las cards sin animar
-        gsap.set(`.${category}-panel`, {
-          opacity: 0,
-          y: -20
-        });
-        
-        // Preparar las cards del nuevo panel sin animación
-        gsap.set(`.${category}-panel .content-card`, {
-          opacity: 0,
-          y: 30,
-          scale: 0.9
-        });
-        
-        // Animar entrada del panel
-        gsap.to(`.${category}-panel`, {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          ease: "power2.out",
-          onComplete: () => {
-            // Luego animar las cards con delay
-            this.animateContentCardsForPanel(category);
-            this.isAnimating = false;
-          }
-        });
+        // Animar las cards del nuevo panel
+        setTimeout(() => {
+          this.animateContentCardsForPanel(category);
+          this.isAnimating = false;
+        }, 100);
+      } else {
+        console.log('❌ New panel not found:', `.${newPanelClass}-panel`);
+        this.isAnimating = false;
       }
-    });
+    }, 150);
   }
 
   // Actualizar posición del indicador de tab
@@ -384,9 +386,12 @@ export class PortfolioComponent implements AfterViewInit {
 
   // Animar tarjetas de un panel específico
   private animateContentCardsForPanel(category: string) {
+    console.log('🎨 Animating cards for category:', category);
+    
     // Para apps y games usar animación específica del showcase
     if (category === 'apps' || category === 'games') {
       const activeCard = document.querySelector(`.${category}-panel .showcase-card.active`);
+      console.log('🎴 Showcase card found:', !!activeCard);
       if (activeCard) {
         gsap.fromTo(activeCard, {
           opacity: 0,
@@ -400,18 +405,27 @@ export class PortfolioComponent implements AfterViewInit {
         });
       }
     } else {
-      // Para steam y mobile usar animación de cards
-      const cards = document.querySelectorAll(`.${category}-panel .content-card`);
+      // Para steam y playStore usar animación de cards
+      // Mapear categoría a nombre de panel CSS
+      const panelClass = category === 'playStore' ? 'mobile' : category;
+      const cards = document.querySelectorAll(`.${panelClass}-panel .content-card`);
+      console.log('🎴 Content cards found:', cards.length, 'for panel:', `.${panelClass}-panel`);
       
-      gsap.to(cards, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "back.out(1.4)",
-        delay: 0.1
-      });
+      if (cards.length > 0) {
+        gsap.fromTo(cards, {
+          opacity: 0,
+          y: 30,
+          scale: 0.9
+        }, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "back.out(1.4)",
+          delay: 0.1
+        });
+      }
     }
   }
 

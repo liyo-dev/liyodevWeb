@@ -1,7 +1,6 @@
-/* Sección principal con efectos glassmorphism */
 .contact-section {
   height: 100vh;
-  color: #ffffff;
+  color: #fff;
   font-family: 'Poppins', sans-serif;
   position: relative;
   overflow: hidden;
@@ -11,12 +10,9 @@
   flex-direction: column;
 }
 
-/* Desktop - ajustes para diferentes resoluciones */
 @media (min-width: 769px) {
   .contact-section {
-    padding-left: 100px;
-    padding-right: 2rem;
-    padding-top: 2rem;
+    padding: 2rem 2rem 4rem 100px;
   }
 }
 
