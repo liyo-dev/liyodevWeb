@@ -32,14 +32,14 @@ export class PortfolioComponent implements AfterViewInit {
     {
       title: 'Próximo Juego Steam #1',
       description: 'Descripción del primer juego que subirás a Steam. Una experiencia única que combina...',
-      link: '#', // Aquí pondrás la URL de la web del juego
+      link: '#',
       status: 'Próximamente en Steam',
       featured: true
     },
     {
       title: 'Próximo Juego Steam #2', 
       description: 'Descripción del segundo juego. Una aventura innovadora que...',
-      link: '#', // Aquí pondrás la URL de la web del juego
+      link: '#',
       status: 'En desarrollo',
       featured: true
     }

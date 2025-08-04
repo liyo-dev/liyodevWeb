@@ -77,6 +77,5 @@ export class ContactComponent implements AfterViewInit {
       yoyo: true,
       repeat: 1
     });
-    // Aquí puedes implementar la lógica de envío del formulario
   }
 }
