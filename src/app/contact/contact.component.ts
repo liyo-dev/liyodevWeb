@@ -70,7 +70,6 @@ export class ContactComponent implements AfterViewInit {
   }
 
   onSubmit() {
-    console.log('Form submitted:', this.contactForm);
     // Animación de confirmación
     gsap.to('.submit-btn', {
       scale: 1.1,

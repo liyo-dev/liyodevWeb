@@ -35,10 +35,8 @@ export class MainComponent implements AfterViewInit {
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        console.log('Navigation ended:', event.urlAfterRedirects);
         const idx = this.scrollRoutes.indexOf(event.urlAfterRedirects);
         this.currentIndex = idx >= 0 ? idx : 0;
-        console.log('Current index:', this.currentIndex);
 
         // Cambiar el fondo suavemente
         this.updateBackground(this.currentIndex);
@@ -90,7 +88,6 @@ export class MainComponent implements AfterViewInit {
   onTouchStart(event: TouchEvent) {
     if (!this.isMobile) return;
     this.touchStartY = event.touches[0].clientY;
-    console.log('Touch start Y:', this.touchStartY);
   }
 
   @HostListener('touchend', ['$event'])
@@ -101,10 +98,7 @@ export class MainComponent implements AfterViewInit {
     const deltaY = this.touchStartY - this.touchEndY;
     const minSwipeDistance = 50; // Distancia mínima para activar navegación
 
-    console.log('Touch end Y:', this.touchEndY, 'Delta Y:', deltaY);
-
     if (Math.abs(deltaY) > minSwipeDistance) {
-      console.log('Swipe detected, direction:', deltaY > 0 ? 'up' : 'down');
       // Deslizar hacia arriba (deltaY > 0) = siguiente sección
       // Deslizar hacia abajo (deltaY < 0) = sección anterior
       this.handleNavigation(deltaY > 0 ? 1 : -1);

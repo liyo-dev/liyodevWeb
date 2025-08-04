@@ -165,18 +165,12 @@ export class PortfolioComponent implements AfterViewInit {
   private initializeInterface() {
     // Configurar indicador de tab inicial con delay para asegurar que los elementos estén renderizados
     setTimeout(() => {
-      console.log('Initializing tab indicator...', {
-        activeCategory: this.activeCategory,
-        steamTab: this.steamTab?.nativeElement,
-        tabIndicator: this.tabIndicator?.nativeElement
-      });
       
       // Asegurar que el panel inicial esté visible
       const initialPanelClass = this.activeCategory === 'playStore' ? 'mobile' : this.activeCategory;
       const initialPanel = document.querySelector(`.${initialPanelClass}-panel`);
       if (initialPanel) {
         initialPanel.classList.add('active');
-        console.log('✅ Initial panel activated:', `.${initialPanelClass}-panel`);
       }
       
       this.updateTabIndicator();
@@ -232,27 +226,18 @@ export class PortfolioComponent implements AfterViewInit {
 
   // Actualizar posición del indicador de tab (simplificado)
   private updateTabIndicator() {
-    console.log('🔄 UpdateTabIndicator called for category:', this.activeCategory);
     
     if (!this.tabIndicator) {
-      console.log('❌ UpdateTabIndicator: Missing tabIndicator');
       return;
     }
 
     // Calcular posición basada en el índice del tab
     const tabIndex = this.getTabIndex(this.activeCategory);
     
-    console.log('📏 Tab calculations:', {
-      category: this.activeCategory,
-      tabIndex,
-      isDesktop: window.innerWidth > 768
-    });
-
     // Para tabs verticales (desktop)
     if (window.innerWidth > 768) {
       // Cálculo: 8px padding inicial + (índice * (70px altura + 8px gap))
       const topPosition = 8 + (tabIndex * 78);
-      console.log('💻 Desktop mode - moving to calculated top:', topPosition);
       
       // Movimiento simple sin animación
       this.tabIndicator.nativeElement.style.top = topPosition + 'px';
@@ -263,7 +248,6 @@ export class PortfolioComponent implements AfterViewInit {
       // Para tabs horizontales (mobile)
       // Cálculo: 8px padding inicial + (índice * (60px ancho + 8px gap))
       const leftPosition = 8 + (tabIndex * 68);
-      console.log('📱 Mobile mode - moving to calculated left:', leftPosition);
       
       // Movimiento simple sin animación
       this.tabIndicator.nativeElement.style.left = leftPosition + 'px';
@@ -303,20 +287,11 @@ export class PortfolioComponent implements AfterViewInit {
           element = this.gamesTab?.nativeElement || null;
           break;
         default: 
-          console.log('❌ Unknown category:', this.activeCategory);
           return null;
       }
       
-      console.log('🎯 Getting tab element for category:', this.activeCategory, {
-        element: !!element,
-        hasClass: element?.classList.contains('active'),
-        offsetTop: element?.offsetTop,
-        offsetLeft: element?.offsetLeft
-      });
-      
       return element;
     } catch (error) {
-      console.error('❌ Error getting active tab element:', error);
       return null;
     }
   }

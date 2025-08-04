@@ -27,7 +27,6 @@ export class MenuComponent implements AfterViewInit {
   }
 
   toggleMenu() {
-    console.log('Toggle menu clicked, current state:', this.menuOpen);
     this.menuOpen = !this.menuOpen;
 
     if (this.menuOpen) {
@@ -36,12 +35,10 @@ export class MenuComponent implements AfterViewInit {
   }
 
   closeMenu() {
-    console.log('Close menu called');
     this.menuOpen = false;
   }
 
   onLinkClick(route: string) {
-    console.log(`Link clicked: ${route}`);
     this.closeMenu();
   }
 
