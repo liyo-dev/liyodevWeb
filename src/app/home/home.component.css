@@ -1,15 +1,30 @@
 .home-section {
   position: relative;
+  min-height: 100vh;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(2rem, 4vh, 4rem) clamp(2rem, 4vw, 6rem) 4rem clamp(2rem, 4vw, 6rem);
+  padding: 2rem;
   color: #ffffff;
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
   text-align: center;
   box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+  .home-section {
+    padding: 2rem 2rem 2rem 100px;
+    padding-top: clamp(2rem, 3vh, 4rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .home-section {
+    padding: 80px 20px 4rem;
+    padding-bottom: 2rem;
+  }
 }
 
 .home-content {

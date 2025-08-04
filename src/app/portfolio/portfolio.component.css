@@ -1,5 +1,6 @@
 .portfolio-section {
   min-height: 100vh;
+  height: 100vh;
   color: #fff;
   font-family: 'Poppins', sans-serif;
   position: relative;
@@ -8,16 +9,24 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: 100vw;
 }
 
 @media (min-width: 769px) {
-  .portfolio-section { padding: 2rem 2rem 2rem 100px; }
+  .portfolio-section { 
+    padding: 2rem 2rem 2rem 100px;
+    padding-top: clamp(2rem, 3vh, 4rem);
+  }
 }
 
 @media (max-width: 768px) {
-  .portfolio-section { padding: 80px 20px 4rem; }
+  .portfolio-section { 
+    padding: 80px 20px 4rem;
+    padding-bottom: 2rem;
+  }
 }
 
 .section-title {
@@ -53,7 +62,7 @@
   .section-title h2 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
 }
 
-.floating-tabs {
+.floating-tabs-container {
   position: absolute;
   top: 50%;
   right: 2rem;
@@ -68,7 +77,7 @@
   flex-direction: column;
   gap: 8px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  width: 86px;
+  width: 70px;
   min-height: 328px;
 }
 
@@ -76,7 +85,7 @@
   position: absolute !important;
   background: linear-gradient(135deg, #00d4ff, #00ff9d);
   border-radius: 20px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s ease;
   z-index: 1;
   box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4);
   height: 70px;
@@ -86,7 +95,7 @@
   pointer-events: none;
 }
 
-.tab-item {
+.floating-tab {
   background: transparent;
   border: none;
   color: rgba(255, 255, 255, 0.7);
@@ -106,9 +115,9 @@
   flex-shrink: 0;
 }
 
-.tab-item:hover { color: rgba(255, 255, 255, 0.9); }
+.floating-tab:hover { color: rgba(255, 255, 255, 0.9); }
 
-.tab-item.active {
+.floating-tab.active {
   color: rgba(0, 0, 0, 0.8);
   font-weight: 600;
 }
@@ -134,7 +143,7 @@
 }
 
 @media (max-width: 768px) {
-  .floating-tabs {
+  .floating-tabs-container {
     position: fixed;
     bottom: 2rem;
     left: 50%;
@@ -147,7 +156,7 @@
     min-height: unset;
   }
   
-  .tab-item {
+  .floating-tab {
     width: 60px !important;
     height: 60px !important;
     flex-shrink: 0;
@@ -167,34 +176,44 @@
   }
 }
 
-.content-container {
+.portfolio-container {
   flex: 1;
   position: relative;
-  margin-top: clamp(4rem, 8vh, 6rem);
+  width: 100%;
+  max-width: 1200px;
+  min-height: 70vh;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
   padding-right: clamp(1rem, 8vw, 8rem);
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
-  .content-container { 
+  .portfolio-container { 
     padding-right: 0; 
-    padding-bottom: 100px; 
+    padding-bottom: 100px;
+    min-height: calc(100vh - 160px);
   }
 }
 
 .content-panel {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 1000px;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
 .content-panel.active {
   opacity: 1;
   visibility: visible;
-  position: relative;
 }
 
 .panel-header {
@@ -239,16 +258,14 @@
   padding: clamp(1.5rem, 3vw, 2rem);
   position: relative;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   backdrop-filter: blur(20px);
   overflow: hidden;
-  opacity: 1;
-  transform: translateY(0) scale(1);
 }
 
-.content-panel:not(.active) .content-card {
-  opacity: 0;
-  transform: translateY(30px) scale(0.9);
+.content-panel.active .content-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .content-card::before {
@@ -381,7 +398,6 @@
   transition: all 0.4s ease;
   backdrop-filter: blur(20px);
   opacity: 0;
-  transform: scale(0.95);
   position: absolute;
   width: 100%;
   top: 0;
@@ -390,7 +406,6 @@
 
 .showcase-card.active {
   opacity: 1;
-  transform: scale(1);
   position: relative;
 }
 

@@ -161,7 +161,7 @@ export class PortfolioComponent implements AfterViewInit {
     });
   }
 
-  // Inicialización de la interfaz
+  // Inicialización de la interfaz (simplificada)
   private initializeInterface() {
     // Configurar indicador de tab inicial con delay para asegurar que los elementos estén renderizados
     setTimeout(() => {
@@ -180,52 +180,21 @@ export class PortfolioComponent implements AfterViewInit {
       }
       
       this.updateTabIndicator();
-      
-      // Animar las cards del panel inicial después de un pequeño delay
-      setTimeout(() => {
-        this.animateContentCardsForPanel(this.activeCategory);
-      }, 300);
     }, 200);
   }
 
-  // Animación de entrada de los tabs
+  // Animación básica de entrada de los tabs
   private animateTabsEntrance() {
-    gsap.fromTo('.tab-item', 
-      {
-        y: -50,
-        opacity: 0,
-        scale: 0.8
-      },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "back.out(1.7)"
-      }
-    );
-
-    gsap.fromTo('.panel-header',
-      {
-        y: 30,
-        opacity: 0
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        delay: 0.3,
-        ease: "power2.out"
-      }
-    );
+    // Animación simple sin GSAP
+    const tabs = document.querySelectorAll('.floating-tab');
+    tabs.forEach((tab, index) => {
+      (tab as HTMLElement).style.opacity = '1';
+    });
   }
 
-  // Cambiar categoría activa
+  // Cambiar categoría activa (simplificado)
   switchCategory(category: 'steam' | 'playStore' | 'apps' | 'games') {
     if (this.isAnimating || this.activeCategory === category) return;
-    
-    console.log('🎯 Switching category from', this.activeCategory, 'to', category);
     
     this.isAnimating = true;
     const previousCategory = this.activeCategory;
@@ -235,38 +204,33 @@ export class PortfolioComponent implements AfterViewInit {
     const previousPanelClass = getPanelClass(previousCategory);
     const newPanelClass = getPanelClass(category);
 
-    // Ocultar panel anterior inmediatamente
+    // Obtener elementos
     const previousPanel = document.querySelector(`.${previousPanelClass}-panel`);
+    const newPanel = document.querySelector(`.${newPanelClass}-panel`);
+
+    // Ocultar panel anterior
     if (previousPanel) {
       previousPanel.classList.remove('active');
     }
-
+    
     // Cambiar la categoría
     this.activeCategory = category;
-    console.log('✅ Category changed to:', this.activeCategory);
     
     // Actualizar indicador de tab
     this.updateTabIndicator();
     
-    // Mostrar nuevo panel después de un breve delay
+    // Mostrar nuevo panel
+    if (newPanel) {
+      newPanel.classList.add('active');
+    }
+
+    // Terminar animación
     setTimeout(() => {
-      const newPanel = document.querySelector(`.${newPanelClass}-panel`);
-      if (newPanel) {
-        newPanel.classList.add('active');
-        
-        // Animar las cards del nuevo panel
-        setTimeout(() => {
-          this.animateContentCardsForPanel(category);
-          this.isAnimating = false;
-        }, 100);
-      } else {
-        console.log('❌ New panel not found:', `.${newPanelClass}-panel`);
-        this.isAnimating = false;
-      }
-    }, 150);
+      this.isAnimating = false;
+    }, 100);
   }
 
-  // Actualizar posición del indicador de tab
+  // Actualizar posición del indicador de tab (simplificado)
   private updateTabIndicator() {
     console.log('🔄 UpdateTabIndicator called for category:', this.activeCategory);
     
@@ -290,28 +254,22 @@ export class PortfolioComponent implements AfterViewInit {
       const topPosition = 8 + (tabIndex * 78);
       console.log('💻 Desktop mode - moving to calculated top:', topPosition);
       
-      gsap.to(this.tabIndicator.nativeElement, {
-        top: topPosition + 'px',
-        left: '8px',
-        width: '70px',
-        height: '70px',
-        duration: 0.4,
-        ease: "power2.out"
-      });
+      // Movimiento simple sin animación
+      this.tabIndicator.nativeElement.style.top = topPosition + 'px';
+      this.tabIndicator.nativeElement.style.left = '8px';
+      this.tabIndicator.nativeElement.style.width = '70px';
+      this.tabIndicator.nativeElement.style.height = '70px';
     } else {
       // Para tabs horizontales (mobile)
       // Cálculo: 8px padding inicial + (índice * (60px ancho + 8px gap))
       const leftPosition = 8 + (tabIndex * 68);
       console.log('📱 Mobile mode - moving to calculated left:', leftPosition);
       
-      gsap.to(this.tabIndicator.nativeElement, {
-        left: leftPosition + 'px',
-        top: '8px', // Centrado verticalmente
-        width: '60px',
-        height: '60px',
-        duration: 0.4,
-        ease: "power2.out"
-      });
+      // Movimiento simple sin animación
+      this.tabIndicator.nativeElement.style.left = leftPosition + 'px';
+      this.tabIndicator.nativeElement.style.top = '8px';
+      this.tabIndicator.nativeElement.style.width = '60px';
+      this.tabIndicator.nativeElement.style.height = '60px';
     }
   }
 
@@ -363,130 +321,34 @@ export class PortfolioComponent implements AfterViewInit {
     }
   }
 
-  // Animar tarjetas del contenido
+  // Función simplificada - sin animaciones complejas
   private animateContentCards() {
-    const cards = document.querySelectorAll('.content-panel.active .content-card');
-    
-    gsap.fromTo(cards,
-      {
-        opacity: 0,
-        y: 30,
-        scale: 0.9
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "back.out(1.4)"
-      }
-    );
+    // Sin animaciones por ahora
   }
 
-  // Animar tarjetas de un panel específico
+  // Función simplificada - sin animaciones complejas
   private animateContentCardsForPanel(category: string) {
-    console.log('🎨 Animating cards for category:', category);
-    
-    // Para apps y games usar animación específica del showcase
-    if (category === 'apps' || category === 'games') {
-      const activeCard = document.querySelector(`.${category}-panel .showcase-card.active`);
-      console.log('🎴 Showcase card found:', !!activeCard);
-      if (activeCard) {
-        gsap.fromTo(activeCard, {
-          opacity: 0,
-          scale: 0.9
-        }, {
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          ease: "back.out(1.4)",
-          delay: 0.1
-        });
-      }
-    } else {
-      // Para steam y playStore usar animación de cards
-      // Mapear categoría a nombre de panel CSS
-      const panelClass = category === 'playStore' ? 'mobile' : category;
-      const cards = document.querySelectorAll(`.${panelClass}-panel .content-card`);
-      console.log('🎴 Content cards found:', cards.length, 'for panel:', `.${panelClass}-panel`);
-      
-      if (cards.length > 0) {
-        gsap.fromTo(cards, {
-          opacity: 0,
-          y: 30,
-          scale: 0.9
-        }, {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: "back.out(1.4)",
-          delay: 0.1
-        });
-      }
-    }
+    // Sin animaciones por ahora
   }
 
-  // Navegar en el showcase de juegos
+  // Navegar en el showcase de juegos (simplificado)
   navigateShowcase(direction: number) {
     const newIndex = this.currentGameIndex + direction;
     
     if (newIndex < 0 || newIndex >= this.publishedGames.length) return;
     
     this.currentGameIndex = newIndex;
-    
-    // Animar transición
-    gsap.to('.showcase-card.active', {
-      scale: 0.9,
-      opacity: 0,
-      duration: 0.3,
-      onComplete: () => {
-        gsap.fromTo('.showcase-card.active', 
-          {
-            scale: 1.1,
-            opacity: 0
-          },
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 0.4,
-            ease: "back.out(1.2)"
-          }
-        );
-      }
-    });
+    // Sin animaciones por ahora
   }
 
-  // Navegar en el showcase de aplicaciones
+  // Navegar en el showcase de aplicaciones (simplificado)
   navigateAppsShowcase(direction: number) {
     const newIndex = this.currentAppIndex + direction;
     
     if (newIndex < 0 || newIndex >= this.applications.length) return;
     
     this.currentAppIndex = newIndex;
-    
-    // Animar transición
-    gsap.to('.app-showcase-card.active', {
-      scale: 0.9,
-      opacity: 0,
-      duration: 0.3,
-      onComplete: () => {
-        gsap.fromTo('.app-showcase-card.active', 
-          {
-            scale: 1.1,
-            opacity: 0
-          },
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 0.4,
-            ease: "back.out(1.2)"
-          }
-        );
-      }
-    });
+    // Sin animaciones por ahora
   }
 
   // Navegar a juego/proyecto

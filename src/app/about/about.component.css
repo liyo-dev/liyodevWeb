@@ -1,19 +1,24 @@
 .about-section {
+    min-height: 100vh;
     height: 100vh;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
     position: relative;
     overflow: hidden;
-    padding-bottom: 4rem;
+    padding: 2rem;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Desktop - ajustes para diferentes resoluciones */
 @media (min-width: 769px) {
   .about-section {
-    padding-left: clamp(100px, 8vw, 150px);
-    padding-right: clamp(2rem, 4vw, 6rem);
+    padding: 2rem 2rem 2rem 100px;
     padding-top: clamp(2rem, 3vh, 4rem);
+    padding-right: clamp(2rem, 4vw, 6rem);
   }
 }
 
@@ -37,9 +42,8 @@
 /* Mobile */
 @media (max-width: 768px) {
   .about-section {
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 80px;
+    padding: 80px 20px 4rem;
+    padding-bottom: 2rem;
   }
 }
 
@@ -97,16 +101,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - clamp(3rem, 6vh, 6rem));
-    max-width: min(1400px, 90vw);
+    width: 100%;
+    max-width: min(1200px, 85vw);
+    height: 75vh;
     margin: 0 auto;
-    padding: clamp(1rem, 2vh, 2rem) 2rem;
-    gap: clamp(1.5rem, 3vh, 2.5rem);
-    scale: clamp(0.85, 1vw + 0.6, 1);
+    padding: clamp(0.5rem, 1vh, 1rem) 1rem;
+    gap: clamp(1rem, 2vh, 1.5rem);
+    scale: clamp(0.8, 0.8vw + 0.5, 0.9);
     animation: fadeInUp 0.5s ease-out;
     opacity: 1;
     box-sizing: border-box;
-    overflow: visible;
+    overflow: hidden;
 }
 
 @keyframes fadeInUp {
@@ -146,9 +151,10 @@
 /* Sección de skills con glassmorphism */
 .skills-section {
     width: 100%;
+    max-width: 100%;
     background: rgba(255, 255, 255, 0.08);
-    border-radius: clamp(20px, 3vw, 30px);
-    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: clamp(15px, 2vw, 20px);
+    padding: clamp(0.8rem, 1.5vw, 1.2rem);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
@@ -160,9 +166,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: auto;
     height: auto;
-    flex-shrink: 0;
+    flex: 1;
+    box-sizing: border-box;
 }
 
 @keyframes slideInUp {
@@ -206,13 +212,14 @@
     visibility: visible;
     width: 100%;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 /* Categorías de skills con colores únicos */
 .skill-category {
     background: rgba(255, 255, 255, 0.05);
-    padding: clamp(1rem, 2vw, 1.5rem);
-    border-radius: 15px;
+    padding: clamp(0.6rem, 1.2vw, 1rem);
+    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -220,6 +227,12 @@
     overflow: hidden;
     opacity: 1;
     visibility: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 85px;
+    box-sizing: border-box;
 }
 
 .skill-category::before {
@@ -266,8 +279,8 @@
 }
 
 .skill-category h4 {
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-    margin-bottom: clamp(0.8rem, 1.5vh, 1rem);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    margin-bottom: clamp(0.5rem, 1vh, 0.8rem);
     color: #ffffff;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -276,21 +289,26 @@
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: clamp(0.4rem, 1vw, 0.6rem);
+    gap: clamp(0.3rem, 0.8vw, 0.5rem);
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 0.3rem;
 }
 
 .skill-tag {
     background: rgba(76, 161, 175, 0.2);
-    padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 1.5vw, 0.8rem);
+    padding: clamp(0.2rem, 0.8vw, 0.4rem) clamp(0.5rem, 1.2vw, 0.7rem);
     border-radius: 20px;
-    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+    font-size: clamp(0.7rem, 1vw, 0.8rem);
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
     white-space: nowrap;
     font-weight: 500;
+    flex-shrink: 0;
 }
 
 .skill-tag:hover {
@@ -341,7 +359,7 @@
         scale: 1;
         padding: clamp(0.5rem, 1.5vh, 1rem) 0;
         max-width: 100%;
-        overflow: visible;
+        overflow: hidden;
         box-sizing: border-box;
     }
 
@@ -364,6 +382,7 @@
         min-height: auto;
         height: auto;
         flex-shrink: 0;
+        box-sizing: border-box;
     }
 
     .skills-grid {
@@ -373,8 +392,12 @@
     }
 
     .skill-category {
-        padding: 0.8rem 0.6rem;
+        padding: 0.6rem 0.5rem;
         border-radius: 10px;
+        min-height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
     .skill-category h4 {
@@ -384,6 +407,8 @@
 
     .skill-tags {
         gap: 0.3rem;
+        margin-top: auto;
+        padding-top: 0.4rem;
     }
 
     .skill-tag {

@@ -1,10 +1,11 @@
 .contact-section {
+  min-height: 100vh;
   height: 100vh;
   color: #fff;
   font-family: 'Poppins', sans-serif;
   position: relative;
   overflow: hidden;
-  padding-bottom: 4rem;
+  padding: 2rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -12,7 +13,8 @@
 
 @media (min-width: 769px) {
   .contact-section {
-    padding: 2rem 2rem 4rem 100px;
+    padding: 2rem 2rem 2rem 100px;
+    padding-top: clamp(2rem, 3vh, 4rem);
   }
 }
 
