@@ -282,7 +282,6 @@
 }
 
 .content-card:hover::before { opacity: 1; }
-
 .content-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
@@ -332,7 +331,6 @@
 
 .platform-tag.steam { background: linear-gradient(135deg, #1b2838, #2a475e); }
 .platform-tag.mobile { background: linear-gradient(135deg, #34a853, #0f9d58); }
-
 .action-text, .action-link {
   color: #00d4ff;
   font-weight: 600;
@@ -340,7 +338,6 @@
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
-
 .action-link:hover { color: #00ff9d; }
 
 .showcase-controls {
@@ -362,12 +359,10 @@
   font-size: 1.2rem;
   backdrop-filter: blur(10px);
 }
-
 .showcase-btn:hover:not(:disabled) {
   background: rgba(0, 212, 255, 0.2);
   border-color: rgba(0, 212, 255, 0.5);
 }
-
 .showcase-btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
@@ -403,15 +398,9 @@
   top: 0;
   left: 0;
 }
-
 .showcase-card.active {
   opacity: 1;
   position: relative;
-}
-
-.showcase-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
 }
 
 .showcase-image {
@@ -427,7 +416,6 @@
   font-size: 4rem;
   opacity: 0.3;
 }
-
 .game-overlay, .app-overlay {
   position: absolute;
   top: 0;
@@ -444,7 +432,6 @@
 
 .showcase-card:hover .game-overlay,
 .showcase-card:hover .app-overlay { opacity: 1; }
-
 .play-btn, .view-btn {
   background: linear-gradient(135deg, #00d4ff, #00ff9d);
   color: #000;
@@ -455,7 +442,6 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 .view-btn {
   display: flex;
   align-items: center;
@@ -465,14 +451,12 @@
 .showcase-info {
   padding: 1.5rem;
 }
-
 .game-meta, .app-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
 }
-
 .game-type, .game-year, .app-type-tag {
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.9);
@@ -481,14 +465,12 @@
   font-size: 0.8rem;
   backdrop-filter: blur(10px);
 }
-
 .showcase-info h4 {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0 0.5rem 0;
   color: #fff;
 }
-
 .showcase-info p {
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
@@ -500,7 +482,6 @@
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-
 .tech-badge {
   background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 255, 157, 0.2));
   color: #fff;
@@ -510,13 +491,11 @@
   font-weight: 500;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .empty-state {
   text-align: center;
   padding: 4rem 2rem;
   color: rgba(255, 255, 255, 0.6);
 }
-
 .empty-icon {
   font-size: 4rem;
   margin-bottom: 1rem;
