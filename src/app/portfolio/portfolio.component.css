@@ -95,7 +95,7 @@
   max-width: 100%;
 }
 
-@media (max-width:768px){.floating-tabs-container{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);top:auto;right:auto;flex-direction:row;width:auto;height:76px;min-height:unset}
+@media (max-width:768px){.floating-tabs-container{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);top:auto;right:auto;flex-direction:row;width:auto;height:76px;min-height:unset}
 .floating-tab{width:60px !important;height:60px !important;flex-shrink:0;gap:0.05rem;padding:4px}
 .tab-icon{font-size:1.2rem;margin-bottom:0.1rem}
 .tab-label{font-size:0.5rem;letter-spacing:0.2px;font-weight:600}}
@@ -126,10 +126,10 @@
 @media (max-width: 768px) {
   .content-panel {
     top: 50%;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 140px);
     display: flex;
-    align-items: flex-start;
-    padding: 10px 10px 80px 10px;
+    align-items: center;
+    padding: 20px 10px 60px 10px;
     overflow-y: auto;
   }
 }
@@ -182,12 +182,13 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 1rem;
-    padding: 0 15px 20px 15px;
+    padding: 0 20px 20px 20px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
     height: auto;
     align-items: flex-start;
+    justify-content: center;
   }
   
   .content-grid::-webkit-scrollbar {
@@ -195,14 +196,14 @@
   }
   
   .content-card {
-    min-width: calc(100vw - 40px);
-    max-width: calc(100vw - 40px);
+    min-width: calc(100vw - 80px);
+    max-width: calc(100vw - 80px);
     scroll-snap-align: center;
     flex-shrink: 0;
     height: auto;
     max-height: calc(100vh - 200px);
     overflow: hidden;
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto;
   }
   
   .card-image {
@@ -743,6 +744,8 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    padding: 0 20px;
+    justify-content: flex-start;
   }
   
   .showcase-content::-webkit-scrollbar {
@@ -750,9 +753,10 @@
   }
   
   .showcase-card {
-    min-width: calc(100vw - 60px);
-    max-width: calc(100vw - 60px);
+    min-width: calc(100vw - 80px);
+    max-width: calc(100vw - 80px);
     scroll-snap-align: center;
     flex-shrink: 0;
+    margin: 0 auto;
   }
 }
