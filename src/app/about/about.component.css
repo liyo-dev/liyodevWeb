@@ -42,8 +42,8 @@
 /* Mobile */
 @media (max-width: 768px) {
   .about-section {
-    padding: 80px 20px 4rem;
-    padding-bottom: 2rem;
+    padding: 80px 20px 6rem;
+    padding-bottom: 4rem;
   }
 }
 
@@ -349,13 +349,14 @@
     }
 
     .about-content {
-        height: calc(100vh - 70px);
-        gap: clamp(0.8rem, 2.5vh, 1.2rem);
+        height: calc(100vh - 100px);
+        gap: clamp(1rem, 3vh, 1.5rem);
         scale: 1;
-        padding: clamp(0.5rem, 1.5vh, 1rem) 0;
+        padding: clamp(0.5rem, 2vh, 1.5rem) 0;
         max-width: 100%;
         overflow: hidden;
         box-sizing: border-box;
+        margin-bottom: 2rem;
     }
 
     .intro-text {

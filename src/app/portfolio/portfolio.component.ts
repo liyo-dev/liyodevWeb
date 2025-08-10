@@ -43,7 +43,7 @@ export class PortfolioComponent implements AfterViewInit {
       link: '#',
       status: 'En desarrollo',
       featured: true,
-      image: 'assets/img/hola.png'
+      image: 'assets/img/holaHorizontal.png'
     }
   ];
 

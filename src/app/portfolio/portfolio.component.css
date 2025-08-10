@@ -260,7 +260,54 @@
 }
 
 @media (max-width: 768px) {
-  .content-grid { grid-template-columns: 1fr; }
+  .content-grid { 
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 0 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .content-grid::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .content-card {
+    min-width: calc(100vw - 80px);
+    max-width: calc(100vw - 80px);
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+  
+  .card-image {
+    height: 180px;
+  }
+  
+  /* Indicador visual para el carrusel */
+  .content-panel.active::after {
+    content: "⬅️ Desliza para ver más ➡️";
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #00d4ff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    z-index: 10;
+    animation: fadeInOut 3s ease-in-out;
+    pointer-events: none;
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    20%, 80% { opacity: 1; }
+  }
 }
 
 .content-card {
