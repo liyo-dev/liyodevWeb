@@ -38,8 +38,8 @@
 /* Mobile */
 @media (max-width: 768px) {
   .contact-section {
-    padding: 0 15px 1rem 15px;
-    padding-top: 70px;
+    padding: 0 10px 1rem 10px;
+    padding-top: 60px;
     min-height: 100vh;
     overflow-y: auto;
   }
@@ -144,8 +144,8 @@
   .contact-container {
     flex-direction: column;
     height: auto;
-    min-height: calc(100vh - 90px);
-    gap: 1rem;
+    min-height: calc(100vh - 70px);
+    gap: 0.8rem;
     scale: 1;
     padding: 0;
     max-width: 100%;
@@ -200,12 +200,12 @@
 
 @media (max-width: 768px) {
   .social-links h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
   }
   
   .social-grid {
-    gap: 0.8rem;
+    gap: 0.6rem;
     justify-content: center;
   }
 }
@@ -272,19 +272,19 @@
 
 @media (max-width: 768px) {
   .social-link {
-    padding: 1rem 0.8rem;
-    min-width: 90px;
-    border-radius: 12px;
+    padding: 0.8rem 0.6rem;
+    min-width: 75px;
+    border-radius: 10px;
   }
   
   .social-link img {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 0.6rem;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 0.4rem;
   }
   
   .social-link span {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -462,39 +462,40 @@
     padding: 1rem 0.8rem;
     max-width: none;
     margin: 0;
-    border-radius: 12px;
+    border-radius: 10px;
     flex-shrink: 0;
   }
   
   .contact-form h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
   }
   
   .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
   
   .form-group label {
-    font-size: 0.8rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
   }
   
   .form-group input,
   .form-group textarea {
-    padding: 0.6rem 0.7rem;
-    font-size: 0.85rem;
-    border-radius: 8px;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
   }
   
   .form-group textarea {
-    min-height: 80px;
+    min-height: 70px;
+    max-height: 100px;
   }
   
   .submit-btn {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
-    margin-top: 1rem;
+    padding: 0.7rem 1.3rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
   }
 }
 
