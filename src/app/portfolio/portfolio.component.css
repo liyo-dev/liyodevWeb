@@ -95,7 +95,7 @@
   max-width: 100%;
 }
 
-@media (max-width:768px){.floating-tabs-container{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);top:auto;right:auto;flex-direction:row;width:auto;height:76px;min-height:unset}
+@media (max-width:768px){.floating-tabs-container{position:fixed;bottom:6rem;left:50%;transform:translateX(-50%);top:auto;right:auto;flex-direction:row;width:auto;height:76px;min-height:unset}
 .floating-tab{width:60px !important;height:60px !important;flex-shrink:0;gap:0.05rem;padding:4px}
 .tab-icon{font-size:1.2rem;margin-bottom:0.1rem}
 .tab-label{font-size:0.5rem;letter-spacing:0.2px;font-weight:600}}
@@ -126,10 +126,11 @@
 @media (max-width: 768px) {
   .content-panel {
     top: 50%;
-    height: calc(100vh - 240px);
+    height: calc(100vh - 200px);
     display: flex;
-    align-items: center;
-    padding: 0 10px;
+    align-items: flex-start;
+    padding: 20px 10px 120px 10px;
+    overflow-y: auto;
   }
 }
 
@@ -181,12 +182,12 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 1rem;
-    padding: 0 15px;
+    padding: 0 15px 20px 15px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    height: 100%;
-    align-items: center;
+    height: auto;
+    align-items: flex-start;
   }
   
   .content-grid::-webkit-scrollbar {
@@ -198,9 +199,10 @@
     max-width: calc(100vw - 60px);
     scroll-snap-align: center;
     flex-shrink: 0;
-    height: fit-content;
-    max-height: calc(100vh - 200px);
-    overflow: hidden;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    margin-bottom: 20px;
   }
   
   .card-image {
