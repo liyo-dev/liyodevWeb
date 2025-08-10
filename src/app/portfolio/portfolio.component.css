@@ -95,7 +95,7 @@
   max-width: 100%;
 }
 
-@media (max-width:768px){.floating-tabs-container{position:fixed;bottom:6rem;left:50%;transform:translateX(-50%);top:auto;right:auto;flex-direction:row;width:auto;height:76px;min-height:unset}
+@media (max-width:768px){.floating-tabs-container{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);top:auto;right:auto;flex-direction:row;width:auto;height:76px;min-height:unset}
 .floating-tab{width:60px !important;height:60px !important;flex-shrink:0;gap:0.05rem;padding:4px}
 .tab-icon{font-size:1.2rem;margin-bottom:0.1rem}
 .tab-label{font-size:0.5rem;letter-spacing:0.2px;font-weight:600}}
@@ -105,8 +105,8 @@
   .portfolio-container { 
     padding-right: 0; 
     padding-bottom: 0;
-    min-height: calc(100vh - 180px);
-    height: calc(100vh - 180px);
+    min-height: calc(100vh - 140px);
+    height: calc(100vh - 140px);
     overflow: hidden;
   }
 }
@@ -126,10 +126,10 @@
 @media (max-width: 768px) {
   .content-panel {
     top: 50%;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 160px);
     display: flex;
     align-items: flex-start;
-    padding: 20px 10px 120px 10px;
+    padding: 10px 10px 80px 10px;
     overflow-y: auto;
   }
 }
@@ -195,18 +195,18 @@
   }
   
   .content-card {
-    min-width: calc(100vw - 60px);
-    max-width: calc(100vw - 60px);
+    min-width: calc(100vw - 40px);
+    max-width: calc(100vw - 40px);
     scroll-snap-align: center;
     flex-shrink: 0;
     height: auto;
-    max-height: none;
-    overflow: visible;
-    margin-bottom: 20px;
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+    margin-bottom: 10px;
   }
   
   .card-image {
-    height: 160px;
+    height: 120px;
   }
   
   .content-panel.active::after {
@@ -697,22 +697,62 @@
   }
   
   .content-card .card-body {
-    padding: 0.8rem;
+    padding: 0.6rem;
   }
   
   .content-card .card-title {
-    font-size: 1rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
   }
   
   .content-card .card-text {
-    font-size: 0.75rem;
-    line-height: 1.3;
-    margin-bottom: 0.6rem;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   
   .tech-badge {
-    font-size: 0.65rem;
-    padding: 0.2rem 0.4rem;
+    font-size: 0.6rem;
+    padding: 0.15rem 0.3rem;
+  }
+  
+  .card-actions {
+    gap: 0.3rem;
+  }
+  
+  .card-actions .btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+  }
+  
+  /* Ocultar controles de navegación en móvil */
+  .showcase-controls {
+    display: none;
+  }
+  
+  .showcase-content {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .showcase-content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .showcase-card {
+    min-width: calc(100vw - 60px);
+    max-width: calc(100vw - 60px);
+    scroll-snap-align: center;
+    flex-shrink: 0;
   }
 }
