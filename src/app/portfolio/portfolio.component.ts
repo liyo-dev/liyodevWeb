@@ -50,24 +50,26 @@ export class PortfolioComponent implements AfterViewInit {
     {
       title: 'Pompita y su pajita',
       description: 'Juego de carreras desarrollado para la MálagaJam. ¡Ahora disponible en móviles con controles táctiles optimizados!',
-      link: 'https://liyodev.itch.io/malagajam19', // Cambiar por enlace de Google Play cuando esté disponible
-      itchLink: 'https://liyodev.itch.io/malagajam19',
-      status: 'Disponible en itch.io',
+      link: 'https://play.google.com/store/apps/details?id=com.Liyodev.Pompita&hl=es',
+      itchLink: 'https://play.google.com/store/apps/details?id=com.Liyodev.Pompita&hl=es',
+      status: 'Disponible en Google Play',
       featured: true,
       type: 'Racing',
       rating: '4.8',
-      downloads: '1K+'
+      downloads: '1K+',
+      image: 'assets/img/pompita.jpg'
     },
     {
       title: 'Capsule Chaos',
       description: 'Explora mazmorras procedurales en un emocionante multijugador online. Versión móvil con controles adaptados.',
-      link: 'https://liyodev.itch.io/capsule-chaos', // Cambiar por enlace de Google Play cuando esté disponible
-      itchLink: 'https://liyodev.itch.io/capsule-chaos',
-      status: 'Disponible en itch.io',
+      link: 'https://play.google.com/store/apps/details?id=com.Liyodev.TinyBrawl',
+      itchLink: 'https://play.google.com/store/apps/details?id=com.Liyodev.TinyBrawl',
+      status: 'Disponible en Google Play',
       featured: true,
       type: 'Multiplayer',
       rating: '4.6',
-      downloads: '500+'
+      downloads: '500+',
+      image: 'assets/img/capsuleChaos.jpg'
     }
   ];
 

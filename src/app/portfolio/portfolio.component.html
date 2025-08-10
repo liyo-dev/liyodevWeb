@@ -24,7 +24,7 @@
       <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
         <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993s-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993s-.4482.9997-.9993.9997m11.046-6.02c1.9979 0 3.6190 1.6211 3.6190 3.6190s-1.6211 3.6190-3.6190 3.6190S13.904 14.9383 13.904 12.9404s1.6211-3.6190 3.6190-3.6190M6.477 9.3214c1.9979 0 3.6190 1.6211 3.6190 3.6190s-1.6211 3.6190-3.6190 3.6190S2.858 14.9383 2.858 12.9404s1.6211-3.6190 3.6190-3.6190"/>
       </svg>
-      <span class="tab-label">App Store</span>
+      <span class="tab-label">Google Play Store</span>
     </button>
     <button 
       class="floating-tab" 
@@ -77,12 +77,18 @@
     <!-- Mobile Games -->
     <div class="content-panel mobile-panel" [class.active]="activeCategory === 'playStore'" #mobilePanel>
       <div class="panel-header">
-        <h3>Juegos Mobile</h3>
+        <h3>Juegos Móviles</h3>
         <p>Experiencias optimizadas para dispositivos móviles</p>
       </div>
       <div class="content-grid">
         @for (game of googlePlayGames; track game.title) {
           <div class="content-card mobile-card" (click)="navigateToGame(game.link)">
+            <div class="card-image">
+              <img [src]="game.image" [alt]="game.title" loading="lazy">
+              <div class="card-overlay">
+                <span class="play-btn">📱 Descargar</span>
+              </div>
+            </div>
             <div class="card-status">{{ game.status }}</div>
             <div class="card-body">
               <h4>{{ game.title }}</h4>
@@ -90,7 +96,7 @@
               <div class="card-footer">
                 <span class="platform-tag mobile">{{ game.type }}</span>
                 <a [href]="game.itchLink" target="_blank" class="action-link" (click)="$event.stopPropagation()">
-                  itch.io →
+                  Google Play →
                 </a>
               </div>
             </div>

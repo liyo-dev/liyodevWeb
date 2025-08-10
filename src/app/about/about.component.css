@@ -68,16 +68,16 @@
 }
 
 .section-title h2 {
-    font-size: clamp(2.5rem, 5vw, 4rem) !important;
-    background: linear-gradient(135deg, #00d4ff, #00ff9d, #4ca1af) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    color: transparent !important;
-    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3) !important;
-    margin: 0 !important;
-    font-weight: 700 !important;
-    letter-spacing: 1px !important;
-    animation: titleGlow 3s ease-in-out infinite alternate !important;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    background: linear-gradient(135deg, #00d4ff, #00ff9d, #4ca1af);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+    animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
 @keyframes titleGlow {
@@ -151,22 +151,20 @@
 /* Sección de skills con glassmorphism */
 .skills-section {
     width: 100%;
-    max-width: 100%;
     background: rgba(255, 255, 255, 0.08);
     border-radius: clamp(15px, 2vw, 20px);
     padding: clamp(0.8rem, 1.5vw, 1.2rem);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     position: relative;
     overflow: hidden;
     animation: slideInUp 0.6s ease-out;
     opacity: 1;
+    visibility: visible;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: auto;
     flex: 1;
     box-sizing: border-box;
 }
@@ -343,13 +341,10 @@
   }
 }
 
-
-
 /* Mobile responsive */
 @media (max-width: 768px) {
     .about-section {
-        padding: 0 15px 2rem 15px;
-        padding-top: 70px;
+        padding: 70px 15px 2rem;
         min-height: 100vh;
     }
 
@@ -378,11 +373,7 @@
     .skills-section {
         padding: clamp(1rem, 2.5vw, 1.5rem);
         border-radius: 15px;
-        margin: 0;
-        min-height: auto;
-        height: auto;
         flex-shrink: 0;
-        box-sizing: border-box;
     }
 
     .skills-grid {
@@ -418,16 +409,16 @@
     }
 }
 
-/* Mejoras en la accesibilidad y fallback para navegación */
+/* Mejoras en la accesibilidad */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
   }
 }
 
-/* Asegurar visibilidad en cualquier caso */
+/* Asegurar visibilidad en navegación Angular */
 .skills-section,
 .skills-grid,
 .skill-category {
@@ -435,7 +426,7 @@
     visibility: visible !important;
 }
 
-/* Fallback para navegación entre rutas */
+/* Fallback para transiciones de Angular Router */
 .about-content.ng-enter,
 .about-content.ng-enter-active {
     opacity: 1;
