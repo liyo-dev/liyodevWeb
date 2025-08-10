@@ -123,12 +123,24 @@
 }
 
 .tab-icon {
-  font-size: 1.4rem;
+  width: 24px;
+  height: 24px;
   margin-bottom: 0.15rem;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
+  object-fit: contain;
+  filter: brightness(0.7);
+  transition: filter 0.3s ease;
+}
+
+.floating-tab:hover .tab-icon {
+  filter: brightness(0.9);
+}
+
+.floating-tab.active .tab-icon {
+  filter: brightness(0.2);
 }
 
 .tab-label {

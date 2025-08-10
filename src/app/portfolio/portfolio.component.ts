@@ -30,18 +30,20 @@ export class PortfolioComponent implements AfterViewInit {
   // Próximos lanzamientos de Steam (destacados)
   steamGames = [
     {
-      title: 'Próximo Juego Steam #1',
-      description: 'Descripción del primer juego que subirás a Steam. Una experiencia única que combina...',
+      title: 'Sky Kingdoms y la Gema Perdida',
+      description: 'Un RPG de mazmorras y puzles donde viajas por reinos celestiales para desvelar tu propio destino y salvar la Tierra.',
       link: '#',
       status: 'Próximamente en Steam',
-      featured: true
+      featured: true,
+      image: 'assets/img/skyKingdoms.png'
     },
     {
-      title: 'Próximo Juego Steam #2', 
-      description: 'Descripción del segundo juego. Una aventura innovadora que...',
+      title: 'Hola', 
+      description: 'Aventura narrativa que combina ciencia, arte y misterio, donde los sueños y la realidad se entrelazan para revelar un mensaje oculto.',
       link: '#',
       status: 'En desarrollo',
-      featured: true
+      featured: true,
+      image: 'assets/img/hola.png'
     }
   ];
 
