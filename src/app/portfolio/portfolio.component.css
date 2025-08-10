@@ -188,7 +188,6 @@
     -ms-overflow-style: none;
     height: auto;
     align-items: flex-start;
-    justify-content: center;
   }
   
   .content-grid::-webkit-scrollbar {
@@ -196,14 +195,14 @@
   }
   
   .content-card {
-    min-width: calc(100vw - 80px);
-    max-width: calc(100vw - 80px);
+    min-width: calc(100vw - 60px);
+    max-width: calc(100vw - 60px);
     scroll-snap-align: center;
     flex-shrink: 0;
     height: auto;
     max-height: calc(100vh - 200px);
     overflow: hidden;
-    margin: 0 auto 10px auto;
+    margin-bottom: 10px;
   }
   
   .card-image {
@@ -731,12 +730,15 @@
     font-size: 0.7rem;
   }
   
-  /* Ocultar controles de navegación en móvil */
-  .showcase-controls {
+  /* Ocultar controles de navegación en móvil para apps y juegos */
+  .apps-showcase .showcase-controls,
+  .games-showcase .showcase-controls {
     display: none;
   }
   
-  .showcase-content {
+  /* Forzar que todas las showcase cards se muestren en móvil */
+  .apps-showcase .showcase-content,
+  .games-showcase .showcase-content {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -745,18 +747,22 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 0 20px;
-    justify-content: flex-start;
   }
   
-  .showcase-content::-webkit-scrollbar {
+  .apps-showcase .showcase-content::-webkit-scrollbar,
+  .games-showcase .showcase-content::-webkit-scrollbar {
     display: none;
   }
   
-  .showcase-card {
-    min-width: calc(100vw - 80px);
-    max-width: calc(100vw - 80px);
+  /* Hacer visibles todas las cards en móvil, no solo la activa */
+  .apps-showcase .showcase-card.mobile-all-visible,
+  .games-showcase .showcase-card.mobile-all-visible {
+    display: block !important;
+    min-width: calc(100vw - 60px);
+    max-width: calc(100vw - 60px);
     scroll-snap-align: center;
     flex-shrink: 0;
-    margin: 0 auto;
+    opacity: 1 !important;
+    position: static !important;
   }
 }

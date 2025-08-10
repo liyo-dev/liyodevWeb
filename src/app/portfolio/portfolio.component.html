@@ -127,27 +127,28 @@
           
           <div class="showcase-content">
             @for (app of applications; track app.title; let i = $index) {
-              @if (i === currentAppIndex) {
-                <div class="showcase-card app-showcase-card">
-                  <div class="showcase-info">
-                    <div class="app-meta">
-                      <span class="app-type-tag">{{ app.type }}</span>
-                    </div>
-                    <h4>{{ app.title }}</h4>
-                    <p>{{ app.description }}</p>
-                    <div class="tech-stack">
-                      @for (tech of app.tech; track tech) {
-                        <span class="tech-badge">{{ tech }}</span>
-                      }
-                    </div>
-                    <div class="card-actions">
-                      <button class="action-btn github-btn" (click)="navigateToApp(app.link)">
-                        <span>📂 Ver en GitHub</span>
-                      </button>
-                    </div>
+              <div class="showcase-card app-showcase-card"
+                   [class.active]="i === currentAppIndex"
+                   [style.display]="i === currentAppIndex ? 'block' : 'none'"
+                   [class.mobile-all-visible]="true">
+                <div class="showcase-info">
+                  <div class="app-meta">
+                    <span class="app-type-tag">{{ app.type }}</span>
+                  </div>
+                  <h4>{{ app.title }}</h4>
+                  <p>{{ app.description }}</p>
+                  <div class="tech-stack">
+                    @for (tech of app.tech; track tech) {
+                      <span class="tech-badge">{{ tech }}</span>
+                    }
+                  </div>
+                  <div class="card-actions">
+                    <button class="action-btn github-btn" (click)="navigateToApp(app.link)">
+                      <span>📂 Ver en GitHub</span>
+                    </button>
                   </div>
                 </div>
-              }
+              </div>
             }
           </div>
         </div>
@@ -175,28 +176,29 @@
           
           <div class="showcase-content">
             @for (game of publishedGames; track game.title; let i = $index) {
-              @if (i === currentGameIndex) {
-                <div class="showcase-card active">
-                  <div class="showcase-image">
-                    @if (game.image) {
-                      <img [src]="game.image" [alt]="game.title" loading="lazy">
-                    } @else {
-                      <div class="image-placeholder">🎮</div>
-                    }
-                  </div>
-                  <div class="showcase-info">
-                    <div class="game-meta">
-                      <span class="game-type">{{ game.type }}</span>
-                      <span class="game-year">{{ game.year }}</span>
-                    </div>
-                    <h4>{{ game.title }}</h4>
-                    <p>{{ game.description }}</p>
-                    <button class="play-btn" (click)="navigateToGame(game.link)" [attr.data-game]="game.title" [attr.data-link]="game.link">
-                      ▶ Jugar en itch.io
-                    </button>
-                  </div>
+              <div class="showcase-card"
+                   [class.active]="i === currentGameIndex"
+                   [style.display]="i === currentGameIndex ? 'block' : 'none'"
+                   [class.mobile-all-visible]="true">
+                <div class="showcase-image">
+                  @if (game.image) {
+                    <img [src]="game.image" [alt]="game.title" loading="lazy">
+                  } @else {
+                    <div class="image-placeholder">🎮</div>
+                  }
                 </div>
-              }
+                <div class="showcase-info">
+                  <div class="game-meta">
+                    <span class="game-type">{{ game.type }}</span>
+                    <span class="game-year">{{ game.year }}</span>
+                  </div>
+                  <h4>{{ game.title }}</h4>
+                  <p>{{ game.description }}</p>
+                  <button class="play-btn" (click)="navigateToGame(game.link)" [attr.data-game]="game.title" [attr.data-link]="game.link">
+                    ▶ Jugar en itch.io
+                  </button>
+                </div>
+              </div>
             }
           </div>
         </div>
