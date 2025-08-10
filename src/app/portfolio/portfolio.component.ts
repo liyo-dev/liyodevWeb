@@ -31,19 +31,19 @@ export class PortfolioComponent implements AfterViewInit {
   steamGames = [
     {
       title: 'Sky Kingdoms y la Gema Perdida',
-      description: 'Un RPG de mazmorras y puzles donde viajas por reinos celestiales para desvelar tu propio destino y salvar la Tierra.',
+      description: 'Un RPG de mazmorras y puzles donde viajas por reinos celestiales para desvelar tu propio destino y salvar la Tierra. Página web dedicada próximamente.',
       link: '#',
-      status: 'Próximamente en Steam',
+      status: 'En desarrollo para Steam',
       featured: true,
       image: 'assets/img/skyKingdoms.png'
     },
     {
       title: 'Hola', 
-      description: 'Aventura narrativa que combina ciencia, arte y misterio, donde los sueños y la realidad se entrelazan para revelar un mensaje oculto.',
+      description: 'Aventura narrativa que combina ciencia, arte y misterio, donde los sueños y la realidad se entrelazan para revelar un mensaje oculto. Página web dedicada próximamente.',
       link: '#',
-      status: 'En desarrollo',
+      status: 'En desarrollo para Steam',
       featured: true,
-      image: 'assets/img/holaHorizontal.png'
+      image: 'assets/img/hola.png'
     }
   ];
 
@@ -63,14 +63,14 @@ export class PortfolioComponent implements AfterViewInit {
     },
     {
       title: 'Capsule Chaos',
-      description: 'Explora mazmorras procedurales en un emocionante multijugador online. Versión móvil con controles adaptados.',
+      description: 'Prototipo de mazmorras procedurales multijugador online. Actualmente en fase de pruebas.',
       link: 'https://play.google.com/store/apps/details?id=com.Liyodev.TinyBrawl',
       itchLink: 'https://play.google.com/store/apps/details?id=com.Liyodev.TinyBrawl',
-      status: 'Disponible en Google Play',
+      status: 'En fase de pruebas',
       featured: true,
-      type: 'Multiplayer',
-      rating: '4.6',
-      downloads: '500+',
+      type: 'Prototype',
+      rating: 'Beta',
+      downloads: 'Testing',
       image: 'assets/img/capsuleChaos.jpg'
     }
   ];
@@ -79,31 +79,31 @@ export class PortfolioComponent implements AfterViewInit {
   applications = [
     {
       title: 'Lanzador Microservicios',
-      description: 'Herramienta para gestionar y lanzar múltiples microservicios de forma coordinada. Automatiza el proceso de desarrollo y despliegue.',
+      description: 'Aplicación de escritorio para lanzar y gestionar microservicios de Angular y Spring Boot sin necesidad de abrir una consola o un IDE. Pensada para facilitar el trabajo diario en entornos locales y mantener todos los servicios controlados desde una sola interfaz visual.',
       link: 'https://github.com/liyo-dev/lanzador-microservicios',
       type: 'DevOps Tool',
-      tech: ['Node.js', 'Docker', 'Microservices']
+      tech: ['Node.js', 'Angular', 'Electron']
     },
     {
       title: 'Last Time Visit',
-      description: 'Aplicación para rastrear y recordar la última vez que visitaste lugares importantes. Útil para seguimiento personal.',
+      description: 'Aplicación web que rastrea y muestra la última visita a tu sitio web, incluyendo información temporal y geográfica. Ejemplo: "Última visita hace 5 min desde México". Útil para monitorear el tráfico en tiempo real.',
       link: 'https://github.com/liyo-dev/last-time-visit',
-      type: 'Personal Tool',
-      tech: ['JavaScript', 'Local Storage', 'PWA']
+      type: 'Web Analytics',
+      tech: ['HTML', 'TypeScript']
     },
     {
       title: 'Pixel Wars',
-      description: 'Juego de estrategia por turnos con gráficos pixelados. Combate táctico con mecánicas innovadoras.',
+      description: 'Juego multijugador en tiempo real basado en una pizarra pixel donde puedes dibujar, borrar y pintar encima de otros jugadores. Cada jugador tiene colores y un lápiz para crear arte colaborativo o competitivo mientras otros están conectados.',
       link: 'https://github.com/liyo-dev/pixel-wars',
-      type: 'Game',
-      tech: ['Unity', 'C#', 'Pixel Art']
+      type: 'Multiplayer Game',
+      tech: ['React', 'Deno Fresh', 'WebSockets']
     },
     {
       title: 'Chat Application',
-      description: 'Sistema de chat en tiempo real con múltiples salas y funcionalidades avanzadas de mensajería.',
+      description: 'Chat simple en tiempo real con una única sala donde los usuarios pueden comunicarse instantáneamente. Interfaz minimalista y funcional para conversaciones grupales.',
       link: 'https://github.com/liyo-dev/chat',
       type: 'Web App',
-      tech: ['Socket.io', 'Node.js', 'React']
+      tech: ['JavaScript', 'Express', 'Socket.io', 'Pug']
     }
   ];
 
@@ -111,45 +111,59 @@ export class PortfolioComponent implements AfterViewInit {
   publishedGames = [
     {
       title: 'Alex´s Adventure',
-      description: 'The Curse Of Eternal Night - Una aventura épica llena de misterios',
+      description: 'RPG de acción y aventuras en un mundo de fantasía.',
       link: 'https://nonamegamesmlg.itch.io/alexs-adventure-the-curse-of-eternal-night',
       type: 'Adventure',
-      year: '2023'
+      year: '2023',
+      image: 'assets/img/alexAdventure.png'
+    },
+    {
+      title: 'Samuelito',
+      description: 'Defiende los dientes de Samuelito de las caries atacantes en este juego de acción.',
+      link: 'https://liyodev.itch.io/samuelito',
+      type: 'Action',
+      year: '2024',
+      image: 'assets/img/samuelito.png'
     },
     {
       title: 'Run, Down, Run',
-      description: 'Un juego de plataformas desafiante con mecánicas únicas',
+      description: 'Un juego de plataformas creado durante mi aprendizaje de desarrollo de videojuegos.',
       link: 'https://liyodev.itch.io/run-down-run',
       type: 'Platformer',
-      year: '2023'
+      year: '2023',
+      image: 'assets/img/runDownRun.png'
     },
     {
       title: 'Chickentive',
-      description: 'Puzzle game desarrollado para la Universidad de Málaga',
+      description: 'Puzzle game desarrollado para la Universidad de Málaga.',
       link: 'https://liyodev.itch.io/chickentive',
       type: 'Puzzle',
-      year: '2022'
+      year: '2022',
+      image: 'assets/img/chickentive.png'
     },
     {
       title: 'Sincronizados',
-      description: 'Puzzle cooperativo multijugador con mecánicas innovadoras',
+      description: 'Puzzle cooperativo multijugador creado en una Game Jam.',
       link: 'https://liyodev.itch.io/sincronizados',
       type: 'Co-op',
-      year: '2022'
+      year: '2022',
+      image: 'assets/img/sincronizados.png'
     },
     {
       title: 'Pablito plantó un Pinito',
       description: '¡Planta tu pinito en esta aventura de acción llena de humor!',
       link: 'https://liyodev.itch.io/pablitopinito',
       type: 'Action',
-      year: '2022'
+      year: '2022',
+      image: 'assets/img/pablito.png'
     },
     {
       title: 'Málaga RPG',
-      description: 'Juego de aventuras desarrollado para la Game Jam 17',
+      description: 'Juego de aventuras desarrollado para la Game Jam 17.',
       link: 'https://liyodev.itch.io/malaga-rpg',
       type: 'RPG',
-      year: '2021'
+      year: '2021',
+      image: 'assets/img/malagaRPG.png'
     }
   ];
 
@@ -300,16 +314,6 @@ export class PortfolioComponent implements AfterViewInit {
     }
   }
 
-  // Función simplificada - sin animaciones complejas
-  private animateContentCards() {
-    // Sin animaciones por ahora
-  }
-
-  // Función simplificada - sin animaciones complejas
-  private animateContentCardsForPanel(category: string) {
-    // Sin animaciones por ahora
-  }
-
   // Navegar en el showcase de juegos (simplificado)
   navigateShowcase(direction: number) {
     const newIndex = this.currentGameIndex + direction;
@@ -332,9 +336,39 @@ export class PortfolioComponent implements AfterViewInit {
 
   // Navegar a juego/proyecto
   navigateToGame(link: string) {
+    console.log('=== NAVIGATION DEBUG ===');
+    console.log('Navigating to:', link);
+    console.log('Link type:', typeof link);
+    console.log('Link valid:', link && link !== '#');
+    console.log('Current game index:', this.currentGameIndex);
+    console.log('=========================');
+    
     if (link && link !== '#') {
+      console.log('Opening URL:', link);
       window.open(link, '_blank');
+    } else {
+      console.log('Navigation cancelled - invalid link');
     }
+  }
+
+  // Función específica para Google Play
+  navigateToGooglePlay(game: any, event?: Event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    console.log('Google Play navigation for:', game.title, 'Link:', game.link);
+    this.navigateToGame(game.link);
+  }
+
+  // Función específica para solicitar ser tester
+  requestTesterAccess(game: any, event?: Event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    console.log('Tester request for:', game.title, 'Link:', game.link);
+    this.navigateToGame(game.link);
   }
 
   // Navegar a aplicación

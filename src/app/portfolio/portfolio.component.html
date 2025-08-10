@@ -53,12 +53,9 @@
       </div>
       <div class="content-grid">
         @for (game of steamGames; track game.title) {
-          <div class="content-card steam-card" (click)="navigateToGame(game.link)">
+          <div class="content-card steam-card">
             <div class="card-image">
               <img [src]="game.image" [alt]="game.title" loading="lazy">
-              <div class="card-overlay">
-                <span class="play-btn">🎮 Ver en Steam</span>
-              </div>
             </div>
             <div class="card-status">{{ game.status }}</div>
             <div class="card-body">
@@ -66,7 +63,11 @@
               <p>{{ game.description }}</p>
               <div class="card-footer">
                 <span class="platform-tag steam">Steam</span>
-                <span class="action-text">Conocer más →</span>
+                <div class="card-actions">
+                  <button class="action-btn development-btn" disabled>
+                    <span>🚧 En desarrollo</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -82,12 +83,9 @@
       </div>
       <div class="content-grid">
         @for (game of googlePlayGames; track game.title) {
-          <div class="content-card mobile-card" (click)="navigateToGame(game.link)">
+          <div class="content-card mobile-card">
             <div class="card-image">
               <img [src]="game.image" [alt]="game.title" loading="lazy">
-              <div class="card-overlay">
-                <span class="play-btn">📱 Descargar</span>
-              </div>
             </div>
             <div class="card-status">{{ game.status }}</div>
             <div class="card-body">
@@ -95,9 +93,17 @@
               <p>{{ game.description }}</p>
               <div class="card-footer">
                 <span class="platform-tag mobile">{{ game.type }}</span>
-                <a [href]="game.itchLink" target="_blank" class="action-link" (click)="$event.stopPropagation()">
-                  Google Play →
-                </a>
+                <div class="card-actions">
+                  @if (game.status === 'En fase de pruebas') {
+                    <button class="action-btn tester-btn" (click)="requestTesterAccess(game, $event)">
+                      <span>🧪 Solicitar ser tester</span>
+                    </button>
+                  } @else {
+                    <button class="action-btn play-btn" (click)="navigateToGooglePlay(game, $event)">
+                      <span>📱 Google Play</span>
+                    </button>
+                  }
+                </div>
               </div>
             </div>
           </div>
@@ -121,29 +127,27 @@
           
           <div class="showcase-content">
             @for (app of applications; track app.title; let i = $index) {
-              <div class="showcase-card app-showcase-card" [class.active]="i === currentAppIndex" (click)="navigateToApp(app.link)">
-                <div class="showcase-image">
-                  <div class="image-placeholder">💻</div>
-                  <div class="app-overlay">
-                    <div class="view-btn">
-                      <span>Ver en GitHub</span>
-                      <span>→</span>
+              @if (i === currentAppIndex) {
+                <div class="showcase-card app-showcase-card">
+                  <div class="showcase-info">
+                    <div class="app-meta">
+                      <span class="app-type-tag">{{ app.type }}</span>
+                    </div>
+                    <h4>{{ app.title }}</h4>
+                    <p>{{ app.description }}</p>
+                    <div class="tech-stack">
+                      @for (tech of app.tech; track tech) {
+                        <span class="tech-badge">{{ tech }}</span>
+                      }
+                    </div>
+                    <div class="card-actions">
+                      <button class="action-btn github-btn" (click)="navigateToApp(app.link)">
+                        <span>📂 Ver en GitHub</span>
+                      </button>
                     </div>
                   </div>
                 </div>
-                <div class="showcase-info">
-                  <div class="app-meta">
-                    <span class="app-type-tag">{{ app.type }}</span>
-                  </div>
-                  <h4>{{ app.title }}</h4>
-                  <p>{{ app.description }}</p>
-                  <div class="tech-stack">
-                    @for (tech of app.tech; track tech) {
-                      <span class="tech-badge">{{ tech }}</span>
-                    }
-                  </div>
-                </div>
-              </div>
+              }
             }
           </div>
         </div>
@@ -171,22 +175,28 @@
           
           <div class="showcase-content">
             @for (game of publishedGames; track game.title; let i = $index) {
-              <div class="showcase-card" [class.active]="i === currentGameIndex" (click)="navigateToGame(game.link)">
-                <div class="showcase-image">
-                  <div class="image-placeholder">🎮</div>
-                  <div class="game-overlay">
-                    <span class="play-btn">▶ Jugar</span>
+              @if (i === currentGameIndex) {
+                <div class="showcase-card active">
+                  <div class="showcase-image">
+                    @if (game.image) {
+                      <img [src]="game.image" [alt]="game.title" loading="lazy">
+                    } @else {
+                      <div class="image-placeholder">🎮</div>
+                    }
+                  </div>
+                  <div class="showcase-info">
+                    <div class="game-meta">
+                      <span class="game-type">{{ game.type }}</span>
+                      <span class="game-year">{{ game.year }}</span>
+                    </div>
+                    <h4>{{ game.title }}</h4>
+                    <p>{{ game.description }}</p>
+                    <button class="play-btn" (click)="navigateToGame(game.link)" [attr.data-game]="game.title" [attr.data-link]="game.link">
+                      ▶ Jugar en itch.io
+                    </button>
                   </div>
                 </div>
-                <div class="showcase-info">
-                  <div class="game-meta">
-                    <span class="game-type">{{ game.type }}</span>
-                    <span class="game-year">{{ game.year }}</span>
-                  </div>
-                  <h4>{{ game.title }}</h4>
-                  <p>{{ game.description }}</p>
-                </div>
-              </div>
+              }
             }
           </div>
         </div>

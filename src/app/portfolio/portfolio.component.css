@@ -469,6 +469,71 @@
 }
 .action-link:hover { color: #00ff9d; }
 
+/* Card Actions */
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 20;
+}
+
+.action-btn {
+  background: linear-gradient(135deg, #00d4ff, #00ff9d);
+  color: #000;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 3px 15px rgba(0, 212, 255, 0.3);
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+}
+
+.beta-btn {
+  background: linear-gradient(135deg, #ff6b35, #ffa726) !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.beta-btn:hover {
+  transform: none;
+  box-shadow: 0 3px 15px rgba(255, 107, 53, 0.3);
+}
+
+.tester-btn {
+  background: linear-gradient(135deg, #9c27b0, #e91e63) !important;
+  color: #fff !important;
+}
+
+.tester-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(156, 39, 176, 0.4);
+}
+
+.development-btn {
+  background: linear-gradient(135deg, #ff9800, #f57c00) !important;
+  color: #fff !important;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.development-btn:hover {
+  transform: none;
+  box-shadow: 0 3px 15px rgba(255, 152, 0, 0.3);
+}
+
 .showcase-controls {
   display: flex;
   justify-content: center;
@@ -521,46 +586,54 @@
   cursor: pointer;
   transition: all 0.4s ease;
   backdrop-filter: blur(20px);
-  opacity: 0;
-  position: absolute;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   width: 100%;
-  top: 0;
-  left: 0;
 }
+
 .showcase-card.active {
   opacity: 1;
-  position: relative;
 }
 
 .showcase-image {
   position: relative;
-  height: 200px;
+  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 255, 157, 0.1));
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.showcase-image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.showcase-card:hover .showcase-image img {
+  transform: scale(1.02);
 }
 
 .image-placeholder {
   font-size: 4rem;
   opacity: 0.3;
 }
-.game-overlay, .app-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
 
-.showcase-card:hover .game-overlay,
-.showcase-card:hover .app-overlay { opacity: 1; }
+.showcase-card:hover .showcase-image img {
+  transform: scale(1.02);
+}
 .play-btn, .view-btn {
   background: linear-gradient(135deg, #00d4ff, #00ff9d);
   color: #000;
@@ -570,6 +643,19 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.play-btn:hover, .view-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 25px rgba(0, 212, 255, 0.4);
+  background: linear-gradient(135deg, #00ff9d, #00d4ff);
 }
 .view-btn {
   display: flex;
@@ -578,7 +664,10 @@
 }
 
 .showcase-info {
-  padding: 1.5rem;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 .game-meta, .app-meta {
   display: flex;
@@ -629,4 +718,66 @@
   font-size: 4rem;
   margin-bottom: 1rem;
   opacity: 0.5;
+}
+
+/* Apps Showcase - mismo estilo que games */
+.apps-showcase {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.app-showcase-card {
+  display: block;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.app-showcase-card .showcase-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+.app-type-tag {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: inline-block;
+  width: fit-content;
+}
+
+.github-btn {
+  background: linear-gradient(135deg, #333, #555) !important;
+  color: #fff !important;
+}
+
+.github-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(85, 85, 85, 0.4);
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-badge {
+  background: rgba(0, 212, 255, 0.1);
+  color: #00d4ff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .app-showcase-card .showcase-info {
+    text-align: left;
+  }
 }
