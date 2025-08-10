@@ -38,9 +38,9 @@
 /* Mobile */
 @media (max-width: 768px) {
   .contact-section {
-    padding: 0 15px 80px 15px;
+    padding: 0 15px 150px 15px;
     padding-top: 60px;
-    min-height: calc(100vh + 100px);
+    min-height: calc(100vh + 200px);
     height: auto;
     overflow-y: auto;
   }
@@ -148,7 +148,7 @@
     min-height: calc(100vh - 20px);
     gap: 1.5rem;
     scale: 1;
-    padding: 0 0 80px 0;
+    padding: 0 0 120px 0;
     max-width: 100%;
     overflow-y: auto;
   }
@@ -463,13 +463,14 @@
 /* Ajustes para móvil */
 @media (max-width: 768px) {
   .contact-form {
-    padding: 1rem;
+    padding: 1.5rem;
     max-width: none;
-    margin: 0;
+    margin: 0 0 2rem 0;
     border-radius: 15px;
     flex-shrink: 0;
     background: rgba(255, 255, 255, 0.08);
     width: 100%;
+    min-height: auto;
   }
   
   .contact-form h3 {
@@ -506,11 +507,17 @@
   .submit-btn {
     padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
     display: block;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(135deg, #00ff9d, #00d4ff) !important;
+    border: none !important;
+    color: #000 !important;
+    font-weight: 600 !important;
   }
 }
 

@@ -675,6 +675,16 @@
   box-shadow: 0 5px 20px rgba(85, 85, 85, 0.4);
 }
 
+.demo-btn {
+  background: linear-gradient(135deg, #00ff9d, #00d4ff) !important;
+  color: #000 !important;
+}
+
+.demo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+}
+
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
@@ -723,11 +733,15 @@
   
   .card-actions {
     gap: 0.3rem;
+    flex-wrap: wrap;
   }
   
-  .card-actions .btn {
+  .card-actions .btn,
+  .card-actions .action-btn {
     padding: 0.4rem 0.6rem;
     font-size: 0.7rem;
+    flex: 1;
+    min-width: 0;
   }
   
   /* Ocultar controles de navegación en móvil para apps y juegos */

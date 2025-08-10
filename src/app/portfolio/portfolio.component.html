@@ -146,6 +146,11 @@
                     <button class="action-btn github-btn" (click)="navigateToApp(app.link)">
                       <span>📂 Ver en GitHub</span>
                     </button>
+                    @if (app.demoLink) {
+                      <button class="action-btn demo-btn" (click)="navigateToDemo(app.demoLink)">
+                        <span>🚀 Probar</span>
+                      </button>
+                    }
                   </div>
                 </div>
               </div>

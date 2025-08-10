@@ -88,6 +88,7 @@ export class PortfolioComponent implements AfterViewInit {
       title: 'Last Time Visit',
       description: 'Aplicación web que rastrea y muestra la última visita a tu sitio web, incluyendo información temporal y geográfica. Ejemplo: "Última visita hace 5 min desde México". Útil para monitorear el tráfico en tiempo real.',
       link: 'https://github.com/liyo-dev/last-time-visit',
+      demoLink: 'https://bitter-bison-62.deno.dev/',
       type: 'Web Analytics',
       tech: ['HTML', 'TypeScript']
     },
@@ -95,6 +96,7 @@ export class PortfolioComponent implements AfterViewInit {
       title: 'Pixel Wars',
       description: 'Juego multijugador en tiempo real basado en una pizarra pixel donde puedes dibujar, borrar y pintar encima de otros jugadores. Cada jugador tiene colores y un lápiz para crear arte colaborativo o competitivo mientras otros están conectados.',
       link: 'https://github.com/liyo-dev/pixel-wars',
+      demoLink: 'https://dapper-dingo-58.deno.dev/',
       type: 'Multiplayer Game',
       tech: ['React', 'Deno Fresh', 'WebSockets']
     },
@@ -102,6 +104,7 @@ export class PortfolioComponent implements AfterViewInit {
       title: 'Chat Application',
       description: 'Chat simple en tiempo real con una única sala donde los usuarios pueden comunicarse instantáneamente. Interfaz minimalista y funcional para conversaciones grupales.',
       link: 'https://github.com/liyo-dev/chat',
+      demoLink: 'https://web-production-dce9.up.railway.app/',
       type: 'Web App',
       tech: ['JavaScript', 'Express', 'Socket.io', 'Pug']
     }
@@ -373,6 +376,13 @@ export class PortfolioComponent implements AfterViewInit {
 
   // Navegar a aplicación
   navigateToApp(link: string) {
+    if (link && link !== '#') {
+      window.open(link, '_blank');
+    }
+  }
+
+  // Navegar a demo de aplicación
+  navigateToDemo(link: string) {
     if (link && link !== '#') {
       window.open(link, '_blank');
     }
