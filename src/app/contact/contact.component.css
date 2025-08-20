@@ -52,6 +52,7 @@
   position: fixed;
   top: 2rem;
   z-index: 10;
+  margin: 10px;
 }
 
 @media (min-width: 769px) { .section-title { left: 100px; } }

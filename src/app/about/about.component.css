@@ -33,16 +33,20 @@
 /* ---- Título --------------------------------------------------------------- */
 .section-title{ position:fixed; top:2rem; z-index:20; }
 @media (min-width:769px){ .section-title{ left:100px; } }
-@media (max-width:768px){ .section-title{ position:sticky; top:12px; left:15px; } }
+@media (max-width:768px){ .section-title{ display:none; } }
 
-.section-title h2{
-  margin:0; font-weight:700; letter-spacing:1px;
-  font-size:clamp(2.5rem,5vw,4rem);
-  background-image:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));
-  -webkit-background-clip:text; background-clip:text;
-  -webkit-text-fill-color:transparent; color:transparent;
-  text-shadow:0 0 30px rgba(0,212,255,.3);
-  animation:titleGlow 3s ease-in-out infinite alternate;
+/* Igual que portfolio/contacto */
+.section-title h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  background: linear-gradient(135deg, #00d4ff, #00ff9d, #4ca1af);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: titleGlow 3s ease-in-out infinite alternate;
 }
 @keyframes titleGlow{
   0%{ filter:drop-shadow(0 0 20px rgba(0,212,255,.3)); }
