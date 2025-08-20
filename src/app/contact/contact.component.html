@@ -1,49 +1,55 @@
 <section class="contact-section">
-    <div class="section-title">
-        <h2>Contacto</h2>
+  <div class="section-title">
+    <h2>Contacto</h2>
+  </div>
+
+  <div class="contact-content">
+    <!-- Columna izquierda: redes -->
+    <div class="social-block">
+      <div class="social-title">Encuéntrame en</div>
+
+      <div class="social-cards">
+        <a class="social-card" href="https://github.com/liyodev" target="_blank" rel="noopener">
+          <div class="icon"><img src="assets/icons/github.svg" alt="GitHub" /></div>
+          <span>GitHub</span>
+        </a>
+
+        <a class="social-card" href="https://www.linkedin.com/in/raulbaez" target="_blank" rel="noopener">
+          <div class="icon"><img src="assets/icons/linkedin.svg" alt="LinkedIn" /></div>
+          <span>LinkedIn</span>
+        </a>
+
+        <a class="social-card" href="https://liyodev.itch.io" target="_blank" rel="noopener">
+          <div class="icon"><img src="assets/icons/itchio.svg" alt="itch.io" /></div>
+          <span>itch.io</span>
+        </a>
+      </div>
     </div>
-    
-    <div class="contact-container">
-        <div class="contact-info">
-            <div class="social-links">
-                <h3>Encuéntrame en</h3>
-                <div class="social-grid">
-                    <a href="https://github.com/liyo-dev" target="_blank" class="social-link">
-                        <img src="assets/icons/github.svg" alt="GitHub">
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/raul-baez-dev/" target="_blank" class="social-link">
-                        <img src="assets/icons/linkedin.svg" alt="LinkedIn">
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://liyodev.itch.io/" target="_blank" class="social-link">
-                        <img src="assets/icons/itchio.svg" alt="itch.io">
-                        <span>itch.io</span>
-                    </a>
-                </div>
-            </div>
+
+    <!-- Columna derecha: formulario -->
+    <form class="contact-form-card" (submit)="$event.preventDefault()" novalidate>
+      <h3>Envíame un mensaje</h3>
+
+      <div class="contact-form-fields">
+        <div>
+          <label for="name">Nombre:</label>
+    <input id="name" type="text" placeholder="Tu nombre" />
         </div>
 
-        <div class="contact-form">
-            <h3>Envíame un mensaje</h3>
-            <form (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="name">Nombre:</label>
-                    <input type="text" id="name" name="name" [(ngModel)]="contactForm.name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" [(ngModel)]="contactForm.email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Mensaje:</label>
-                    <textarea id="message" name="message" [(ngModel)]="contactForm.message" required rows="4"></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Enviar mensaje</button>
-            </form>
+        <div>
+          <label for="email">Email:</label>
+    <input id="email" type="email" placeholder="tu@email.com" />
         </div>
-    </div>
+
+        <div>
+          <label for="message">Mensaje:</label>
+    <textarea id="message" placeholder="Cuéntame en qué puedo ayudarte"></textarea>
+        </div>
+      </div>
+
+      <div class="contact-form-actions">
+        <button type="submit" class="btn-primary">Enviar</button>
+      </div>
+    </form>
+  </div>
 </section>

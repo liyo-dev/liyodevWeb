@@ -49,7 +49,7 @@
     <div class="content-panel steam-panel" [class.active]="activeCategory === 'steam'" #steamPanel>
       <div class="panel-header">
         <h3>Próximamente en Steam</h3>
-        <p>Mis próximos lanzamientos en la plataforma líder de gaming</p>
+        <p>Mis próximos lanzamientos</p>
       </div>
       <div class="content-grid">
         @for (game of steamGames; track game.title) {
@@ -79,7 +79,6 @@
     <div class="content-panel mobile-panel" [class.active]="activeCategory === 'playStore'" #mobilePanel>
       <div class="panel-header">
         <h3>Juegos Móviles</h3>
-        <p>Experiencias optimizadas para dispositivos móviles</p>
       </div>
       <div class="content-grid">
         @for (game of googlePlayGames; track game.title) {

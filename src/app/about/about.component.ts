@@ -3,71 +3,32 @@ import gsap from 'gsap';
 
 @Component({
   selector: 'app-about',
+  standalone: true,
   imports: [],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.css'
+  styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements AfterViewInit {
-  
-  ngAfterViewInit() {
+
+  ngAfterViewInit(): void {
     this.animateAboutSection();
   }
 
-  private animateAboutSection() {
-    // Animación del título
-    gsap.from('.about-section h2', {
-      y: -50,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
+  private animateAboutSection(): void {
+    gsap.from('.about-section .section-title h2', {
+      y: -50, opacity: 0, duration: 1, ease: 'power3.out'
     });
 
-    // Animación del perfil
-    gsap.from('.profile-info', {
-      x: -100,
-      opacity: 0,
-      duration: 1,
-      delay: 0.3,
-      ease: 'power3.out'
+    gsap.from('.profile-summary', {
+      y: 20, opacity: 0, duration: 0.8, delay: 0.15, ease: 'power3.out'
     });
 
-    // Animación de las habilidades
     gsap.from('.skill-category', {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      delay: 0.5,
-      ease: 'back.out(1.2)'
+      y: 40, opacity: 0, duration: 0.7, stagger: 0.15, delay: 0.25, ease: 'back.out(1.3)'
     });
 
-    // Animación de los items de habilidades
-    gsap.from('.skill-category li', {
-      x: -30,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.1,
-      delay: 1,
-      ease: 'power2.out'
-    });
-
-    // Animación de la experiencia
-    gsap.from('.experience-section', {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      delay: 1.2,
-      ease: 'power3.out'
-    });
-
-    // Animación de los items de experiencia
-    gsap.from('.experience-section li', {
-      scale: 0.8,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.2,
-      delay: 1.5,
-      ease: 'back.out(1.7)'
+    gsap.from('.skill-tag', {
+      y: 8, opacity: 0, duration: 0.4, stagger: 0.04, delay: 0.6, ease: 'power2.out'
     });
   }
 }
