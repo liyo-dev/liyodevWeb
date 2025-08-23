@@ -1,3 +1,4 @@
+// ...existing imports...
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -20,13 +21,23 @@ export class ContactComponent implements AfterViewInit {
     message: ''
   };
 
+
+  /** Botones del carrusel (móvil) */
+  scrollCarousel(dir: number): void {
+    const el = document.getElementById('contactCarousel');
+    if (!el) return;
+    const firstSlide = el.querySelector('.carousel-slide') as HTMLElement | null;
+    const step = firstSlide ? firstSlide.offsetWidth + 16 : Math.round(el.clientWidth * 0.9);
+    el.scrollBy({ left: dir * step, behavior: 'smooth' });
+  }
+
   ngAfterViewInit() {
     this.animateContactSection();
   }
 
   private animateContactSection() {
     // Reset inicial de opacidad para asegurar visibilidad
-    gsap.set('.contact-section h2, .social-link, .form-group, .submit-btn', {
+    gsap.set('.contact-section h2, .social-icon, .contact-form-fields div, .btn-primary', {
       opacity: 1,
       visibility: 'visible'
     });
@@ -39,8 +50,8 @@ export class ContactComponent implements AfterViewInit {
       ease: 'power3.out'
     });
 
-    // Animación de los enlaces sociales
-    gsap.from('.social-link', {
+    // Animación de los iconos sociales
+    gsap.from('.social-icon', {
       x: -30,
       opacity: 0,
       stagger: 0.2,
@@ -49,8 +60,8 @@ export class ContactComponent implements AfterViewInit {
       delay: 0.3
     });
 
-    // Animación del formulario
-    gsap.from('.form-group', {
+    // Animación de los campos del formulario
+    gsap.from('.contact-form-fields div', {
       y: 30,
       opacity: 0,
       stagger: 0.2,
@@ -58,8 +69,8 @@ export class ContactComponent implements AfterViewInit {
       delay: 0.5
     });
 
-    // Animación del botón (una sola animación combinada)
-    gsap.from('.submit-btn', {
+    // Animación del botón
+    gsap.from('.btn-primary', {
       y: 30,
       scale: 0.8,
       opacity: 0,

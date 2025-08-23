@@ -6,21 +6,15 @@
   <div class="contact-content">
     <!-- Columna izquierda: redes -->
     <div class="social-block">
-
-      <div class="social-cards">
-        <a class="social-card" href="https://github.com/liyodev" target="_blank" rel="noopener">
-          <div class="icon"><img src="assets/icons/github.svg" alt="GitHub" /></div>
-          <span>GitHub</span>
+      <div class="social-icons">
+        <a class="social-icon" href="https://github.com/liyodev" target="_blank" rel="noopener">
+          <img src="assets/icons/github.svg" alt="GitHub" />
         </a>
-
-        <a class="social-card" href="https://www.linkedin.com/in/raulbaez" target="_blank" rel="noopener">
-          <div class="icon"><img src="assets/icons/linkedin.svg" alt="LinkedIn" /></div>
-          <span>LinkedIn</span>
+        <a class="social-icon" href="https://www.linkedin.com/in/raulbaez" target="_blank" rel="noopener">
+          <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
         </a>
-
-        <a class="social-card" href="https://liyodev.itch.io" target="_blank" rel="noopener">
-          <div class="icon"><img src="assets/icons/itchio.svg" alt="itch.io" /></div>
-          <span>itch.io</span>
+        <a class="social-icon" href="https://liyodev.itch.io" target="_blank" rel="noopener">
+          <img src="assets/icons/itchio.svg" alt="itch.io" />
         </a>
       </div>
     </div>
@@ -28,24 +22,20 @@
     <!-- Columna derecha: formulario -->
     <form class="contact-form-card" (submit)="$event.preventDefault()" novalidate>
       <h3>Envíame un mensaje</h3>
-
       <div class="contact-form-fields">
         <div>
           <label for="name">Nombre:</label>
-    <input id="name" type="text" placeholder="Tu nombre" />
+          <input id="name" type="text" placeholder="Tu nombre" />
         </div>
-
         <div>
           <label for="email">Email:</label>
-    <input id="email" type="email" placeholder="tu@email.com" />
+          <input id="email" type="email" placeholder="tu@email.com" />
         </div>
-
         <div>
           <label for="message">Mensaje:</label>
-    <textarea id="message" placeholder="Cuéntame en qué puedo ayudarte"></textarea>
+          <textarea id="message" placeholder="Cuéntame en qué puedo ayudarte"></textarea>
         </div>
       </div>
-
       <div class="contact-form-actions">
         <button type="submit" class="btn-primary">Enviar</button>
       </div>
