@@ -21,6 +21,12 @@ export class ContactComponent implements AfterViewInit {
     message: ''
   };
 
+  // Estados del formulario
+  isSubmitting = false;
+  submitSuccess = false;
+  submitError = false;
+  submitMessage = '';
+
 
   /** Botones del carrusel (móvil) */
   scrollCarousel(dir: number): void {
@@ -80,13 +86,111 @@ export class ContactComponent implements AfterViewInit {
     });
   }
 
-  onSubmit() {
-    // Animación de confirmación
-    gsap.to('.submit-btn', {
-      scale: 1.1,
-      duration: 0.2,
-      yoyo: true,
-      repeat: 1
+  async onSubmit() {
+    if (this.isSubmitting) return;
+
+    // Resetear estados
+    this.submitSuccess = false;
+    this.submitError = false;
+    this.submitMessage = '';
+    this.isSubmitting = true;
+
+    // Animación de inicio de envío
+    gsap.to('.btn-primary', {
+      scale: 0.95,
+      duration: 0.1
+    });
+
+    try {
+      // Simulación de envío (reemplazar con servicio real)
+      await this.sendEmail();
+      
+      // Éxito
+      this.submitSuccess = true;
+      this.submitMessage = '¡Mensaje enviado correctamente! Te responderé pronto.';
+      
+      // Animación de éxito
+      gsap.to('.btn-primary', {
+        scale: 1,
+        backgroundColor: '#00ff9d',
+        duration: 0.3,
+        ease: 'back.out(1.7)'
+      });
+
+      // Limpiar formulario después de 2 segundos
+      setTimeout(() => {
+        this.resetForm();
+      }, 2000);
+
+    } catch (error) {
+      // Error
+      this.submitError = true;
+      this.submitMessage = 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.';
+      
+      // Animación de error
+      gsap.to('.btn-primary', {
+        scale: 1,
+        duration: 0.6,
+        ease: 'power2.out'
+      });
+      
+      // Animación de shake
+      gsap.to('.btn-primary', {
+        x: -10,
+        duration: 0.1,
+        repeat: 5,
+        yoyo: true,
+        ease: 'power2.inOut'
+      });
+    } finally {
+      this.isSubmitting = false;
+      
+      // Ocultar mensaje después de 5 segundos
+      setTimeout(() => {
+        this.submitMessage = '';
+        this.submitSuccess = false;
+        this.submitError = false;
+        
+        // Restaurar botón
+        gsap.to('.btn-primary', {
+          scale: 1,
+          backgroundColor: '',
+          duration: 0.3
+        });
+      }, 5000);
+    }
+  }
+
+  private async sendEmail(): Promise<void> {
+    // Simulación de llamada API
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // Aquí podrías integrar con un servicio como EmailJS, Netlify Forms, etc.
+        const success = Math.random() > 0.1; // 90% de éxito para demostración
+        
+        if (success) {
+          console.log('Formulario enviado:', this.contactForm);
+          resolve();
+        } else {
+          reject(new Error('Error simulado'));
+        }
+      }, 2000); // Simular delay de red
+    });
+  }
+
+  private resetForm() {
+    this.contactForm = {
+      name: '',
+      email: '',
+      message: ''
+    };
+    
+    // Animación de reset
+    gsap.from('.contact-form-fields div', {
+      opacity: 0.5,
+      y: 10,
+      stagger: 0.1,
+      duration: 0.3
     });
   }
 }

@@ -20,24 +20,77 @@
     </div>
 
     <!-- Columna derecha: formulario -->
-    <form class="contact-form-card" (submit)="$event.preventDefault()" novalidate>
+    <form class="contact-form-card" (ngSubmit)="onSubmit()" #contactFormRef="ngForm" novalidate>
       <h3>Envíame un mensaje</h3>
       <div class="contact-form-fields">
         <div>
           <label for="name">Nombre:</label>
-          <input id="name" type="text" placeholder="Tu nombre" />
+          <input 
+            id="name" 
+            name="name"
+            type="text" 
+            placeholder="Tu nombre" 
+            [(ngModel)]="contactForm.name"
+            required
+            minlength="2"
+            #nameField="ngModel"
+            [class.error]="nameField.invalid && nameField.touched"
+          />
+          <span class="error-message" *ngIf="nameField.invalid && nameField.touched">
+            El nombre es requerido (mínimo 2 caracteres)
+          </span>
         </div>
         <div>
           <label for="email">Email:</label>
-          <input id="email" type="email" placeholder="tu@email.com" />
+          <input 
+            id="email" 
+            name="email"
+            type="email" 
+            placeholder="tu@email.com" 
+            [(ngModel)]="contactForm.email"
+            required
+            email
+            #emailField="ngModel"
+            [class.error]="emailField.invalid && emailField.touched"
+          />
+          <span class="error-message" *ngIf="emailField.invalid && emailField.touched">
+            <span *ngIf="emailField.errors?.['required']">El email es requerido</span>
+            <span *ngIf="emailField.errors?.['email']">El formato del email no es válido</span>
+          </span>
         </div>
         <div>
           <label for="message">Mensaje:</label>
-          <textarea id="message" placeholder="Cuéntame en qué puedo ayudarte"></textarea>
+          <textarea 
+            id="message" 
+            name="message"
+            placeholder="Cuéntame en qué puedo ayudarte"
+            [(ngModel)]="contactForm.message"
+            required
+            minlength="10"
+            #messageField="ngModel"
+            [class.error]="messageField.invalid && messageField.touched"
+          ></textarea>
+          <span class="error-message" *ngIf="messageField.invalid && messageField.touched">
+            <span *ngIf="messageField.errors?.['required']">El mensaje es requerido</span>
+            <span *ngIf="messageField.errors?.['minlength']">El mensaje debe tener al menos 10 caracteres</span>
+          </span>
         </div>
       </div>
       <div class="contact-form-actions">
-        <button type="submit" class="btn-primary">Enviar</button>
+        <button 
+          type="submit" 
+          class="btn-primary"
+          [disabled]="contactFormRef.invalid || isSubmitting"
+          [class.submitting]="isSubmitting"
+          [class.success]="submitSuccess"
+        >
+          <span *ngIf="!isSubmitting && !submitSuccess">Enviar</span>
+          <span *ngIf="isSubmitting">Enviando...</span>
+          <span *ngIf="submitSuccess">¡Enviado!</span>
+        </button>
+        <div class="form-status" *ngIf="submitMessage" [class.error]="submitError" [class.success]="submitSuccess">
+          {{ submitMessage }}
+        </div>
       </div>
     </form>
   </div>
