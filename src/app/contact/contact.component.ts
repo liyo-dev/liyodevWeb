@@ -3,6 +3,8 @@ import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import gsap from 'gsap';
+import emailjs from '@emailjs/browser';
+import { emailConfig } from './email.config';
 
 @Component({
   selector: 'app-contact',
@@ -26,6 +28,11 @@ export class ContactComponent implements AfterViewInit {
   submitSuccess = false;
   submitError = false;
   submitMessage = '';
+
+  constructor() {
+    // Inicializar EmailJS
+    emailjs.init(emailConfig.publicKey);
+  }
 
 
   /** Botones del carrusel (móvil) */
@@ -162,20 +169,29 @@ export class ContactComponent implements AfterViewInit {
   }
 
   private async sendEmail(): Promise<void> {
-    // Simulación de llamada API
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // Aquí podrías integrar con un servicio como EmailJS, Netlify Forms, etc.
-        const success = Math.random() > 0.1; // 90% de éxito para demostración
-        
-        if (success) {
-          console.log('Formulario enviado:', this.contactForm);
-          resolve();
-        } else {
-          reject(new Error('Error simulado'));
-        }
-      }, 2000); // Simular delay de red
-    });
+    // Preparar los parámetros del template
+    const templateParams = {
+      from_name: this.contactForm.name,
+      from_email: this.contactForm.email,
+      message: this.contactForm.message,
+      to_email: 'luarbaz@gmail.com', 
+      reply_to: this.contactForm.email
+    };
+
+    try {
+      // Enviar email usando EmailJS
+      const response = await emailjs.send(
+        emailConfig.serviceId,
+        emailConfig.templateId,
+        templateParams
+      );
+      
+      console.log('Email enviado exitosamente:', response);
+      return Promise.resolve();
+    } catch (error) {
+      console.error('Error al enviar email:', error);
+      return Promise.reject(error);
+    }
   }
 
   private resetForm() {

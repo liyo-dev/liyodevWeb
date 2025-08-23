@@ -294,7 +294,7 @@
 }
 
 .contact-form-actions {
-  margin-top: clamp(1.2rem, 2vw, 1.8rem);
+  margin-top: clamp(1.5rem, 2.5vw, 2.2rem);
   text-align: center;
 }
 
@@ -362,9 +362,9 @@
 
 /* Mensaje de estado del formulario */
 .form-status {
-  margin-top: 1rem;
-  padding: 0.8rem;
-  border-radius: 8px;
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 12px;
   font-size: 0.9rem;
   text-align: center;
   animation: slideInStatus 0.3s ease-out;
