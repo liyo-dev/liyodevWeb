@@ -1,11 +1,12 @@
 // ...existing imports...
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import emailjs from '@emailjs/browser';
 import { emailConfig } from './email.config';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-contact',
@@ -13,7 +14,7 @@ import { emailConfig } from './email.config';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
-export class ContactComponent implements AfterViewInit {
+export class ContactComponent implements OnInit, AfterViewInit {
   @ViewChild('contactSection') contactSection!: ElementRef;
   @ViewChild('socialLinks') socialLinks!: ElementRef;
   @ViewChild('contactForm') formElement!: ElementRef;
@@ -30,9 +31,18 @@ export class ContactComponent implements AfterViewInit {
   submitError = false;
   submitMessage = '';
 
-  constructor() {
+  constructor(private seoService: SeoService) {
     // Inicializar EmailJS
     emailjs.init(emailConfig.publicKey);
+  }
+
+  ngOnInit(): void {
+    this.seoService.setPageSeo({
+      title: 'Contacto',
+      description: 'Ponte en contacto con Raúl Báez (Liyodev). Colaboremos juntos en tu próximo proyecto de desarrollo web o videojuegos. Formulario directo y redes sociales.',
+      keywords: 'contacto Liyodev, colaboración desarrollador, proyectos web, desarrollo videojuegos, freelance developer',
+      image: 'https://liyodev.web.app/completo_icon-512x512.png'
+    });
   }
 
 

@@ -1,5 +1,6 @@
-import { Component, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, OnInit, NgZone } from '@angular/core';
 import gsap from 'gsap';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-about',
@@ -8,10 +9,19 @@ import gsap from 'gsap';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent implements AfterViewInit, OnDestroy {
+export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   private ro?: ResizeObserver;
 
-  constructor(private zone: NgZone) { }
+  constructor(private zone: NgZone, private seoService: SeoService) { }
+
+  ngOnInit(): void {
+    this.seoService.setPageSeo({
+      title: 'Sobre mí',
+      description: 'Conoce a Raúl Báez (Liyodev): Mi historia como desarrollador desde el instituto hasta convertirme en fullstack developer y creador de videojuegos. Pasión, tecnología y creatividad.',
+      keywords: 'sobre mí Liyodev, historia desarrollador, fullstack developer, trayectoria programador, Angular Unity developer',
+      image: 'https://avatars.githubusercontent.com/u/77936857?s=400&u=a748a1ec6bc40e6ec277cb309ddfd85d7f4ff8cb&v=4'
+    });
+  }
 
   ngAfterViewInit(): void {
     // Siempre sube arriba al entrar en la sección

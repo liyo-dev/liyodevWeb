@@ -1,6 +1,7 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, OnInit } from '@angular/core';
 import gsap from 'gsap';
 import { SwipeIndicatorComponent } from './swipe-indicator.component';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -9,7 +10,7 @@ import { SwipeIndicatorComponent } from './swipe-indicator.component';
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.css'
 })
-export class PortfolioComponent implements AfterViewInit {
+export class PortfolioComponent implements OnInit, AfterViewInit {
   @ViewChild('tabsContainer') tabsContainer!: ElementRef<HTMLDivElement>;
   @ViewChild('tabIndicator') tabIndicator!: ElementRef<HTMLDivElement>;
   @ViewChild('contentContainer') contentContainer!: ElementRef<HTMLDivElement>;
@@ -162,6 +163,17 @@ export class PortfolioComponent implements AfterViewInit {
       image: 'assets/img/malagaRPG.png'
     }
   ];
+
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit(): void {
+    this.seoService.setPageSeo({
+      title: 'Portfolio',
+      description: 'Descubre los proyectos de Raúl Báez (Liyodev): videojuegos para Steam y Google Play, aplicaciones web con Angular y Unity. Innovación en cada línea de código.',
+      keywords: 'portfolio developer, proyectos Steam, juegos Google Play, aplicaciones Angular, Unity games, Sky Kingdoms, videojuegos RPG',
+      image: 'https://liyodev.web.app/completo_icon-512x512.png'
+    });
+  }
 
   ngAfterViewInit() {
     this.initializeInterface();

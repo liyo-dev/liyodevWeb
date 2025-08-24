@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://liyodev.web.app/sitemap.xml
+
+# Páginas importantes
+Allow: /portfolio
+Allow: /about
+Allow: /contact
+
+# Bloquear archivos innecesarios para SEO
+Disallow: /*.json$
+Disallow: /assets/
+
+# Crawl-delay (opcional, para ser amigable)
+Crawl-delay: 1
