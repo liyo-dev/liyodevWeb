@@ -169,3 +169,20 @@ a.active {
   border-color: #00d4ff;
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
+
+/* Copyright discreto */
+.copyright {
+  margin-top: 10px;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  width: 48px;
+  line-height: 1.2;
+}
+
+/* En móvil, ocultar copyright para ahorrar espacio */
+@media (max-width: 768px) {
+  .copyright {
+    display: none;
+  }
+}
