@@ -1,4 +1,21 @@
-# LiyoDevWeb
+# Liyodev - Portfolio Web
+
+Portfolio personal de Raúl Báez (Liyodev) - Fullstack Developer y creador de videojuegos.
+
+## 🚀 Características
+
+- **Portfolio completo** con proyectos web y videojuegos
+- **Responsive design** optimizado para todos los dispositivos  
+- **Política de privacidad** integrada para Google Play Store
+- **Contacto funcional** con EmailJS
+- **Animaciones GSAP** y efectos visuales modernos
+
+## 🛠️ Tecnologías
+
+- **Frontend**: Angular 19, TypeScript, GSAP
+- **Estilos**: CSS3, responsive design
+- **Email**: EmailJS
+- **Deploy**: Firebase Hosting
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
 
