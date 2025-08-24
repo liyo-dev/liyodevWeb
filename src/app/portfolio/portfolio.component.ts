@@ -1,10 +1,11 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import gsap from 'gsap';
+import { SwipeIndicatorComponent } from './swipe-indicator.component';
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [],
+  imports: [SwipeIndicatorComponent],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.css'
 })
@@ -83,14 +84,6 @@ export class PortfolioComponent implements AfterViewInit {
       link: 'https://github.com/liyo-dev/lanzador-microservicios',
       type: 'DevOps Tool',
       tech: ['Node.js', 'Angular', 'Electron']
-    },
-    {
-      title: 'Last Time Visit',
-      description: 'Aplicación web que rastrea y muestra la última visita a tu sitio web, incluyendo información temporal y geográfica. Ejemplo: "Última visita hace 5 min desde México". Útil para monitorear el tráfico en tiempo real.',
-      link: 'https://github.com/liyo-dev/last-time-visit',
-      demoLink: 'https://bitter-bison-62.deno.dev/',
-      type: 'Web Analytics',
-      tech: ['HTML', 'TypeScript']
     },
     {
       title: 'Pixel Wars',

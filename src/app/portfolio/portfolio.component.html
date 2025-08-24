@@ -51,27 +51,31 @@
         <h3>Próximamente en Steam</h3>
         <p>Mis próximos lanzamientos</p>
       </div>
-      <div class="content-grid">
-        @for (game of steamGames; track game.title) {
-          <div class="content-card steam-card">
-            <div class="card-image">
-              <img [src]="game.image" [alt]="game.title" loading="lazy">
-            </div>
-            <div class="card-status">{{ game.status }}</div>
-            <div class="card-body">
-              <h4>{{ game.title }}</h4>
-              <p>{{ game.description }}</p>
-              <div class="card-footer">
-                <span class="platform-tag steam">Steam</span>
-                <div class="card-actions">
-                  <button class="action-btn development-btn" disabled>
-                    <span>🚧 En desarrollo</span>
-                  </button>
+      <div class="content-grid-container">
+        <!-- Manita flotante indicadora -->
+        <app-swipe-indicator></app-swipe-indicator>
+        <div class="content-grid">
+          @for (game of steamGames; track game.title) {
+            <div class="content-card steam-card">
+              <div class="card-image">
+                <img [src]="game.image" [alt]="game.title" loading="lazy">
+              </div>
+              <div class="card-status">{{ game.status }}</div>
+              <div class="card-body">
+                <h4>{{ game.title }}</h4>
+                <p>{{ game.description }}</p>
+                <div class="card-footer">
+                  <span class="platform-tag steam">Steam</span>
+                  <div class="card-actions">
+                    <button class="action-btn development-btn" disabled>
+                      <span>🚧 En desarrollo</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        }
+          }
+        </div>
       </div>
     </div>
 
@@ -80,33 +84,37 @@
       <div class="panel-header">
         <h3>Juegos Móviles</h3>
       </div>
-      <div class="content-grid">
-        @for (game of googlePlayGames; track game.title) {
-          <div class="content-card mobile-card">
-            <div class="card-image">
-              <img [src]="game.image" [alt]="game.title" loading="lazy">
-            </div>
-            <div class="card-status">{{ game.status }}</div>
-            <div class="card-body">
-              <h4>{{ game.title }}</h4>
-              <p>{{ game.description }}</p>
-              <div class="card-footer">
-                <span class="platform-tag mobile">{{ game.type }}</span>
-                <div class="card-actions">
-                  @if (game.status === 'En fase de pruebas') {
-                    <button class="action-btn tester-btn" (click)="requestTesterAccess(game, $event)">
-                      <span>🧪 Solicitar ser tester</span>
-                    </button>
-                  } @else {
-                    <button class="action-btn play-btn" (click)="navigateToGooglePlay(game, $event)">
-                      <span>📱 Google Play</span>
-                    </button>
-                  }
+      <div class="content-grid-container">
+        <!-- Manita flotante indicadora -->
+        <app-swipe-indicator></app-swipe-indicator>
+        <div class="content-grid">
+          @for (game of googlePlayGames; track game.title) {
+            <div class="content-card mobile-card">
+              <div class="card-image">
+                <img [src]="game.image" [alt]="game.title" loading="lazy">
+              </div>
+              <div class="card-status">{{ game.status }}</div>
+              <div class="card-body">
+                <h4>{{ game.title }}</h4>
+                <p>{{ game.description }}</p>
+                <div class="card-footer">
+                  <span class="platform-tag mobile">{{ game.type }}</span>
+                  <div class="card-actions">
+                    @if (game.status === 'En fase de pruebas') {
+                      <button class="action-btn tester-btn" (click)="requestTesterAccess(game, $event)">
+                        <span>🧪 Solicitar ser tester</span>
+                      </button>
+                    } @else {
+                      <button class="action-btn play-btn" (click)="navigateToGooglePlay(game, $event)">
+                        <span>📱 Google Play</span>
+                      </button>
+                    }
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        }
+          }
+        </div>
       </div>
     </div>
 
@@ -124,7 +132,10 @@
             <button class="showcase-btn" (click)="navigateAppsShowcase(1)" [disabled]="currentAppIndex >= applications.length - 1">›</button>
           </div>
           
-          <div class="showcase-content">
+          <div class="content-grid-container">
+            <!-- Manita flotante indicadora -->
+            <app-swipe-indicator></app-swipe-indicator>
+            <div class="showcase-content">
             @for (app of applications; track app.title; let i = $index) {
               <div class="showcase-card app-showcase-card"
                    [class.active]="i === currentAppIndex"
@@ -154,6 +165,7 @@
                 </div>
               </div>
             }
+            </div>
           </div>
         </div>
       } @else {
@@ -178,7 +190,10 @@
             <button class="showcase-btn" (click)="navigateShowcase(1)" [disabled]="currentGameIndex >= publishedGames.length - 1">›</button>
           </div>
           
-          <div class="showcase-content">
+          <div class="content-grid-container">
+            <!-- Manita flotante indicadora -->
+            <app-swipe-indicator></app-swipe-indicator>
+            <div class="showcase-content">
             @for (game of publishedGames; track game.title; let i = $index) {
               <div class="showcase-card"
                    [class.active]="i === currentGameIndex"
@@ -204,6 +219,7 @@
                 </div>
               </div>
             }
+            </div>
           </div>
         </div>
       } @else {

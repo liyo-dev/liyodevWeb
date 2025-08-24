@@ -232,6 +232,12 @@
   }
 }
 
+/* === Manita flotante indicadora de deslizamiento ================== */
+.content-grid-container {
+  position: relative;
+  width: 100%;
+}
+
 .content-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
