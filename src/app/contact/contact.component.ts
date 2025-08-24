@@ -2,13 +2,14 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import emailjs from '@emailjs/browser';
 import { emailConfig } from './email.config';
 
 @Component({
   selector: 'app-contact',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })

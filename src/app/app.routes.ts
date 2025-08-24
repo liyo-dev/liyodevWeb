@@ -4,6 +4,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { MainComponent } from './main/main.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [
     {
@@ -16,5 +17,6 @@ export const routes: Routes = [
         { path: 'contact', component: ContactComponent },
       ]
     },
+    { path: 'privacy-policy', component: PrivacyPolicyComponent },
     { path: '**', redirectTo: '' }
   ];

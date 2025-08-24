@@ -411,3 +411,30 @@
     font-size: 0.75rem;
   }
 }
+
+/* Enlace a política de privacidad */
+.privacy-link {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+.privacy-link p {
+  margin: 0;
+}
+
+.privacy-link a {
+  color: #b0c4de;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.privacy-link a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
