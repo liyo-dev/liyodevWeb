@@ -91,9 +91,16 @@ body, html {
   z-index: 2;
 }
 
+@media (max-width: 1024px), (max-height: 800px) {
+  .workarea {
+    padding-top: 110px;
+  }
+}
+
 /* Mobile: mejorar experiencia táctil */
 @media (max-width: 768px) {
   .workarea {
     touch-action: pan-y;
+    padding-top: 90px;
   }
 }
