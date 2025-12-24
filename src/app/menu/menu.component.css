@@ -1,8 +1,9 @@
 .floating-menu {
   position: fixed;
   top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 24px;
+  left: auto;
+  transform: none;
   display: flex;
   flex-direction: row;
   align-items: center;

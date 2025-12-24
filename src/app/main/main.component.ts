@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import gsap from 'gsap';
 import { MenuComponent } from '../menu/menu.component';
@@ -15,12 +15,6 @@ export class MainComponent implements AfterViewInit {
   @ViewChild('background', { static: true }) background!: ElementRef;
 
   private currentIndex = 0;
-  private scrollLocked = false;
-  
-  // Variables para touch events
-  private touchStartY = 0;
-  private touchEndY = 0;
-  private isMobile = false;
 
   readonly scrollRoutes = ['/', '/portfolio', '/about', '/contact'];
   
@@ -53,7 +47,6 @@ export class MainComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     gsap.set(this.workarea.nativeElement, { opacity: 1 });
-    this.isMobile = window.innerWidth <= 768;
     // Configurar fondo inicial
     this.updateBackground(this.currentIndex);
   }
@@ -69,69 +62,6 @@ export class MainComponent implements AfterViewInit {
         }
       });
     }
-  }
-
-  @HostListener('window:resize')
-  onResize() {
-    this.isMobile = window.innerWidth <= 768;
-  }
-
-  // Navegación por scroll del mouse (desktop)
-  @HostListener('window:wheel', ['$event'])
-  onScroll(event: WheelEvent) {
-    if (this.isMobile || this.scrollLocked) return;
-    this.handleNavigation(event.deltaY > 0 ? 1 : -1);
-  }
-
-  // Touch events para móvil
-  @HostListener('touchstart', ['$event'])
-  onTouchStart(event: TouchEvent) {
-    if (!this.isMobile) return;
-    this.touchStartY = event.touches[0].clientY;
-  }
-
-  @HostListener('touchend', ['$event'])
-  onTouchEnd(event: TouchEvent) {
-    if (!this.isMobile || this.scrollLocked) return;
-    
-    this.touchEndY = event.changedTouches[0].clientY;
-    const deltaY = this.touchStartY - this.touchEndY;
-    const minSwipeDistance = 50; // Distancia mínima para activar navegación
-
-    if (Math.abs(deltaY) > minSwipeDistance) {
-      // Deslizar hacia arriba (deltaY > 0) = siguiente sección
-      // Deslizar hacia abajo (deltaY < 0) = sección anterior
-      this.handleNavigation(deltaY > 0 ? 1 : -1);
-    }
-  }
-
-  private handleNavigation(direction: number) {
-    if (this.scrollLocked) return;
-
-    this.scrollLocked = true;
-    let newIndex = this.currentIndex + direction;
-
-    if (newIndex >= 0 && newIndex < this.scrollRoutes.length) {
-      // Cambiar fondo antes de la transición
-      this.updateBackground(newIndex);
-      
-      // Fade out más suave
-      gsap.to(this.workarea.nativeElement, {
-        opacity: 0,
-        scale: 0.95, // Pequeño escalado para transición más suave
-        duration: 0.3,
-        ease: 'power2.in',
-        onComplete: () => {
-          this.router.navigateByUrl(this.scrollRoutes[newIndex]);
-        }
-      });
-    } else {
-      this.scrollLocked = false;
-    }
-
-    setTimeout(() => {
-      this.scrollLocked = false;
-    }, 800); // Reducir el tiempo de bloqueo
   }
 
 }
