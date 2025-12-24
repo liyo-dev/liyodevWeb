@@ -32,20 +32,12 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   // Próximos lanzamientos de Steam (destacados)
   steamGames = [
     {
-      title: 'Sky Kingdoms y la Gema Perdida',
-      description: 'Un RPG de mazmorras y puzles donde viajas por reinos celestiales para desvelar tu propio destino y salvar la Tierra. Página web dedicada próximamente.',
+      title: 'El Sendero de las Estrellas',
+      description: 'Aventura de fantasía sobre un héroe elegido y un antagonista dispuesto a cruzar portales mágicos para salvar a su hermano, mientras el mundo enfrenta el legado del Quebranto del Alba.',
       link: '#',
-      status: 'En desarrollo para Steam',
+      status: 'Alfa prevista: enero 2026',
       featured: true,
-      image: 'assets/img/skyKingdoms.png'
-    },
-    {
-      title: 'Hola', 
-      description: 'Aventura narrativa que combina ciencia, arte y misterio, donde los sueños y la realidad se entrelazan para revelar un mensaje oculto. Página web dedicada próximamente.',
-      link: '#',
-      status: 'En desarrollo para Steam',
-      featured: true,
-      image: 'assets/img/hola.png'
+      image: 'assets/img/sendero/sendero_portada.png'
     }
   ];
 
@@ -170,7 +162,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     this.seoService.setPageSeo({
       title: 'Portfolio',
       description: 'Descubre los proyectos de Raúl Báez (Liyodev): videojuegos para Steam y Google Play, aplicaciones web con Angular y Unity. Innovación en cada línea de código.',
-      keywords: 'portfolio developer, proyectos Steam, juegos Google Play, aplicaciones Angular, Unity games, Sky Kingdoms, videojuegos RPG',
+      keywords: 'portfolio developer, proyectos Steam, juegos Google Play, aplicaciones Angular, Unity games, El Sendero de las Estrellas, videojuegos RPG',
       image: 'https://liyodev.web.app/completo_icon-512x512.png'
     });
   }
