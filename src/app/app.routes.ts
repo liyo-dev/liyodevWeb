@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { MainComponent } from './main/main.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { SenderoComponent } from './games/sendero/sendero.component';
 
 export const routes: Routes = [
     {
@@ -14,6 +15,7 @@ export const routes: Routes = [
         { path: '', component: HomeComponent },
         { path: 'about', component: AboutComponent },
         { path: 'portfolio', component: PortfolioComponent },
+        { path: 'juegos/el-sendero-de-las-estrellas', component: SenderoComponent },
         { path: 'contact', component: ContactComponent },
       ]
     },

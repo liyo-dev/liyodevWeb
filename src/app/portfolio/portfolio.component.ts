@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import { SwipeIndicatorComponent } from './swipe-indicator.component';
 import { SeoService } from '../services/seo.service';
@@ -6,7 +7,7 @@ import { SeoService } from '../services/seo.service';
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [SwipeIndicatorComponent],
+  imports: [SwipeIndicatorComponent, RouterLink],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.css'
 })
