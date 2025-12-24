@@ -2,8 +2,8 @@
 .contact-section {
   min-height: 100svh;
   height: auto;
-  color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
   position: relative;
   overflow: visible;
   padding: 2rem;
@@ -71,18 +71,11 @@
   margin: 0;
   font-weight: 700;
   letter-spacing: 1px;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  background: linear-gradient(135deg, #00d4ff, #00ff9d, #4ca1af);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  background: linear-gradient(120deg, #38bdf8, #22d3ee, #a855f7);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
-  animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes titleGlow {
-  0% { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3)); }
-  100% { filter: drop-shadow(0 0 30px rgba(0, 255, 157, 0.5)); }
 }
 
 @media (max-width: 768px) {
@@ -145,8 +138,8 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(148, 163, 184, 0.1);
+    border: 1px solid rgba(148, 163, 184, 0.2);
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
@@ -157,9 +150,9 @@
   
   .social-icon:hover {
     transform: translateY(-2px);
-    background: rgba(0, 212, 255, 0.2);
-    border-color: rgba(0, 212, 255, 0.4);
-    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+    background: rgba(56, 189, 248, 0.2);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
   }
   
   .social-icon img {
@@ -198,8 +191,8 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(148, 163, 184, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.2);
     backdrop-filter: blur(15px);
     display: flex;
     align-items: center;
@@ -210,9 +203,9 @@
   
   .social-icon:hover {
     transform: translateY(-3px);
-    background: rgba(0, 212, 255, 0.15);
-    border-color: rgba(0, 212, 255, 0.4);
-    box-shadow: 0 6px 20px rgba(0, 212, 255, 0.25);
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.25);
   }
   
   .social-icon img {
@@ -224,8 +217,8 @@
 
 /* === Formulario =========================================================== */
 .contact-form-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.2);
   backdrop-filter: blur(20px);
   border-radius: 20px;
   padding: clamp(1.5rem, 2.5vw, 2.5rem);
@@ -234,7 +227,7 @@
 
 .contact-form-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.5);
 }
 
 .contact-form-card h3 {
@@ -242,7 +235,7 @@
   margin-bottom: clamp(1.2rem, 2vw, 1.8rem);
   font-size: clamp(1.3rem, 2.2vw, 1.8rem);
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   text-align: center;
 }
 
@@ -260,17 +253,17 @@
 
 .contact-form-fields label {
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(226, 232, 240, 0.8);
   font-size: clamp(0.9rem, 1.1vw, 1rem);
 }
 
 .contact-form-fields input,
 .contact-form-fields textarea {
   padding: clamp(0.8rem, 1.2vw, 1rem);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
+  background: rgba(15, 23, 42, 0.6);
+  color: var(--text-primary);
   font-family: inherit;
   font-size: clamp(0.9rem, 1.1vw, 1rem);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -279,8 +272,8 @@
 .contact-form-fields input:focus,
 .contact-form-fields textarea:focus {
   outline: none;
-  border-color: rgba(0, 212, 255, 0.5);
-  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.1);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.1);
 }
 
 .contact-form-fields textarea {
@@ -290,7 +283,7 @@
 
 .contact-form-fields input::placeholder,
 .contact-form-fields textarea::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(148, 163, 184, 0.6);
 }
 
 .contact-form-actions {
@@ -299,8 +292,8 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #00d4ff, #00ff9d);
-  color: #000;
+  background: linear-gradient(135deg, #38bdf8, #22d3ee);
+  color: #0f172a;
   border: none;
   padding: clamp(0.8rem, 1.5vw, 1rem) clamp(2rem, 3vw, 2.5rem);
   border-radius: 25px;
@@ -315,7 +308,7 @@
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
 }
 
 .btn-primary:active {
@@ -350,14 +343,14 @@
 }
 
 .btn-primary.submitting {
-  background: rgba(0, 212, 255, 0.3);
-  color: rgba(255, 255, 255, 0.8);
+  background: rgba(56, 189, 248, 0.3);
+  color: rgba(226, 232, 240, 0.8);
   cursor: wait;
 }
 
 .btn-primary.success {
-  background: linear-gradient(135deg, #00ff9d, #00d4ff);
-  color: #000;
+  background: linear-gradient(135deg, #22d3ee, #38bdf8);
+  color: #0f172a;
 }
 
 /* Mensaje de estado del formulario */
@@ -371,9 +364,9 @@
 }
 
 .form-status.success {
-  background: rgba(0, 255, 157, 0.1);
-  border: 1px solid rgba(0, 255, 157, 0.3);
-  color: rgba(0, 255, 157, 0.9);
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: rgba(34, 211, 238, 0.9);
 }
 
 .form-status.error {
@@ -417,7 +410,7 @@
   text-align: center;
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
   width: 100%;
   max-width: 600px;
 }
@@ -427,7 +420,7 @@
 }
 
 .privacy-link a {
-  color: #b0c4de;
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
@@ -435,6 +428,6 @@
 }
 
 .privacy-link a:hover {
-  color: #ffffff;
+  color: var(--text-primary);
   text-decoration: underline;
 }

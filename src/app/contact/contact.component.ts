@@ -130,7 +130,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
       // Animación de éxito
       gsap.to('.btn-primary', {
         scale: 1,
-        backgroundColor: '#00ff9d',
+        backgroundColor: '#22d3ee',
         duration: 0.3,
         ease: 'back.out(1.7)'
       });

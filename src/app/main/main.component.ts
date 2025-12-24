@@ -26,10 +26,10 @@ export class MainComponent implements AfterViewInit {
   
   // Gradientes para cada sección - unificados
   private readonly sectionBackgrounds = [
-    'linear-gradient(135deg, #2c3e50, #4ca1af)', // Home - unificado
-    'linear-gradient(135deg, #2c3e50, #4ca1af)', // Portfolio
-    'linear-gradient(135deg, #2c3e50, #4ca1af)', // About
-    'linear-gradient(135deg, #2c3e50, #4ca1af)'  // Contact
+    'radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.2), transparent 40%), radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.18), transparent 35%), radial-gradient(circle at 20% 80%, rgba(34, 211, 238, 0.16), transparent 45%), linear-gradient(135deg, #0b0f19 0%, #0f172a 50%, #0b0f19 100%)', // Home
+    'radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.2), transparent 40%), radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.18), transparent 35%), radial-gradient(circle at 20% 80%, rgba(34, 211, 238, 0.16), transparent 45%), linear-gradient(135deg, #0b0f19 0%, #0f172a 50%, #0b0f19 100%)', // Portfolio
+    'radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.2), transparent 40%), radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.18), transparent 35%), radial-gradient(circle at 20% 80%, rgba(34, 211, 238, 0.16), transparent 45%), linear-gradient(135deg, #0b0f19 0%, #0f172a 50%, #0b0f19 100%)', // About
+    'radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.2), transparent 40%), radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.18), transparent 35%), radial-gradient(circle at 20% 80%, rgba(34, 211, 238, 0.16), transparent 45%), linear-gradient(135deg, #0b0f19 0%, #0f172a 50%, #0b0f19 100%)'  // Contact
   ];
 
   constructor(private router: Router) {

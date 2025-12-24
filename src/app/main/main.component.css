@@ -3,17 +3,9 @@ body, html {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-size: clamp(14px, 1.2vw, 18px); /* Escalado base para diferentes resoluciones */
+  font-size: clamp(14px, 1.1vw, 18px);
 }
 
-/* Desktop: sin scroll */
-@media (min-width: 769px) {
-  body, html {
-    overflow: hidden;
-  }
-}
-
-/* Monitores de alta resolución */
 @media (min-width: 1440px) and (min-height: 900px) {
   body, html {
     font-size: clamp(16px, 1vw, 20px);
@@ -26,42 +18,29 @@ body, html {
   }
 }
 
-/* Mobile: permitir navegación */
 @media (max-width: 768px) {
   body, html {
     overflow-x: hidden;
-    overflow-y: hidden; /* Cambiado para controlar con touch events */
+    overflow-y: auto;
     font-size: clamp(14px, 4vw, 16px);
   }
 }
 
-/* 🎈 Canvas de partículas */
-.particle-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 90vw;
-  height: 90vh;
-  z-index: 100; /* Al fondo del todo */
-  pointer-events: none;
-}
-
-/* 🎨 Fondo animado detrás del contenido pero por encima del canvas */
+/* 🎨 Fondo base con gradiente y halo */
 .background {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #2c3e50, #4ca1af);
-  background-size: 400% 400%;
-  animation: backgroundShift 15s ease infinite;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.2), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.18), transparent 35%),
+    radial-gradient(circle at 20% 80%, rgba(34, 211, 238, 0.16), transparent 45%),
+    linear-gradient(135deg, #0b0f19 0%, #0f172a 50%, #0b0f19 100%);
+  background-size: 120% 120%;
+  animation: backgroundShift 18s ease infinite;
   z-index: 1;
   pointer-events: none;
-  transition: background 0.8s ease;
 }
 
-/* 🌌 Animación de fondo */
 @keyframes backgroundShift {
   0% {
     background-position: 0% 50%;
@@ -96,8 +75,8 @@ body, html {
   .main-container {
     min-height: 100vh;
     overflow-x: hidden;
-    overflow-y: hidden; /* Controlar con touch events */
-    touch-action: pan-y; /* Permitir gestos verticales */
+    overflow-y: auto;
+    touch-action: pan-y;
   }
 }
 
@@ -109,17 +88,12 @@ body, html {
   width: 100%;
   padding: 0;
   position: relative;
-  z-index: 2; /* Encima de fondo y canvas */
+  z-index: 2;
 }
 
 /* Mobile: mejorar experiencia táctil */
 @media (max-width: 768px) {
   .workarea {
-    touch-action: pan-y; /* Permitir solo gestos verticales */
-    user-select: none; /* Evitar selección accidental */
+    touch-action: pan-y;
   }
-}
-
-.particle-canvas {
-  border: 3px solid red;
 }
