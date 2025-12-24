@@ -1,50 +1,63 @@
 .floating-menu {
   position: fixed;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* 👈 fuerza alineación izquierda */
-  gap: 20px;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
   z-index: 999;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.5);
+  backdrop-filter: blur(16px);
 }
 
 .floating-menu a {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 48px;
-  height: 48px;
-  padding: 8px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: transform 0.3s ease, background 0.3s ease;
+  gap: 0.5rem;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  transition: transform 0.3s ease, background 0.3s ease, border 0.3s ease;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
 }
 
 .floating-menu a:hover {
-  transform: scale(1.1);
-  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  background-color: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.4);
 }
 
 .floating-menu img {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
-  filter: brightness(1.2);
+  filter: brightness(1.4);
 }
 
 a.active {
-  background-color: #00d4ff !important;
-  box-shadow: 0 0 12px #00d4ff;
+  background: linear-gradient(135deg, #38bdf8, #22d3ee) !important;
+  color: #0f172a !important;
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+  border-color: transparent !important;
 }
 
 /* 📱 Menú móvil */
 .menu-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 18px;
+  right: 18px;
   z-index: 1001;
   cursor: pointer;
   width: 50px;
@@ -52,10 +65,10 @@ a.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.8);
   border-radius: 50%;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(148, 163, 184, 0.3);
 }
 
 .hamburger {
@@ -72,7 +85,7 @@ a.active {
   position: absolute;
   height: 3px;
   width: 100%;
-  background: #ffffff;
+  background: #e2e8f0;
   border-radius: 3px;
   opacity: 1;
   left: 0;
@@ -119,9 +132,9 @@ a.active {
   right: -100%;
   width: 300px;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(10, 15, 30, 0.98);
   backdrop-filter: blur(20px);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(148, 163, 184, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -140,11 +153,11 @@ a.active {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: #ffffff;
+  color: #e2e8f0;
   padding: 16px;
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.2);
   transition: all 0.3s ease;
   width: 110px;
   text-align: center;
@@ -153,7 +166,7 @@ a.active {
 }
 
 .mobile-menu a:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(56, 189, 248, 0.16);
   transform: scale(1.05);
 }
 
@@ -165,18 +178,18 @@ a.active {
 }
 
 .mobile-menu a.active {
-  background: rgba(0, 212, 255, 0.2);
-  border-color: #00d4ff;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  background: rgba(56, 189, 248, 0.25);
+  border-color: rgba(56, 189, 248, 0.7);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
 }
 
 /* Copyright discreto */
 .copyright {
   margin-top: 10px;
   font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(226, 232, 240, 0.4);
   text-align: center;
-  width: 48px;
+  width: auto;
   line-height: 1.2;
   display: flex;
   align-items: center;
@@ -189,4 +202,14 @@ a.active {
   .copyright {
     display: none;
   }
+
+  .menu-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+}
+
+.menu-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
 }

@@ -1,27 +1,65 @@
 <section class="home-section">
   <div class="home-content">
-    <img
-      class="avatar"
-      src="https://avatars.githubusercontent.com/u/77936857?s=400&u=a748a1ec6bc40e6ec277cb309ddfd85d7f4ff8cb&v=4"
-      alt="Foto de Liyodev"
-    />
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">Fullstack Developer · Game Creator</span>
+        <h1>Raúl Báez <span class="highlight">Liyodev</span></h1>
+        <p class="tagline">
+          Construyo interfaces limpias, sistemas robustos y experiencias interactivas con enfoque en rendimiento y detalle.
+        </p>
 
-    <h1>¡Hola, soy <span class="highlight">Liyodev</span>!</h1>
-    <p class="tagline">Desarrollador de software y creador de videojuegos.</p>
+        <div class="hero-actions">
+          <a class="cta-primary" routerLink="/portfolio">Ver proyectos</a>
+          <a class="cta-secondary" routerLink="/contact">Contactar</a>
+        </div>
 
+        <div class="social-links">
+          @for (link of socialLinks; track link.url) {
+            @if (link.icon) {
+              <a [href]="link.url" target="_blank" class="social-link">
+                <img [src]="link.icon" [alt]="link.label" />
+                <span>{{ link.label }}</span>
+              </a>
+            }
+          }
+        </div>
+      </div>
 
-    <div class="social-links">
-      @for (link of socialLinks; track link.url) {
-        @if (link.icon) {
-          <a [href]="link.url" target="_blank" class="social-link">
-            <img [src]="link.icon" [alt]="link.label" />
-            <span>{{ link.label }}</span>
-          </a>
-        }
-      }
+      <div class="hero-card">
+        <div class="avatar-wrap">
+          <img
+            class="avatar"
+            src="https://avatars.githubusercontent.com/u/77936857?s=400&u=a748a1ec6bc40e6ec277cb309ddfd85d7f4ff8cb&v=4"
+            alt="Foto de Liyodev"
+          />
+          <span class="status-pill">Disponible para colaborar</span>
+        </div>
+
+        <div class="hero-meta">
+          <div class="meta-item">
+            <span class="meta-label">Stack</span>
+            <span class="meta-value">Angular · Java · Spring Boot · Unity</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Especialidad</span>
+            <span class="meta-value">Front-end sólido, APIs limpias, UX táctil</span>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-header">
+            <span>profile.ts</span>
+            <span class="code-status">ready</span>
+          </div>
+          <pre><code>const liyodev = &#123;
+  focus: ["frontend", "backend", "game-dev"],
+  mindset: "clean · fast · maintainable",
+  location: "España",
+&#125;;</code></pre>
+        </div>
+      </div>
     </div>
-    
-    <!-- Enlace discreto a política de privacidad -->
+
     <div class="privacy-link">
       <a routerLink="/privacy-policy">Política de Privacidad</a>
     </div>

@@ -14,27 +14,19 @@
 >
   <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="onLinkClick('home')">
     <img src="/assets/icons/home.svg" alt="Home" />
-    @if (isMobile) {
-      <span>Inicio</span>
-    }
+    <span class="menu-label">Inicio</span>
   </a>
   <a routerLink="/portfolio" routerLinkActive="active" (click)="onLinkClick('portfolio')">
     <img src="/assets/icons/projects.svg" alt="Portfolio" />
-    @if (isMobile) {
-      <span>Portfolio</span>
-    }
+    <span class="menu-label">Portfolio</span>
   </a>
   <a routerLink="/about" routerLinkActive="active" (click)="onLinkClick('about')">
     <img src="/assets/icons/about.svg" alt="Sobre mí" />
-    @if (isMobile) {
-      <span>Sobre mí</span>
-    }
+    <span class="menu-label">Sobre mí</span>
   </a>
   <a routerLink="/contact" routerLinkActive="active" (click)="onLinkClick('contact')">
     <img src="/assets/icons/contact.svg" alt="Contacto" />
-    @if (isMobile) {
-      <span>Contacto</span>
-    }
+    <span class="menu-label">Contacto</span>
   </a>
   
   <!-- Copyright discreto -->
