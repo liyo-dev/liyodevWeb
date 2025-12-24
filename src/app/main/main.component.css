@@ -20,8 +20,6 @@ body, html {
 
 @media (max-width: 768px) {
   body, html {
-    overflow-x: hidden;
-    overflow-y: auto;
     font-size: clamp(14px, 4vw, 16px);
   }
 }
@@ -66,7 +64,6 @@ body, html {
 @media (min-width: 769px) {
   .main-container {
     min-height: 100vh;
-    overflow: hidden;
   }
 }
 
@@ -74,9 +71,6 @@ body, html {
 @media (max-width: 768px) {
   .main-container {
     min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    touch-action: pan-y;
   }
 }
 
@@ -100,7 +94,6 @@ body, html {
 /* Mobile: mejorar experiencia táctil */
 @media (max-width: 768px) {
   .workarea {
-    touch-action: pan-y;
     padding-top: 90px;
   }
 }

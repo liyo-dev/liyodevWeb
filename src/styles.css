@@ -27,25 +27,11 @@ html, body {
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-/* Desktop: sin scroll */
-@media (min-width: 769px) {
-  html, body {
-    overflow: hidden;
-  }
-}
-
-/* Mobile: permitir scroll vertical para navegación */
-@media (max-width: 768px) {
-  html, body {
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
 }
