@@ -13,7 +13,6 @@ export class MenuComponent implements AfterViewInit {
   @ViewChild('menu', { static: true }) menu!: ElementRef;
 
   isMobile = false;
-  menuOpen = false;
 
   ngAfterViewInit(): void {
     this.isMobile = window.innerWidth < 768;
@@ -23,23 +22,6 @@ export class MenuComponent implements AfterViewInit {
   @HostListener('window:resize')
   onResize() {
     this.isMobile = window.innerWidth < 768;
-    this.menuOpen = false;
-  }
-
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
-
-    if (this.menuOpen) {
-      this.animateMenuItems();
-    }
-  }
-
-  closeMenu() {
-    this.menuOpen = false;
-  }
-
-  onLinkClick(route: string) {
-    this.closeMenu();
   }
 
   private animateMenuItems() {
