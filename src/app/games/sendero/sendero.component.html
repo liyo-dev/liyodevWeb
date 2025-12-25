@@ -10,7 +10,8 @@
       </p>
       <div class="hero-actions">
         <button class="action-btn development-btn" disabled>🚧 En desarrollo</button>
-        <a class="action-btn hero-link" href="#galeria">✨ Ver galería</a>
+        <a class="action-btn hero-link" [routerLink]="[]" fragment="galeria">✨ Ver galería</a>
+        <a class="action-btn ghost-link" [routerLink]="[]" fragment="estado">🗺️ Estado del desarrollo</a>
       </div>
       <div class="hero-meta">
         <span>Alfa prevista: enero 2026</span>
@@ -34,11 +35,11 @@
   </header>
 
   <nav class="game-subnav">
-    <a href="#sinopsis">Sinopsis</a>
-    <a href="#caracteristicas">Características</a>
-    <a href="#galeria">Galería</a>
-    <a href="#estado">Estado</a>
-    <a href="#contacto">Contacto</a>
+    <a [routerLink]="[]" fragment="sinopsis">Sinopsis</a>
+    <a [routerLink]="[]" fragment="caracteristicas">Características</a>
+    <a [routerLink]="[]" fragment="galeria">Galería</a>
+    <a [routerLink]="[]" fragment="estado">Estado</a>
+    <a [routerLink]="[]" fragment="contacto">Contacto</a>
   </nav>
 
   <section class="game-section" id="sinopsis">
@@ -51,6 +52,20 @@
       </p>
       <div class="section-highlight">
         <span>Explora ciudades astrales, ruinas ancestrales y rutas estelares cambiantes.</span>
+      </div>
+      <div class="section-cards">
+        <article class="info-card">
+          <h3>Protagonista</h3>
+          <p>Will, aprendiz de astrónomo, encuentra el mapa del Sendero y descubre su vínculo con la magia estelar.</p>
+        </article>
+        <article class="info-card">
+          <h3>Antagonista</h3>
+          <p>Kael intenta abrir portales prohibidos para salvar a su hermano, alterando el equilibrio de los reinos.</p>
+        </article>
+        <article class="info-card">
+          <h3>Viaje</h3>
+          <p>Travesía por ciudades flotantes, desiertos de cristal y bosques que guardan secretos celestes.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -114,6 +129,20 @@
             El equipo está cerrando sistemas clave y preparando una primera alfa jugable. Próximamente se abrirán
             listas para testers.
           </p>
+          <div class="status-track">
+            <div>
+              <span>Capítulos jugables</span>
+              <strong>3/7</strong>
+            </div>
+            <div>
+              <span>Combate táctico</span>
+              <strong>75%</strong>
+            </div>
+            <div>
+              <span>Arte y animación</span>
+              <strong>62%</strong>
+            </div>
+          </div>
         </div>
         <div class="status-tag">Alfa · Enero 2026</div>
       </div>
@@ -126,7 +155,10 @@
       <p>
         ¿Quieres colaborar, cubrir el juego o recibir novedades? Escríbeme desde el formulario principal.
       </p>
-      <a class="action-btn hero-link" routerLink="/contact">Abrir contacto</a>
+      <div class="contact-actions">
+        <a class="action-btn hero-link" routerLink="/contact">Abrir contacto</a>
+        <a class="action-btn ghost-link" routerLink="/portfolio">Volver al portfolio</a>
+      </div>
     </div>
   </section>
 </section>
