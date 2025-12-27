@@ -28,6 +28,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   currentGameIndex = 0;
   currentAppIndex = 0; // Nuevo índice para apps
   private isAnimating = false;
+  isMobile = false;
 
   // Próximos lanzamientos de Steam (destacados)
   steamGames = [
@@ -168,15 +169,36 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.checkIfMobile();
     this.initializeInterface();
     this.animateTabsEntrance();
+    this.ensureMobileMenuFixed();
     
     // Listener para resize de ventana
     window.addEventListener('resize', () => {
+      this.checkIfMobile();
+      this.ensureMobileMenuFixed();
       setTimeout(() => {
         this.updateTabIndicator();
       }, 100);
     });
+  }
+
+  private checkIfMobile() {
+    this.isMobile = window.innerWidth <= 768;
+  }
+
+  private ensureMobileMenuFixed() {
+    if (this.isMobile && this.tabsContainer) {
+      const element = this.tabsContainer.nativeElement;
+      element.style.position = 'fixed';
+      element.style.bottom = '0px';
+      element.style.left = '0px';
+      element.style.right = '0px';
+      element.style.top = 'auto';
+      element.style.transform = 'none';
+      element.style.zIndex = '9999';
+    }
   }
 
   // Inicialización de la interfaz (simplificada)
@@ -263,13 +285,22 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
       this.tabIndicator.nativeElement.style.width = '70px';
       this.tabIndicator.nativeElement.style.height = '70px';
     } else {
-      // Para tabs horizontales (mobile)
-      // Cálculo: 8px padding inicial + (índice * (60px ancho + 8px gap))
-      const leftPosition = 8 + (tabIndex * 68);
+      // Para tabs horizontales (mobile) con justify-content: space-around
+      const container = this.tabsContainer.nativeElement;
+      const containerWidth = container.offsetWidth;
+      const tabWidth = 60; // Ancho del tab
+      const numTabs = 4; // Número total de tabs
+      
+      // Calcular el espacio disponible y la posición del tab
+      const availableSpace = containerWidth - (numTabs * tabWidth);
+      const spacing = availableSpace / (numTabs + 1); // space-around divide el espacio en n+1 partes
+      
+      // Calcular posición del centro del tab
+      const leftPosition = spacing + (tabIndex * (tabWidth + spacing));
       
       // Movimiento simple sin animación
       this.tabIndicator.nativeElement.style.left = leftPosition + 'px';
-      this.tabIndicator.nativeElement.style.top = '8px';
+      this.tabIndicator.nativeElement.style.top = '12px';
       this.tabIndicator.nativeElement.style.width = '60px';
       this.tabIndicator.nativeElement.style.height = '60px';
     }

@@ -9,49 +9,64 @@
   align-items: center;
   gap: 12px;
   z-index: 999;
-  padding: 10px 16px;
+  padding: 10px 20px;
   border-radius: 999px;
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(148, 163, 184, 0.25);
   box-shadow: 0 20px 40px rgba(2, 6, 23, 0.5);
   backdrop-filter: blur(16px);
+  width: auto;
+  min-width: fit-content;
 }
 
 .floating-menu--mobile {
   top: 14px;
-  right: auto;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 14px;
+  width: calc(100% - 28px);
   padding: 6px 10px;
-  gap: 8px;
+  gap: 6px;
   border-radius: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: calc(100vw - 28px);
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  max-width: 100%;
+  overflow-x: auto;
   box-shadow: 0 12px 30px rgba(2, 6, 23, 0.45);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.floating-menu--mobile::-webkit-scrollbar {
+  display: none;
 }
 
 .floating-menu a {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  height: 44px;
-  padding: 0 14px;
-  border-radius: 999px;
+  gap: 0.35rem;
+  height: auto;
+  padding: 10px 16px;
+  border-radius: 16px;
   background-color: transparent;
   border: 1px solid transparent;
   transition: transform 0.3s ease, background 0.3s ease, border 0.3s ease;
   color: #e2e8f0;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  min-width: fit-content;
 }
 
 .floating-menu--mobile a {
-  height: 38px;
-  padding: 0 10px;
-  font-size: 0.72rem;
+  height: auto;
+  padding: 8px 10px;
+  font-size: 0.68rem;
+  flex: 1;
+  min-width: fit-content;
+  white-space: nowrap;
+  gap: 0.3rem;
 }
 
 .floating-menu a:hover {
@@ -61,8 +76,8 @@
 }
 
 .floating-menu img {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
   filter: brightness(1.4);
 }
@@ -100,8 +115,18 @@ a.active {
   }
 
   .menu-label {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+  
+  .floating-menu img {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .floating-menu a {
+    gap: 0.35rem;
   }
 }
 

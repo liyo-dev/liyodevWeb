@@ -288,9 +288,14 @@
 
 .contact-form-actions {
   margin-top: clamp(1.5rem, 2.5vw, 2.2rem);
+  margin-bottom: clamp(0.5rem, 1vw, 1rem);
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
 }
 
 .btn-primary {
@@ -306,6 +311,8 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  display: block;
+  margin: 0 auto;
 }
 
 .btn-primary:hover {
@@ -357,12 +364,13 @@
 
 /* Mensaje de estado del formulario */
 .form-status {
-  margin-top: 2rem;
+  margin-top: 0;
   padding: 1rem;
   border-radius: 12px;
   font-size: 0.9rem;
   text-align: center;
   animation: slideInStatus 0.3s ease-out;
+  width: 100%;
 }
 
 .form-status.success {
