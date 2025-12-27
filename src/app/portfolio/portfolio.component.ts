@@ -239,8 +239,8 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     const newPanelClass = getPanelClass(category);
 
     // Obtener elementos
-    const previousPanel = document.querySelector(`.${previousPanelClass}-panel`);
-    const newPanel = document.querySelector(`.${newPanelClass}-panel`);
+    const previousPanel = document.querySelector(`.${previousPanelClass}-panel`) as HTMLElement;
+    const newPanel = document.querySelector(`.${newPanelClass}-panel`) as HTMLElement;
 
     // Ocultar panel anterior
     if (previousPanel) {
@@ -253,15 +253,27 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     // Actualizar indicador de tab
     this.updateTabIndicator();
     
-    // Mostrar nuevo panel
-    if (newPanel) {
-      newPanel.classList.add('active');
+    // En móvil, resetear el scroll ANTES de mostrar el nuevo panel
+    if (this.isMobile && newPanel) {
+      newPanel.scrollTop = 0;
     }
+    
+    // Mostrar nuevo panel después de resetear el scroll
+    setTimeout(() => {
+      if (newPanel) {
+        newPanel.classList.add('active');
+      }
+      
+      // Asegurar que el scroll esté en la parte superior
+      if (this.isMobile && newPanel) {
+        newPanel.scrollTop = 0;
+      }
+    }, 50);
 
     // Terminar animación
     setTimeout(() => {
       this.isAnimating = false;
-    }, 100);
+    }, 150);
   }
 
   // Actualizar posición del indicador de tab (simplificado)

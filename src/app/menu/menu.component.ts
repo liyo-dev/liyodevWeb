@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, ChangeDetectorRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import gsap from 'gsap';
 
@@ -14,14 +14,21 @@ export class MenuComponent implements AfterViewInit {
 
   isMobile = false;
 
-  ngAfterViewInit(): void {
+  constructor(private cdr: ChangeDetectorRef) {
     this.isMobile = window.innerWidth < 768;
+  }
+
+  ngAfterViewInit(): void {
     this.animateMenuItems();
   }
 
   @HostListener('window:resize')
   onResize() {
+    const wasMobile = this.isMobile;
     this.isMobile = window.innerWidth < 768;
+    if (wasMobile !== this.isMobile) {
+      this.cdr.detectChanges();
+    }
   }
 
   private animateMenuItems() {

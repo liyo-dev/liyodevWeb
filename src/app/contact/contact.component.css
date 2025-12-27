@@ -298,6 +298,15 @@
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .contact-form-actions {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    min-height: 80px;
+    justify-content: center;
+  }
+}
+
 .btn-primary {
   background: linear-gradient(135deg, #38bdf8, #22d3ee);
   color: #0f172a;
@@ -311,8 +320,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  display: block;
-  margin: 0 auto;
+  align-self: center;
 }
 
 .btn-primary:hover {
@@ -401,8 +409,8 @@
   }
   
   .btn-primary {
-    width: 100%;
-    padding: 1rem;
+    width: auto;
+    padding: 1rem 2rem;
   }
   
   .form-status {
