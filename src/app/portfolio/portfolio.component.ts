@@ -35,7 +35,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     {
       title: 'El Sendero de las Estrellas',
       description: 'El Sendero de las Estrellas es una aventura de fantasía ambientada en un mundo fragmentado por un antiguo cataclismo mágico. Encarnas a Will, un joven que descubre un poder de luz desconocido cuando un demonio ataca su pueblo. Guiado por un enigmático viajero, te adentrarás en el Sendero de las Estrellas, una red de portales llenos de pruebas creados por los dioses. A lo largo del viaje recorrerás reinos marcados por la corrupción y el abuso de la magia, tomarás decisiones que pondrán a prueba tu carácter y descubrirás que no todo es lo que parece. Lo que empieza como una misión para "salvar al mundo" se convierte en una historia sobre la amistad, la culpa y el sacrificio. Cuando llegue el momento de pedir un deseo, tendrás que decidir qué vale más: el poder o la vida de quienes amas.',
-      link: '#',
+      link: 'https://senderoestrellasweb.web.app/',
       status: 'En desarrollo',
       featured: true,
       image: 'assets/img/sendero/sendero_portada.png'

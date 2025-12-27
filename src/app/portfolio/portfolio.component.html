@@ -62,9 +62,15 @@
               <h4>{{ game.title }}</h4>
               <p>{{ game.description }}</p>
               <div class="steam-feature-actions">
-                <button class="action-btn development-btn" disabled>
-                  <span>🚧 En desarrollo</span>
-                </button>
+                @if (game.link !== '#') {
+                  <a [href]="game.link" target="_blank" rel="noopener" class="action-btn demo-btn">
+                    <span>� Web del juego</span>
+                  </a>
+                } @else {
+                  <button class="action-btn development-btn" disabled>
+                    <span>🚧 En desarrollo</span>
+                  </button>
+                }
               </div>
             </div>
           </article>
