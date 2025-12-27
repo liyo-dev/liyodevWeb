@@ -1,77 +1,180 @@
-# Liyodev - Portfolio Web
+# 🎮 Liyodev - Portfolio Web
 
-Portfolio personal de Raúl Báez (Liyodev) - Fullstack Developer y creador de videojuegos.
-https://liyodev.web.app/
+<div align="center">
 
-## 🚀 Características
+![Angular](https://img.shields.io/badge/Angular-19.1-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-Hosting-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![License](https://img.shields.io/badge/License-Private-red?style=for-the-badge)
 
-- **Portfolio completo** con proyectos web y videojuegos
-- **Responsive design** optimizado para todos los dispositivos  
-- **Política de privacidad** integrada para Google Play Store
-- **Contacto funcional** con EmailJS
-- **Animaciones GSAP** y efectos visuales modernos
+**Portfolio personal de Raúl Báez (Liyodev)**  
+*Fullstack Developer & Game Creator*
 
-## 🛠️ Tecnologías
+[🌐 Ver Portfolio](https://liyodev.web.app/) • [📧 Contacto](https://liyodev.web.app/#/contacto)
 
-- **Frontend**: Angular 19, TypeScript, GSAP
-- **Estilos**: CSS3, responsive design
-- **Email**: EmailJS
-- **Deploy**: Firebase Hosting
+</div>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
+---
 
-## Development server
+## ✨ Características
 
-To start a local development server, run:
+- 🎨 **Diseño Moderno** con animaciones fluidas usando GSAP
+- 📱 **Fully Responsive** - optimizado para móviles, tablets y desktop
+- 🎮 **Portfolio de Juegos** - showcase de proyectos publicados en Steam y Google Play
+- 💼 **Proyectos Web** - aplicaciones fullstack con Angular y otras tecnologías
+- 📬 **Formulario de Contacto** funcional con EmailJS
+- 🔒 **Política de Privacidad** integrada y conforme con Google Play Store
+- ⚡ **SEO Optimizado** con meta tags, Open Graph y Twitter Cards
+- 🌙 **UI Dark Mode** con gradientes cyan y efectos glassmorphism
 
-```bash
-ng serve
-```
+## 🛠️ Stack Tecnológico
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Frontend
+- **Framework**: Angular 19.1
+- **Lenguaje**: TypeScript 5.7
+- **Animaciones**: GSAP 3.13
+- **Estilos**: CSS3 moderno con variables y grid/flexbox
+- **Routing**: Angular Router con lazy loading
 
-## Code scaffolding
+### Servicios
+- **Email**: EmailJS para formulario de contacto
+- **SEO**: Meta tags dinámicos con Angular SEO Service
+- **Hosting**: Firebase Hosting
+- **Analytics**: Integración preparada para Google Analytics
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Herramientas de Desarrollo
+- Angular CLI 19.1.8
+- Karma + Jasmine para testing
+- TypeScript Compiler
 
-```bash
-ng generate component component-name
-```
+## 🚀 Instalación y Desarrollo
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Requisitos Previos
+- Node.js 18.x o superior
+- npm 9.x o superior
+- Angular CLI 19.x
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Instalación
 
 ```bash
-ng test
+# Clonar el repositorio
+git clone https://github.com/liyo-dev/liyoDevWeb.git
+
+# Entrar al directorio
+cd liyoDevWeb
+
+# Instalar dependencias
+npm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Servidor de Desarrollo
 
 ```bash
-ng e2e
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente con cualquier cambio en los archivos fuente.
 
-## Additional Resources
+### Build de Producción
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm run build
+```
+
+Los archivos compilados se generarán en el directorio `dist/` optimizados para producción.
+
+### Build con Watch Mode
+
+```bash
+npm run watch
+```
+
+## 📁 Estructura del Proyecto
+
+```
+liyoDevWeb/
+├── src/
+│   ├── app/
+│   │   ├── about/          # Componente "Sobre mí"
+│   │   ├── contact/        # Formulario de contacto
+│   │   ├── footer/         # Footer de la aplicación
+│   │   ├── games/          # Sección de videojuegos
+│   │   ├── home/           # Página principal
+│   │   ├── main/           # Layout principal
+│   │   ├── menu/           # Menú de navegación
+│   │   ├── portfolio/      # Portfolio de proyectos
+│   │   ├── privacy-policy/ # Política de privacidad
+│   │   └── services/       # Servicios compartidos (SEO)
+│   ├── assets/
+│   │   ├── icons/          # Iconos SVG
+│   │   └── img/            # Imágenes del portfolio
+│   └── index.html
+├── public/                 # Archivos estáticos
+│   ├── manifest.json       # PWA manifest
+│   ├── robots.txt
+│   └── sitemap.xml
+└── firebase.json           # Configuración de Firebase
+```
+
+## 🎨 Características Destacadas
+
+### Sistema de Navegación
+- Menú lateral fijo en desktop
+- Menú hamburguesa responsive en móvil
+- Navegación suave entre secciones
+- Scroll indicator personalizado
+
+### Portfolio Interactivo
+- Cards con efecto glassmorphism
+- Swipe gestures en móvil
+- Enlaces directos a Steam, Google Play e itch.io
+- Showcase de capturas de juegos
+
+### Formulario de Contacto
+- Validación en tiempo real
+- Integración con EmailJS
+- Estados de envío (loading, success, error)
+- Campos: nombre, email y mensaje
+
+## 🧪 Testing
+
+```bash
+# Ejecutar tests unitarios
+npm test
+
+# Ejecutar tests con coverage
+ng test --code-coverage
+```
+
+## 🌐 Deploy
+
+El proyecto está configurado para deploy automático en Firebase Hosting:
+
+```bash
+# Build y deploy
+ng build --configuration production
+firebase deploy
+```
+
+## 📝 Configuración de EmailJS
+
+1. Crea una cuenta en [EmailJS](https://www.emailjs.com/)
+2. Configura tu servicio de email
+3. Crea una plantilla de email
+4. Actualiza las credenciales en `src/app/contact/email.config.ts`
+
+Ver [EMAILJS_SETUP.md](src/app/contact/EMAILJS_SETUP.md) para más detalles.
+
+## 📄 Licencia
+
+© 2025 Raúl Báez (Liyodev). Todos los derechos reservados.
+
+---
+
+<div align="center">
+
+**[Portfolio](https://liyodev.web.app/)** • **[LinkedIn](https://www.linkedin.com/in/liyodev)** • **[GitHub](https://github.com/liyo-dev)** • **[itch.io](https://liyodev.itch.io/)**
+
+Hecho con ❤️ y Angular
+
+</div>
