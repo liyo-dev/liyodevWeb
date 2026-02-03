@@ -100,6 +100,14 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   // Datos de juegos publicados con año
   publishedGames = [
     {
+      title: 'Mask Protocol',
+      description: 'Desde un laboratorio triste y abandonado, Unit-01 desciende por capas cada vez más inestables del complejo que lo creó. Al final, solo queda una decisión: morir o eliminar a su creador.',
+      link: 'https://miiirhyme.itch.io/mask-protocol',
+      type: 'Action, Puzzle',
+      year: '2024',
+      image: 'assets/img/mask-protocol.png'
+    },
+    {
       title: 'Alex´s Adventure',
       description: 'RPG de acción y aventuras en un mundo de fantasía.',
       link: 'https://nonamegamesmlg.itch.io/alexs-adventure-the-curse-of-eternal-night',
