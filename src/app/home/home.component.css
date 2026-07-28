@@ -13,7 +13,7 @@
 
 @media (min-width: 769px) {
   .home-section {
-    padding: clamp(2rem, 3vh, 4rem) clamp(2rem, 4vw, 6rem) 2rem 100px;
+    padding: clamp(2rem, 3vh, 4rem) clamp(2rem, 4vw, 6rem);
   }
 }
 

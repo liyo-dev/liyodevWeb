@@ -46,15 +46,6 @@ export class ContactComponent implements OnInit, AfterViewInit {
   }
 
 
-  /** Botones del carrusel (móvil) */
-  scrollCarousel(dir: number): void {
-    const el = document.getElementById('contactCarousel');
-    if (!el) return;
-    const firstSlide = el.querySelector('.carousel-slide') as HTMLElement | null;
-    const step = firstSlide ? firstSlide.offsetWidth + 16 : Math.round(el.clientWidth * 0.9);
-    el.scrollBy({ left: dir * step, behavior: 'smooth' });
-  }
-
   ngAfterViewInit() {
     this.animateContactSection();
   }

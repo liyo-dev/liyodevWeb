@@ -14,28 +14,24 @@
   align-items: center;
 }
 
-/* Desktop: hueco para menú lateral fijo */
+/* Desktop */
 @media (min-width: 769px) {
   .contact-section {
-    padding: 2rem 2rem 2rem 100px;
-    padding-top: clamp(2rem, 3vh, 4rem);
-    padding-right: clamp(2rem, 4vw, 6rem);
+    padding: clamp(2rem, 3vh, 4rem) clamp(2rem, 4vw, 6rem);
   }
 }
 
 /* Monitores grandes */
 @media (min-width: 1440px) and (min-height: 900px) {
   .contact-section {
-    padding-left: clamp(150px, 10vw, 200px);
-    padding-right: clamp(4rem, 6vw, 8rem);
-    padding-top: clamp(3rem, 4vh, 6rem);
+    padding: clamp(3rem, 4vh, 6rem) clamp(4rem, 6vw, 8rem);
   }
 }
 
 /* Ultra anchos */
 @media (min-width: 1920px) {
   .contact-section {
-    padding-left: clamp(200px, 12vw, 250px);
+    padding-left: clamp(6rem, 8vw, 10rem);
     padding-right: clamp(6rem, 8vw, 10rem);
   }
 }
@@ -43,44 +39,7 @@
 /* Mobile */
 @media (max-width: 768px) {
   .contact-section {
-    padding: 70px 18px 3.5rem;
-  }
-}
-
-/* === Título =============================================================== */
-.section-title {
-  position: fixed;
-  top: 2rem;
-  z-index: 10;
-  margin: 10px;
-}
-
-@media (min-width: 769px) { 
-  .section-title { 
-    left: 100px; 
-  } 
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    display: none;
-  }
-}
-
-.section-title h2 {
-  margin: 0;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
-  background: linear-gradient(120deg, #38bdf8, #22d3ee, #a855f7);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-@media (max-width: 768px) {
-  .section-title h2 { 
-    font-size: clamp(1.6rem, 7vw, 2.2rem); 
+    padding: 1.5rem 18px 3.5rem;
   }
 }
 

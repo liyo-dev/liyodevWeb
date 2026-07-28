@@ -1,54 +1,17 @@
 <section class="portfolio-section">
-  <div class="section-title">
-    <h2>Portfolio</h2>
-  </div>
+  <header class="portfolio-header">
+    <span class="portfolio-eyebrow">Portfolio</span>
+    <h2>Proyectos & Juegos</h2>
+    <p>Videojuegos, aplicaciones y herramientas que he desarrollado como programador e indie dev.</p>
+  </header>
 
-  <!-- Floating Tab Navigation -->
-  <div class="floating-tabs-container" #tabsContainer>
-    <div class="tab-indicator" #tabIndicator></div>
-    <button 
-      class="floating-tab" 
-      [class.active]="activeCategory === 'steam'"
-      (click)="switchCategory('steam')"
-      #steamTab>
-      <img src="assets/icons/CibSteam.svg" alt="Steam" class="tab-icon">
-      <span class="tab-label">Steam</span>
-    </button>
-    <button 
-      class="floating-tab" 
-      [class.active]="activeCategory === 'playStore'"
-      (click)="switchCategory('playStore')"
-      #mobileTab>
-      <img src="assets/icons/LogosGooglePlayIcon.svg" alt="Google Play" class="tab-icon">
-      <span class="tab-label">Google Play Store</span>
-    </button>
-    <button 
-      class="floating-tab" 
-      [class.active]="activeCategory === 'apps'"
-      (click)="switchCategory('apps')"
-      #appsTab>
-      <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"/>
-      </svg>
-      <span class="tab-label">Apps</span>
-    </button>
-    <button 
-      class="floating-tab" 
-      [class.active]="activeCategory === 'games'"
-      (click)="switchCategory('games')"
-      #gamesTab>
-      <img src="assets/icons/itchio.svg" alt="itch.io" class="tab-icon">
-      <span class="tab-label">Juegos</span>
-    </button>
-  </div>
+  <div class="portfolio-content">
 
-  <!-- Dynamic Content Container -->
-  <div class="portfolio-container" #contentContainer>
-    
-    <!-- Steam Projects -->
-    <div class="content-panel steam-panel" [class.active]="activeCategory === 'steam'" #steamPanel>
-      <div class="panel-header">
-
+    <!-- Steam -->
+    <div class="portfolio-block">
+      <div class="block-header">
+        <img src="assets/icons/CibSteam.svg" alt="Steam" class="block-icon">
+        <h3>Próximo lanzamiento en Steam</h3>
       </div>
       <div class="steam-feature">
         @for (game of steamGames; track game.title) {
@@ -64,7 +27,7 @@
               <div class="steam-feature-actions">
                 @if (game.link !== '#') {
                   <a [href]="game.link" target="_blank" rel="noopener" class="action-btn demo-btn">
-                    <span>� Web del juego</span>
+                    <span>🌐 Web del juego</span>
                   </a>
                 } @else {
                   <button class="action-btn development-btn" disabled>
@@ -78,92 +41,40 @@
       </div>
     </div>
 
-    <!-- Mobile Games -->
-    <div class="content-panel mobile-panel" [class.active]="activeCategory === 'playStore'" #mobilePanel>
-      <div class="panel-header">
-        <h3>Juegos Móviles</h3>
+    <!-- Applications -->
+    <div class="portfolio-block">
+      <div class="block-header">
+        <svg class="block-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"/>
+        </svg>
+        <h3>Aplicaciones & Herramientas</h3>
       </div>
-      <div class="content-grid-container">
+      @if (applications.length > 0) {
         <div class="content-grid">
-          @for (game of googlePlayGames; track game.title) {
-            <div class="content-card mobile-card">
-              <div class="card-image">
-                <img [src]="game.image" [alt]="game.title" loading="lazy">
-              </div>
-              <div class="card-status">{{ game.status }}</div>
+          @for (app of applications; track app.title) {
+            <div class="content-card app-card">
               <div class="card-body">
-                <h4>{{ game.title }}</h4>
-                <p>{{ game.description }}</p>
-                <div class="card-footer">
-                  <span class="platform-tag mobile">{{ game.type }}</span>
-                  <div class="card-actions">
-                    @if (game.status === 'En fase de pruebas') {
-                      <button class="action-btn tester-btn" (click)="requestTesterAccess(game, $event)">
-                        <span>🧪 Solicitar ser tester</span>
-                      </button>
-                    } @else {
-                      <button class="action-btn play-btn" (click)="navigateToGooglePlay(game, $event)">
-                        <span>📱 Google Play</span>
-                      </button>
-                    }
-                  </div>
+                <span class="app-type-tag">{{ app.type }}</span>
+                <h4>{{ app.title }}</h4>
+                <p>{{ app.description }}</p>
+                <div class="tech-stack">
+                  @for (tech of app.tech; track tech) {
+                    <span class="tech-badge">{{ tech }}</span>
+                  }
+                </div>
+                <div class="card-actions">
+                  <button class="action-btn github-btn" (click)="navigateToApp(app.link)">
+                    <span>📂 GitHub</span>
+                  </button>
+                  @if (app.demoLink) {
+                    <button class="action-btn demo-btn" (click)="navigateToDemo(app.demoLink)">
+                      <span>🚀 Probar</span>
+                    </button>
+                  }
                 </div>
               </div>
             </div>
           }
-        </div>
-      </div>
-    </div>
-
-    <!-- Applications -->
-    <div class="content-panel apps-panel" [class.active]="activeCategory === 'apps'" #appsPanel>
-      <div class="panel-header">
-        <h3>Aplicaciones & Herramientas</h3>
-        <p>Proyectos de desarrollo y utilidades</p>
-      </div>
-      @if (applications.length > 0) {
-        <div class="apps-showcase">
-          <div class="showcase-controls">
-            <button class="showcase-btn" (click)="navigateAppsShowcase(-1)" [disabled]="currentAppIndex === 0">‹</button>
-            <div class="showcase-counter">{{ currentAppIndex + 1 }} / {{ applications.length }}</div>
-            <button class="showcase-btn" (click)="navigateAppsShowcase(1)" [disabled]="currentAppIndex >= applications.length - 1">›</button>
-          </div>
-          
-          <div class="content-grid-container">
-            <!-- Manita flotante indicadora -->
-            <app-swipe-indicator></app-swipe-indicator>
-            <div class="showcase-content">
-            @for (app of applications; track app.title; let i = $index) {
-              <div class="showcase-card app-showcase-card"
-                   [class.active]="i === currentAppIndex"
-                   [style.display]="i === currentAppIndex ? 'block' : 'none'"
-                   [class.mobile-all-visible]="true">
-                <div class="showcase-info">
-                  <div class="app-meta">
-                    <span class="app-type-tag">{{ app.type }}</span>
-                  </div>
-                  <h4>{{ app.title }}</h4>
-                  <p>{{ app.description }}</p>
-                  <div class="tech-stack">
-                    @for (tech of app.tech; track tech) {
-                      <span class="tech-badge">{{ tech }}</span>
-                    }
-                  </div>
-                  <div class="card-actions">
-                    <button class="action-btn github-btn" (click)="navigateToApp(app.link)">
-                      <span>📂 Ver en GitHub</span>
-                    </button>
-                    @if (app.demoLink) {
-                      <button class="action-btn demo-btn" (click)="navigateToDemo(app.demoLink)">
-                        <span>🚀 Probar</span>
-                      </button>
-                    }
-                  </div>
-                </div>
-              </div>
-            }
-            </div>
-          </div>
         </div>
       } @else {
         <div class="empty-state">
@@ -174,50 +85,35 @@
     </div>
 
     <!-- Published Games -->
-    <div class="content-panel games-panel" [class.active]="activeCategory === 'games'" #gamesPanel>
-      <div class="panel-header">
+    <div class="portfolio-block">
+      <div class="block-header">
+        <img src="assets/icons/itchio.svg" alt="itch.io" class="block-icon">
         <h3>Juegos Publicados</h3>
-        <p>Proyectos completados y disponibles para jugar</p>
       </div>
       @if (publishedGames.length > 0) {
-        <div class="games-showcase">
-          <div class="showcase-controls">
-            <button class="showcase-btn" (click)="navigateShowcase(-1)" [disabled]="currentGameIndex === 0">‹</button>
-            <div class="showcase-counter">{{ currentGameIndex + 1 }} / {{ publishedGames.length }}</div>
-            <button class="showcase-btn" (click)="navigateShowcase(1)" [disabled]="currentGameIndex >= publishedGames.length - 1">›</button>
-          </div>
-          
-          <div class="content-grid-container">
-            <!-- Manita flotante indicadora -->
-            <app-swipe-indicator></app-swipe-indicator>
-            <div class="showcase-content">
-            @for (game of publishedGames; track game.title; let i = $index) {
-              <div class="showcase-card"
-                   [class.active]="i === currentGameIndex"
-                   [style.display]="i === currentGameIndex ? 'block' : 'none'"
-                   [class.mobile-all-visible]="true">
-                <div class="showcase-image">
-                  @if (game.image) {
-                    <img [src]="game.image" [alt]="game.title" loading="lazy">
-                  } @else {
-                    <div class="image-placeholder">🎮</div>
-                  }
-                </div>
-                <div class="showcase-info">
-                  <div class="game-meta">
-                    <span class="game-type">{{ game.type }}</span>
-                    <span class="game-year">{{ game.year }}</span>
-                  </div>
-                  <h4>{{ game.title }}</h4>
-                  <p>{{ game.description }}</p>
-                  <button class="play-btn" (click)="navigateToGame(game.link)" [attr.data-game]="game.title" [attr.data-link]="game.link">
-                    ▶ Jugar en itch.io
-                  </button>
-                </div>
+        <div class="content-grid">
+          @for (game of publishedGames; track game.title) {
+            <div class="content-card game-card">
+              <div class="card-image">
+                @if (game.image) {
+                  <img [src]="game.image" [alt]="game.title" loading="lazy">
+                } @else {
+                  <div class="image-placeholder">🎮</div>
+                }
               </div>
-            }
+              <div class="card-body">
+                <div class="card-footer meta-row">
+                  <span class="platform-tag">{{ game.type }}</span>
+                  <span class="game-year">{{ game.year }}</span>
+                </div>
+                <h4>{{ game.title }}</h4>
+                <p>{{ game.description }}</p>
+                <button class="action-btn play-btn" (click)="navigateToGame(game.link)">
+                  <span>▶ Jugar en itch.io</span>
+                </button>
+              </div>
             </div>
-          </div>
+          }
         </div>
       } @else {
         <div class="empty-state">
