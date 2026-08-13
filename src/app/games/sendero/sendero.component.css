@@ -155,7 +155,7 @@
 
 .hero-poster {
   width: clamp(140px, 16vw, 180px);
-  aspect-ratio: 1008 / 1024;
+  aspect-ratio: 1409 / 1117;
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 14px 40px rgba(6, 10, 24, 0.6);
@@ -307,7 +307,7 @@
 }
 
 .gallery-card img.gallery-cover {
-  aspect-ratio: 1008 / 1024;
+  aspect-ratio: 1409 / 1117;
   object-fit: cover;
 }
 
