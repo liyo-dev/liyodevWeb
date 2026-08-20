@@ -1,21 +1,20 @@
 <section class="game-page">
   <header class="game-hero" id="inicio">
-    <a class="hero-back" routerLink="/portfolio">← Volver al portfolio</a>
+    <a class="hero-back" routerLink="/portfolio">{{ i18n.t('sendero.backToPortfolio') }}</a>
     <div class="hero-content">
-      <span class="hero-eyebrow">Steam · Aventura narrativa</span>
+      <span class="hero-eyebrow">{{ i18n.t('sendero.eyebrow') }}</span>
       <h1>El Sendero de las Estrellas</h1>
       <p>
-        Primer lanzamiento en Steam. Un viaje épico donde la luz de los portales guía a los héroes a través de
-        mundos mágicos y decisiones que marcan el destino del reino.
+        {{ i18n.t('sendero.heroDesc') }}
       </p>
       <div class="hero-actions">
-        <button class="action-btn development-btn" disabled>🚧 En desarrollo</button>
-        <a class="action-btn hero-link" [routerLink]="[]" fragment="galeria">✨ Ver galería</a>
-        <a class="action-btn ghost-link" [routerLink]="[]" fragment="estado">🗺️ Estado del desarrollo</a>
+        <button class="action-btn development-btn" disabled>{{ i18n.t('sendero.devButton') }}</button>
+        <a class="action-btn hero-link" [routerLink]="[]" fragment="galeria">{{ i18n.t('sendero.galleryBtn') }}</a>
+        <a class="action-btn ghost-link" [routerLink]="[]" fragment="estado">{{ i18n.t('sendero.statusBtn') }}</a>
       </div>
       <div class="hero-meta">
-        <span>Alfa prevista: enero 2026</span>
-        <span>Plataforma objetivo: Steam</span>
+        <span>{{ i18n.t('sendero.alphaEta') }}</span>
+        <span>{{ i18n.t('sendero.platformTarget') }}</span>
       </div>
     </div>
     <div class="hero-media">
@@ -35,36 +34,34 @@
   </header>
 
   <nav class="game-subnav">
-    <a [routerLink]="[]" fragment="sinopsis">Sinopsis</a>
-    <a [routerLink]="[]" fragment="caracteristicas">Características</a>
-    <a [routerLink]="[]" fragment="galeria">Galería</a>
-    <a [routerLink]="[]" fragment="estado">Estado</a>
-    <a [routerLink]="[]" fragment="contacto">Contacto</a>
+    <a [routerLink]="[]" fragment="sinopsis">{{ i18n.t('sendero.navSynopsis') }}</a>
+    <a [routerLink]="[]" fragment="caracteristicas">{{ i18n.t('sendero.navFeatures') }}</a>
+    <a [routerLink]="[]" fragment="galeria">{{ i18n.t('sendero.navGallery') }}</a>
+    <a [routerLink]="[]" fragment="estado">{{ i18n.t('sendero.navStatus') }}</a>
+    <a [routerLink]="[]" fragment="contacto">{{ i18n.t('sendero.navContact') }}</a>
   </nav>
 
   <section class="game-section" id="sinopsis">
     <div class="section-content">
-      <h2>Sinopsis</h2>
+      <h2>{{ i18n.t('sendero.synopsisTitle') }}</h2>
       <p>
-        El Sendero de las Estrellas es una aventura de fantasía donde un héroe elegido y un antagonista dispuesto
-        a cruzar portales mágicos luchan por salvar a su hermano, mientras el mundo enfrenta el legado del Quebranto
-        del Alba.
+        {{ i18n.t('sendero.synopsisText') }}
       </p>
       <div class="section-highlight">
-        <span>Explora ciudades astrales, ruinas ancestrales y rutas estelares cambiantes.</span>
+        <span>{{ i18n.t('sendero.synopsisHighlight') }}</span>
       </div>
       <div class="section-cards">
         <article class="info-card">
-          <h3>Protagonista</h3>
-          <p>Will, aprendiz de astrónomo, encuentra el mapa del Sendero y descubre su vínculo con la magia estelar.</p>
+          <h3>{{ i18n.t('sendero.protagonistTitle') }}</h3>
+          <p>{{ i18n.t('sendero.protagonistText') }}</p>
         </article>
         <article class="info-card">
-          <h3>Antagonista</h3>
-          <p>Kael intenta abrir portales prohibidos para salvar a su hermano, alterando el equilibrio de los reinos.</p>
+          <h3>{{ i18n.t('sendero.antagonistTitle') }}</h3>
+          <p>{{ i18n.t('sendero.antagonistText') }}</p>
         </article>
         <article class="info-card">
-          <h3>Viaje</h3>
-          <p>Travesía por ciudades flotantes, desiertos de cristal y bosques que guardan secretos celestes.</p>
+          <h3>{{ i18n.t('sendero.journeyTitle') }}</h3>
+          <p>{{ i18n.t('sendero.journeyText') }}</p>
         </article>
       </div>
     </div>
@@ -72,23 +69,23 @@
 
   <section class="game-section" id="caracteristicas">
     <div class="section-content">
-      <h2>Características principales</h2>
+      <h2>{{ i18n.t('sendero.featuresTitle') }}</h2>
       <div class="feature-grid">
         <div class="feature-card">
-          <h3>Historia ramificada</h3>
-          <p>Decisiones que desbloquean rutas y personajes alternativos con finales distintos.</p>
+          <h3>{{ i18n.t('sendero.feature1Title') }}</h3>
+          <p>{{ i18n.t('sendero.feature1Text') }}</p>
         </div>
         <div class="feature-card">
-          <h3>Combate táctico</h3>
-          <p>Sistema de combate en tiempo real con habilidades elementales y sinergias de equipo.</p>
+          <h3>{{ i18n.t('sendero.feature2Title') }}</h3>
+          <p>{{ i18n.t('sendero.feature2Text') }}</p>
         </div>
         <div class="feature-card">
-          <h3>Mundo artesanal</h3>
-          <p>Entornos pintados a mano inspirados en cuentos clásicos y arte celeste.</p>
+          <h3>{{ i18n.t('sendero.feature3Title') }}</h3>
+          <p>{{ i18n.t('sendero.feature3Text') }}</p>
         </div>
         <div class="feature-card">
-          <h3>Banda sonora épica</h3>
-          <p>Temas orquestales que acompañan cada momento clave del viaje.</p>
+          <h3>{{ i18n.t('sendero.feature4Title') }}</h3>
+          <p>{{ i18n.t('sendero.feature4Text') }}</p>
         </div>
       </div>
     </div>
@@ -96,18 +93,18 @@
 
   <section class="game-section" id="galeria">
     <div class="section-content">
-      <h2>Galería estelar</h2>
+      <h2>{{ i18n.t('sendero.galleryTitle') }}</h2>
       <p class="section-lead">
-        Portadas oficiales y personajes clave sobre un cielo lleno de estrellas brillando.
+        {{ i18n.t('sendero.galleryLead') }}
       </p>
       <div class="gallery-grid">
         <div class="gallery-card">
           <img src="assets/img/sendero/sendero_portada.png" alt="Portada del juego" class="gallery-cover" loading="lazy">
-          <span>Portada</span>
+          <span>{{ i18n.t('sendero.coverLabel') }}</span>
         </div>
         <div class="gallery-card">
           <img src="assets/img/sendero/sendero_wallpaper.png" alt="Portada horizontal del juego" loading="lazy">
-          <span>Portada horizontal</span>
+          <span>{{ i18n.t('sendero.coverHorizontalLabel') }}</span>
         </div>
       </div>
       <div class="starfield">
@@ -121,43 +118,42 @@
 
   <section class="game-section" id="estado">
     <div class="section-content">
-      <h2>Estado del desarrollo</h2>
+      <h2>{{ i18n.t('sendero.statusTitle') }}</h2>
       <div class="status-card">
         <div>
-          <h3>En producción activa</h3>
+          <h3>{{ i18n.t('sendero.statusProductionTitle') }}</h3>
           <p>
-            El equipo está cerrando sistemas clave y preparando una primera alfa jugable. Próximamente se abrirán
-            listas para testers.
+            {{ i18n.t('sendero.statusProductionText') }}
           </p>
           <div class="status-track">
             <div>
-              <span>Capítulos jugables</span>
+              <span>{{ i18n.t('sendero.chaptersLabel') }}</span>
               <strong>3/7</strong>
             </div>
             <div>
-              <span>Combate táctico</span>
+              <span>{{ i18n.t('sendero.tacticalCombatLabel') }}</span>
               <strong>75%</strong>
             </div>
             <div>
-              <span>Arte y animación</span>
+              <span>{{ i18n.t('sendero.artAnimationLabel') }}</span>
               <strong>62%</strong>
             </div>
           </div>
         </div>
-        <div class="status-tag">Alfa · Enero 2026</div>
+        <div class="status-tag">{{ i18n.t('sendero.statusTag') }}</div>
       </div>
     </div>
   </section>
 
   <section class="game-section" id="contacto">
     <div class="section-content">
-      <h2>Contacto y prensa</h2>
+      <h2>{{ i18n.t('sendero.contactTitle') }}</h2>
       <p>
-        ¿Quieres colaborar, cubrir el juego o recibir novedades? Escríbeme desde el formulario principal.
+        {{ i18n.t('sendero.contactText') }}
       </p>
       <div class="contact-actions">
-        <a class="action-btn hero-link" routerLink="/contact">Abrir contacto</a>
-        <a class="action-btn ghost-link" routerLink="/portfolio">Volver al portfolio</a>
+        <a class="action-btn hero-link" routerLink="/contact">{{ i18n.t('sendero.openContact') }}</a>
+        <a class="action-btn ghost-link" routerLink="/portfolio">{{ i18n.t('sendero.backToPortfolioBtn') }}</a>
       </div>
     </div>
   </section>

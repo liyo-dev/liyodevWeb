@@ -1,26 +1,26 @@
 <section class="about-section">
   <header class="page-header">
-    <span class="page-eyebrow">Sobre mí</span>
-    <h2>Quién soy</h2>
+    <span class="page-eyebrow">{{ i18n.t('about.eyebrow') }}</span>
+    <h2>{{ i18n.t('about.title') }}</h2>
   </header>
 
   <div class="about-content">
     <div class="profile-summary">
       <p class="intro-text">
-        Soy Raúl "Liyo" Báez. Mi apodo desde pequeño, 'Liyo', se unió a mi pasión por la tecnología para crear <strong>liyodev</strong>.
+        {{ i18n.t('about.introTextBefore') }} <strong>liyodev</strong>.
       </p>
       <p class="description">
-        Como desarrollador Full-Stack y creador de videojuegos, mi filosofía de trabajo se define por una profunda atención al detalle. Me obsesiona crear software de alto rendimiento con código limpio y escalable, poniendo siempre la experiencia de usuario en el centro de cada proyecto.
+        {{ i18n.t('about.description1') }}
       </p>
       <p class="description">
-        Estoy en un proceso de aprendizaje constante, explorando tecnologías pioneras y el potencial de la IA para integrarlas en mi trabajo, buscando siempre la forma más innovadora y eficiente de resolver problemas.
+        {{ i18n.t('about.description2') }}
       </p>
     </div>
 
     <div class="skills-section">
       <div class="skills-grid">
         <div class="skill-category frontend">
-          <h4>Frontend</h4>
+          <h4>{{ i18n.t('about.frontend') }}</h4>
           <div class="skill-tags">
             <span class="skill-tag">Angular</span>
             <span class="skill-tag">React</span>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="skill-category backend">
-          <h4>Backend</h4>
+          <h4>{{ i18n.t('about.backend') }}</h4>
           <div class="skill-tags">
             <span class="skill-tag">Java</span>
             <span class="skill-tag">Spring Boot</span>
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="skill-category devops">
-          <h4>DevOps & QA</h4>
+          <h4>{{ i18n.t('about.devops') }}</h4>
           <div class="skill-tags">
             <span class="skill-tag">Kubernetes</span>
             <span class="skill-tag">OpenShift</span>
@@ -52,12 +52,12 @@
           </div>
         </div>
         <div class="skill-category gamedev">
-          <h4>Game Dev</h4>
+          <h4>{{ i18n.t('about.gamedev') }}</h4>
           <div class="skill-tags">
             <span class="skill-tag">Unity</span>
             <span class="skill-tag">C#</span>
             <span class="skill-tag">Game Design</span>
-            <span class="skill-tag">Narrativa</span>
+            <span class="skill-tag">{{ i18n.t('about.tagNarrativa') }}</span>
           </div>
         </div>
       </div>

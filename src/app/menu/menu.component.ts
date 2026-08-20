@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, ChangeDetectorRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import gsap from 'gsap';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-menu',
@@ -14,7 +15,7 @@ export class MenuComponent implements AfterViewInit {
 
   isMobile = false;
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(private cdr: ChangeDetectorRef, public i18n: LanguageService) {
     this.isMobile = window.innerWidth < 768;
   }
 

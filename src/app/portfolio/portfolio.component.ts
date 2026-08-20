@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { SeoService } from '../services/seo.service';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -13,10 +14,9 @@ export class PortfolioComponent implements OnInit {
   // Próximos lanzamientos de Steam (destacados)
   steamGames = [
     {
+      key: 'sendero',
       title: 'El Sendero de las Estrellas',
-      description: 'El Sendero de las Estrellas es una aventura de fantasía ambientada en un mundo fragmentado por un antiguo cataclismo mágico. Encarnas a Will, un joven que descubre un poder de luz desconocido cuando un demonio ataca su pueblo. Guiado por un enigmático viajero, te adentrarás en el Sendero de las Estrellas, una red de portales llenos de pruebas creados por los dioses. A lo largo del viaje recorrerás reinos marcados por la corrupción y el abuso de la magia, tomarás decisiones que pondrán a prueba tu carácter y descubrirás que no todo es lo que parece. Lo que empieza como una misión para "salvar al mundo" se convierte en una historia sobre la amistad, la culpa y el sacrificio. Cuando llegue el momento de pedir un deseo, tendrás que decidir qué vale más: el poder o la vida de quienes amas.',
       link: 'https://senderoestrellasweb.web.app/',
-      status: 'En desarrollo',
       featured: true,
       image: 'assets/img/sendero/sendero_portada.png'
     }
@@ -25,11 +25,10 @@ export class PortfolioComponent implements OnInit {
   // Juegos en Google Play (destacados)
   googlePlayGames = [
     {
+      key: 'pompita',
       title: 'Pompita y su pajita',
-      description: 'Juego de carreras desarrollado para la MálagaJam. ¡Ahora disponible en móviles con controles táctiles optimizados!',
       link: 'https://play.google.com/store/apps/details?id=com.Liyodev.Pompita&hl=es',
       itchLink: 'https://play.google.com/store/apps/details?id=com.Liyodev.Pompita&hl=es',
-      status: 'Disponible en Google Play',
       featured: true,
       type: 'Racing',
       rating: '4.8',
@@ -37,11 +36,10 @@ export class PortfolioComponent implements OnInit {
       image: 'assets/img/pompita.jpg'
     },
     {
+      key: 'capsuleChaos',
       title: 'Capsule Chaos',
-      description: 'Prototipo de mazmorras procedurales multijugador online. Actualmente en fase de pruebas.',
       link: 'https://play.google.com/store/apps/details?id=com.Liyodev.TinyBrawl',
       itchLink: 'https://play.google.com/store/apps/details?id=com.Liyodev.TinyBrawl',
-      status: 'En fase de pruebas',
       featured: true,
       type: 'Prototype',
       rating: 'Beta',
@@ -53,23 +51,23 @@ export class PortfolioComponent implements OnInit {
   // Aplicaciones y herramientas desarrolladas
   applications = [
     {
+      key: 'lanzadorMicroservicios',
       title: 'Lanzador Microservicios',
-      description: 'Aplicación de escritorio para lanzar y gestionar microservicios de Angular y Spring Boot sin necesidad de abrir una consola o un IDE. Pensada para facilitar el trabajo diario en entornos locales y mantener todos los servicios controlados desde una sola interfaz visual.',
       link: 'https://github.com/liyo-dev/lanzador-microservicios',
       type: 'DevOps Tool',
       tech: ['Node.js', 'Angular', 'Electron']
     },
     {
+      key: 'pixelWars',
       title: 'Pixel Wars',
-      description: 'Juego multijugador en tiempo real basado en una pizarra pixel donde puedes dibujar, borrar y pintar encima de otros jugadores. Cada jugador tiene colores y un lápiz para crear arte colaborativo o competitivo mientras otros están conectados.',
       link: 'https://github.com/liyo-dev/pixel-wars',
       demoLink: 'https://dapper-dingo-58.deno.dev/',
       type: 'Multiplayer Game',
       tech: ['React', 'Deno Fresh', 'WebSockets']
     },
     {
+      key: 'chatApp',
       title: 'Chat Application',
-      description: 'Chat simple en tiempo real con una única sala donde los usuarios pueden comunicarse instantáneamente. Interfaz minimalista y funcional para conversaciones grupales.',
       link: 'https://github.com/liyo-dev/chat',
       demoLink: 'https://web-production-dce9.up.railway.app/',
       type: 'Web App',
@@ -80,64 +78,64 @@ export class PortfolioComponent implements OnInit {
   // Datos de juegos publicados con año
   publishedGames = [
     {
+      key: 'maskProtocol',
       title: 'Mask Protocol',
-      description: 'Desde un laboratorio triste y abandonado, Unit-01 desciende por capas cada vez más inestables del complejo que lo creó. Al final, solo queda una decisión: morir o eliminar a su creador.',
       link: 'https://miiirhyme.itch.io/mask-protocol',
       type: 'Action, Puzzle',
       year: '2024',
       image: 'assets/img/mask-protocol.png'
     },
     {
+      key: 'alexAdventure',
       title: 'Alex´s Adventure',
-      description: 'RPG de acción y aventuras en un mundo de fantasía.',
       link: 'https://nonamegamesmlg.itch.io/alexs-adventure-the-curse-of-eternal-night',
       type: 'Adventure',
       year: '2023',
       image: 'assets/img/alexAdventure.png'
     },
     {
+      key: 'samuelito',
       title: 'Samuelito',
-      description: 'Defiende los dientes de Samuelito de las caries atacantes en este juego de acción.',
       link: 'https://liyodev.itch.io/samuelito',
       type: 'Action',
       year: '2024',
       image: 'assets/img/samuelito.png'
     },
     {
+      key: 'runDownRun',
       title: 'Run, Down, Run',
-      description: 'Un juego de plataformas creado durante mi aprendizaje de desarrollo de videojuegos.',
       link: 'https://liyodev.itch.io/run-down-run',
       type: 'Platformer',
       year: '2023',
       image: 'assets/img/runDownRun.png'
     },
     {
+      key: 'chickentive',
       title: 'Chickentive',
-      description: 'Puzzle game desarrollado para la Universidad de Málaga.',
       link: 'https://liyodev.itch.io/chickentive',
       type: 'Puzzle',
       year: '2022',
       image: 'assets/img/chickentive.png'
     },
     {
+      key: 'sincronizados',
       title: 'Sincronizados',
-      description: 'Puzzle cooperativo multijugador creado en una Game Jam.',
       link: 'https://liyodev.itch.io/sincronizados',
       type: 'Co-op',
       year: '2022',
       image: 'assets/img/sincronizados.png'
     },
     {
+      key: 'pablitoPinito',
       title: 'Pablito plantó un Pinito',
-      description: '¡Planta tu pinito en esta aventura de acción llena de humor!',
       link: 'https://liyodev.itch.io/pablitopinito',
       type: 'Action',
       year: '2022',
       image: 'assets/img/pablito.png'
     },
     {
+      key: 'malagaRPG',
       title: 'Málaga RPG',
-      description: 'Juego de aventuras desarrollado para la Game Jam 17.',
       link: 'https://liyodev.itch.io/malaga-rpg',
       type: 'RPG',
       year: '2021',
@@ -145,15 +143,31 @@ export class PortfolioComponent implements OnInit {
     }
   ];
 
-  constructor(private seoService: SeoService) {}
+  constructor(private seoService: SeoService, public i18n: LanguageService) {
+    effect(() => {
+      this.i18n.lang();
+      this.updateSeo();
+    });
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  private updateSeo(): void {
     this.seoService.setPageSeo({
-      title: 'Portfolio',
-      description: 'Descubre los proyectos de Raúl Báez (Liyodev): videojuegos para Steam y Google Play, aplicaciones web con Angular y Unity. Innovación en cada línea de código.',
-      keywords: 'portfolio developer, proyectos Steam, juegos Google Play, aplicaciones Angular, Unity games, El Sendero de las Estrellas, videojuegos RPG',
+      title: this.i18n.t('seo.portfolio.title'),
+      description: this.i18n.t('seo.portfolio.description'),
+      keywords: this.i18n.t('seo.portfolio.keywords'),
       image: 'https://liyodev.web.app/completo_icon-512x512.png'
     });
+  }
+
+  // Traducciones de los datos de los juegos/apps (clave dinámica según idioma)
+  gameDescription(key: string): string {
+    return this.i18n.t(`portfolio.games.${key}.description`);
+  }
+
+  gameStatus(key: string): string {
+    return this.i18n.t(`portfolio.games.${key}.status`);
   }
 
   // Navegar a juego/proyecto

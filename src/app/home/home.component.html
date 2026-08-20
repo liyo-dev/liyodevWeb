@@ -2,15 +2,15 @@
   <div class="home-content">
     <div class="hero-grid">
       <div class="hero-text">
-        <span class="eyebrow">Fullstack Developer · Game Creator</span>
+        <span class="eyebrow">{{ i18n.t('home.eyebrow') }}</span>
         <h1>Raúl Báez <span class="highlight">Liyodev</span></h1>
         <p class="tagline">
-          Desarrollador Fullstack y creador de videojuegos.
+          {{ i18n.t('home.tagline') }}
         </p>
 
         <div class="hero-actions">
-          <a class="cta-primary" routerLink="/portfolio">Ver proyectos</a>
-          <a class="cta-secondary" routerLink="/contact">Contactar</a>
+          <a class="cta-primary" routerLink="/portfolio">{{ i18n.t('home.ctaProjects') }}</a>
+          <a class="cta-secondary" routerLink="/contact">{{ i18n.t('home.ctaContact') }}</a>
         </div>
 
         <div class="social-links">
@@ -30,19 +30,19 @@
           <img
             class="avatar"
             src="https://avatars.githubusercontent.com/u/77936857?s=400&u=a748a1ec6bc40e6ec277cb309ddfd85d7f4ff8cb&v=4"
-            alt="Foto de Liyodev"
+            [alt]="i18n.t('home.avatarAlt')"
           />
-          <span class="status-pill">Disponible para colaborar</span>
+          <span class="status-pill">{{ i18n.t('home.statusPill') }}</span>
         </div>
 
         <div class="hero-meta">
           <div class="meta-item">
-            <span class="meta-label">Stack</span>
+            <span class="meta-label">{{ i18n.t('home.stackLabel') }}</span>
             <span class="meta-value">Angular · Java · Spring Boot · Unity</span>
           </div>
           <div class="meta-item">
-            <span class="meta-label">Especialidad</span>
-            <span class="meta-value">Front-end sólido, APIs limpias, UX táctil</span>
+            <span class="meta-label">{{ i18n.t('home.specialtyLabel') }}</span>
+            <span class="meta-value">{{ i18n.t('home.specialtyValue') }}</span>
           </div>
         </div>
 
@@ -54,14 +54,14 @@
           <pre><code>const liyodev = &#123;
   focus: ["frontend", "backend", "game-dev"],
   mindset: "clean · fast · maintainable",
-  location: "España",
+  location: "{{ i18n.t('home.codeLocationValue') }}",
 &#125;;</code></pre>
         </div>
       </div>
     </div>
 
     <div class="privacy-link">
-      <a routerLink="/privacy-policy">Política de Privacidad</a>
+      <a routerLink="/privacy-policy">{{ i18n.t('home.privacyLink') }}</a>
     </div>
   </div>
 </section>

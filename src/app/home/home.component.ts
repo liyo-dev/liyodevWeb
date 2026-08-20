@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SeoService } from '../services/seo.service';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-home',
@@ -13,27 +14,34 @@ export class HomeComponent implements OnInit {
     {
       url: 'https://github.com/liyo-dev',
       label: 'GitHub',
-      icon: '/assets/icons/github.svg' 
+      icon: '/assets/icons/github.svg'
     },
     {
       url: 'https://www.linkedin.com/in/liyodev',
       label: 'LinkedIn',
-      icon: '/assets/icons/linkedin.svg' 
+      icon: '/assets/icons/linkedin.svg'
     },
     {
       url: 'https://liyodev.itch.io/',
       label: 'Itch.io',
-      icon: '/assets/icons/itchio.svg' 
+      icon: '/assets/icons/itchio.svg'
     }
   ];
 
-  constructor(private seoService: SeoService) {}
+  constructor(private seoService: SeoService, public i18n: LanguageService) {
+    effect(() => {
+      this.i18n.lang();
+      this.updateSeo();
+    });
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  private updateSeo(): void {
     this.seoService.setPageSeo({
-      title: 'Inicio',
-      description: 'Raúl Báez (Liyodev) - Fullstack Developer y creador de videojuegos. Portfolio con proyectos web profesionales y juegos únicos.',
-      keywords: 'Liyodev, Raúl Báez, desarrollador fullstack, Angular developer, Unity developer, portfolio, inicio',
+      title: this.i18n.t('seo.home.title'),
+      description: this.i18n.t('seo.home.description'),
+      keywords: this.i18n.t('seo.home.keywords'),
       image: 'https://liyodev.web.app/completo_icon-512x512.png'
     });
   }

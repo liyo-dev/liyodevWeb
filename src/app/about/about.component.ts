@@ -1,6 +1,7 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, effect } from '@angular/core';
 import gsap from 'gsap';
 import { SeoService } from '../services/seo.service';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-about',
@@ -11,13 +12,20 @@ import { SeoService } from '../services/seo.service';
 })
 export class AboutComponent implements OnInit, AfterViewInit {
 
-  constructor(private seoService: SeoService) { }
+  constructor(private seoService: SeoService, public i18n: LanguageService) {
+    effect(() => {
+      this.i18n.lang();
+      this.updateSeo();
+    });
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  private updateSeo(): void {
     this.seoService.setPageSeo({
-      title: 'Sobre mí',
-      description: 'Conoce a Raúl Báez (Liyodev): Mi historia como desarrollador desde el instituto hasta convertirme en fullstack developer y creador de videojuegos. Pasión, tecnología y creatividad.',
-      keywords: 'sobre mí Liyodev, historia desarrollador, fullstack developer, trayectoria programador, Angular Unity developer',
+      title: this.i18n.t('seo.about.title'),
+      description: this.i18n.t('seo.about.description'),
+      keywords: this.i18n.t('seo.about.keywords'),
       image: 'https://avatars.githubusercontent.com/u/77936857?s=400&u=a748a1ec6bc40e6ec277cb309ddfd85d7f4ff8cb&v=4'
     });
   }

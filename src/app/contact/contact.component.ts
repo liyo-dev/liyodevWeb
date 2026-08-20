@@ -1,5 +1,5 @@
 // ...existing imports...
-import { Component, ElementRef, ViewChild, AfterViewInit, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnInit, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -7,6 +7,7 @@ import gsap from 'gsap';
 import emailjs from '@emailjs/browser';
 import { emailConfig } from './email.config';
 import { SeoService } from '../services/seo.service';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-contact',
@@ -31,16 +32,23 @@ export class ContactComponent implements OnInit, AfterViewInit {
   submitError = false;
   submitMessage = '';
 
-  constructor(private seoService: SeoService) {
+  constructor(private seoService: SeoService, public i18n: LanguageService) {
     // Inicializar EmailJS
     emailjs.init(emailConfig.publicKey);
+
+    effect(() => {
+      this.i18n.lang();
+      this.updateSeo();
+    });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  private updateSeo(): void {
     this.seoService.setPageSeo({
-      title: 'Contacto',
-      description: 'Ponte en contacto con Raúl Báez (Liyodev). Colaboremos juntos en tu próximo proyecto de desarrollo web o videojuegos. Formulario directo y redes sociales.',
-      keywords: 'contacto Liyodev, colaboración desarrollador, proyectos web, desarrollo videojuegos, freelance developer',
+      title: this.i18n.t('seo.contact.title'),
+      description: this.i18n.t('seo.contact.description'),
+      keywords: this.i18n.t('seo.contact.keywords'),
       image: 'https://liyodev.web.app/completo_icon-512x512.png'
     });
   }
@@ -116,7 +124,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
       
       // Éxito
       this.submitSuccess = true;
-      this.submitMessage = '¡Mensaje enviado correctamente! Te responderé pronto.';
+      this.submitMessage = this.i18n.t('contact.successMsg');
       
       // Animación de éxito
       gsap.to('.btn-primary', {
@@ -134,7 +142,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
     } catch (error) {
       // Error
       this.submitError = true;
-      this.submitMessage = 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.';
+      this.submitMessage = this.i18n.t('contact.errorMsg');
       
       // Animación de error
       gsap.to('.btn-primary', {

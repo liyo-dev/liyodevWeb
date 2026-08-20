@@ -4,22 +4,33 @@
   [class.floating-menu--mobile]="isMobile"
 >
   <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-    <img src="/assets/icons/home.svg" alt="Home" />
-    <span class="menu-label">Inicio</span>
+    <img src="/assets/icons/home.svg" [alt]="i18n.t('menu.homeAlt')" />
+    <span class="menu-label">{{ i18n.t('menu.home') }}</span>
   </a>
   <a routerLink="/portfolio" routerLinkActive="active">
-    <img src="/assets/icons/projects.svg" alt="Portfolio" />
-    <span class="menu-label">Portfolio</span>
+    <img src="/assets/icons/projects.svg" [alt]="i18n.t('menu.portfolioAlt')" />
+    <span class="menu-label">{{ i18n.t('menu.portfolio') }}</span>
   </a>
   <a routerLink="/about" routerLinkActive="active">
-    <img src="/assets/icons/about.svg" alt="Sobre mí" />
-    <span class="menu-label">Sobre mí</span>
+    <img src="/assets/icons/about.svg" [alt]="i18n.t('menu.aboutAlt')" />
+    <span class="menu-label">{{ i18n.t('menu.about') }}</span>
   </a>
   <a routerLink="/contact" routerLinkActive="active">
-    <img src="/assets/icons/contact.svg" alt="Contacto" />
-    <span class="menu-label">Contacto</span>
+    <img src="/assets/icons/contact.svg" [alt]="i18n.t('menu.contactAlt')" />
+    <span class="menu-label">{{ i18n.t('menu.contact') }}</span>
   </a>
-  
+
+  <!-- Selector de idioma -->
+  <button
+    type="button"
+    class="lang-toggle"
+    (click)="i18n.toggle()"
+    [attr.aria-label]="i18n.t('common.switchLanguageAria')"
+  >
+    <span class="lang-flag" aria-hidden="true">{{ i18n.t('common.switchToFlag') }}</span>
+    <span class="lang-code">{{ i18n.t('common.switchToLabel') }}</span>
+  </button>
+
   <!-- Copyright discreto -->
   <div class="copyright">
     <span>© 2024</span>

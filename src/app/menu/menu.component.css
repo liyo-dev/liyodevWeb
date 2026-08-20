@@ -94,6 +94,46 @@ a.active {
   border-color: transparent !important;
 }
 
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 34px;
+  min-width: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background-color: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: #e2e8f0;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease, border 0.3s ease;
+}
+
+.lang-toggle:hover {
+  transform: translateY(-2px);
+  background-color: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.lang-flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lang-code {
+  line-height: 1;
+}
+
+.floating-menu--mobile .lang-toggle {
+  height: auto;
+  padding: 8px 10px;
+  font-size: 0.68rem;
+}
+
 /* Copyright discreto */
 .copyright {
   margin-top: 10px;

@@ -1,8 +1,8 @@
 <section class="portfolio-section">
   <header class="portfolio-header">
-    <span class="portfolio-eyebrow">Portfolio</span>
-    <h2>Proyectos & Juegos</h2>
-    <p>Videojuegos, aplicaciones y herramientas que he desarrollado como programador e indie dev.</p>
+    <span class="portfolio-eyebrow">{{ i18n.t('portfolio.eyebrow') }}</span>
+    <h2>{{ i18n.t('portfolio.title') }}</h2>
+    <p>{{ i18n.t('portfolio.subtitle') }}</p>
   </header>
 
   <div class="portfolio-content">
@@ -11,7 +11,7 @@
     <div class="portfolio-block">
       <div class="block-header">
         <img src="assets/icons/CibSteam.svg" alt="Steam" class="block-icon">
-        <h3>Próximo lanzamiento en Steam</h3>
+        <h3>{{ i18n.t('portfolio.steamHeading') }}</h3>
       </div>
       <div class="steam-feature">
         @for (game of steamGames; track game.title) {
@@ -21,17 +21,17 @@
               <span class="steam-feature-badge">Steam</span>
             </div>
             <div class="steam-feature-content">
-              <span class="steam-feature-status">{{ game.status }}</span>
+              <span class="steam-feature-status">{{ gameStatus(game.key) }}</span>
               <h4>{{ game.title }}</h4>
-              <p>{{ game.description }}</p>
+              <p>{{ gameDescription(game.key) }}</p>
               <div class="steam-feature-actions">
                 @if (game.link !== '#') {
                   <a [href]="game.link" target="_blank" rel="noopener" class="action-btn demo-btn">
-                    <span>🌐 Web del juego</span>
+                    <span>{{ i18n.t('portfolio.webButton') }}</span>
                   </a>
                 } @else {
                   <button class="action-btn development-btn" disabled>
-                    <span>🚧 En desarrollo</span>
+                    <span>{{ i18n.t('portfolio.devButton') }}</span>
                   </button>
                 }
               </div>
@@ -47,7 +47,7 @@
         <svg class="block-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
           <path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"/>
         </svg>
-        <h3>Aplicaciones & Herramientas</h3>
+        <h3>{{ i18n.t('portfolio.appsHeading') }}</h3>
       </div>
       @if (applications.length > 0) {
         <div class="content-grid">
@@ -56,7 +56,7 @@
               <div class="card-body">
                 <span class="app-type-tag">{{ app.type }}</span>
                 <h4>{{ app.title }}</h4>
-                <p>{{ app.description }}</p>
+                <p>{{ gameDescription(app.key) }}</p>
                 <div class="tech-stack">
                   @for (tech of app.tech; track tech) {
                     <span class="tech-badge">{{ tech }}</span>
@@ -64,11 +64,11 @@
                 </div>
                 <div class="card-actions">
                   <button class="action-btn github-btn" (click)="navigateToApp(app.link)">
-                    <span>📂 GitHub</span>
+                    <span>{{ i18n.t('portfolio.githubBtn') }}</span>
                   </button>
                   @if (app.demoLink) {
                     <button class="action-btn demo-btn" (click)="navigateToDemo(app.demoLink)">
-                      <span>🚀 Probar</span>
+                      <span>{{ i18n.t('portfolio.tryBtn') }}</span>
                     </button>
                   }
                 </div>
@@ -79,7 +79,7 @@
       } @else {
         <div class="empty-state">
           <div class="empty-icon">💻</div>
-          <p>Próximamente nuevas aplicaciones...</p>
+          <p>{{ i18n.t('portfolio.appsEmpty') }}</p>
         </div>
       }
     </div>
@@ -88,7 +88,7 @@
     <div class="portfolio-block">
       <div class="block-header">
         <img src="assets/icons/itchio.svg" alt="itch.io" class="block-icon">
-        <h3>Juegos Publicados</h3>
+        <h3>{{ i18n.t('portfolio.gamesHeading') }}</h3>
       </div>
       @if (publishedGames.length > 0) {
         <div class="content-grid">
@@ -107,9 +107,9 @@
                   <span class="game-year">{{ game.year }}</span>
                 </div>
                 <h4>{{ game.title }}</h4>
-                <p>{{ game.description }}</p>
+                <p>{{ gameDescription(game.key) }}</p>
                 <button class="action-btn play-btn" (click)="navigateToGame(game.link)">
-                  <span>▶ Jugar en itch.io</span>
+                  <span>{{ i18n.t('portfolio.playBtn') }}</span>
                 </button>
               </div>
             </div>
@@ -118,7 +118,7 @@
       } @else {
         <div class="empty-state">
           <div class="empty-icon">🎮</div>
-          <p>No hay juegos disponibles en este momento</p>
+          <p>{{ i18n.t('portfolio.gamesEmpty') }}</p>
         </div>
       }
     </div>
