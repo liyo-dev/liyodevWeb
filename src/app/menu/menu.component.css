@@ -120,12 +120,20 @@ a.active {
 }
 
 .lang-flag {
-  font-size: 1rem;
-  line-height: 1;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 
 .lang-code {
   line-height: 1;
+}
+
+.floating-menu--mobile .lang-flag {
+  width: 15px;
+  height: 15px;
 }
 
 .floating-menu--mobile .lang-toggle {

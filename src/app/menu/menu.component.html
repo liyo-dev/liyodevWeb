@@ -27,7 +27,7 @@
     (click)="i18n.toggle()"
     [attr.aria-label]="i18n.t('common.switchLanguageAria')"
   >
-    <span class="lang-flag" aria-hidden="true">{{ i18n.t('common.switchToFlag') }}</span>
+    <img class="lang-flag" [src]="i18n.t('common.switchToFlagIcon')" [alt]="i18n.t('common.switchToFlagAlt')" />
     <span class="lang-code">{{ i18n.t('common.switchToLabel') }}</span>
   </button>
 

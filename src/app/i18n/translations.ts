@@ -7,6 +7,8 @@ export const TRANSLATIONS: Record<Lang, any> = {
     common: {
       switchToLabel: 'EN',
       switchToFlag: '🇬🇧',
+      switchToFlagIcon: '/assets/icons/flag-gb.svg',
+      switchToFlagAlt: 'English',
       switchLanguageAria: 'Cambiar idioma a inglés',
     },
     menu: {
@@ -268,6 +270,8 @@ export const TRANSLATIONS: Record<Lang, any> = {
     common: {
       switchToLabel: 'ES',
       switchToFlag: '🇪🇸',
+      switchToFlagIcon: '/assets/icons/flag-es.svg',
+      switchToFlagAlt: 'Español',
       switchLanguageAria: 'Switch language to Spanish',
     },
     menu: {
