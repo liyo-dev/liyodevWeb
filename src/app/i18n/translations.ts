@@ -76,7 +76,7 @@ export const TRANSLATIONS: Record<Lang, any> = {
       eyebrow: 'Portfolio',
       title: 'Proyectos & Juegos',
       subtitle: 'Videojuegos, aplicaciones y herramientas que he desarrollado como programador e indie dev.',
-      steamHeading: 'Próximo lanzamiento en Steam',
+      steamHeading: 'Próximo lanzamiento en itch.io',
       webButton: '🌐 Web del juego',
       devButton: '🚧 En desarrollo',
       appsHeading: 'Aplicaciones & Herramientas',
@@ -88,7 +88,7 @@ export const TRANSLATIONS: Record<Lang, any> = {
       playBtn: '▶ Jugar en itch.io',
       games: {
         sendero: {
-          description: 'El Sendero de las Estrellas es una aventura de fantasía ambientada en un mundo fragmentado por un antiguo cataclismo mágico. Encarnas a Will, un joven que descubre un poder de luz desconocido cuando un demonio ataca su pueblo. Guiado por un enigmático viajero, te adentrarás en el Sendero de las Estrellas, una red de portales llenos de pruebas creados por los dioses. A lo largo del viaje recorrerás reinos marcados por la corrupción y el abuso de la magia, tomarás decisiones que pondrán a prueba tu carácter y descubrirás que no todo es lo que parece. Lo que empieza como una misión para "salvar al mundo" se convierte en una historia sobre la amistad, la culpa y el sacrificio. Cuando llegue el momento de pedir un deseo, tendrás que decidir qué vale más: el poder o la vida de quienes amas.',
+          description: 'El Sendero de las Estrellas es un juego de rol y aventura. Will vive en un pueblo tranquilo hasta que un ataque en el bosque despierta su magia. Junto a Estela y Liam emprende un viaje hacia el Sendero de las Estrellas, un camino mágico que pone a prueba a cada viajero y concede un único deseo. Mundo abierto, combate mágico en tiempo real, puzles y voces en español.',
           status: 'En desarrollo',
         },
         pompita: {
@@ -262,13 +262,13 @@ export const TRANSLATIONS: Record<Lang, any> = {
       },
       portfolio: {
         title: 'Portfolio',
-        description: 'Descubre los proyectos de Raúl Báez (Liyodev): videojuegos para Steam y Google Play, aplicaciones web con Angular y Unity. Innovación en cada línea de código.',
-        keywords: 'portfolio developer, proyectos Steam, juegos Google Play, aplicaciones Angular, Unity games, El Sendero de las Estrellas, videojuegos RPG',
+        description: 'Descubre los proyectos de Raúl Báez (Liyodev): videojuegos para itch.io y Google Play, aplicaciones web con Angular y Unity. Innovación en cada línea de código.',
+        keywords: 'portfolio developer, juegos itch.io, juegos Google Play, aplicaciones Angular, Unity games, El Sendero de las Estrellas, videojuegos RPG',
       },
       sendero: {
         title: 'El Sendero de las Estrellas',
-        description: 'Página oficial del juego El Sendero de las Estrellas. Aventura fantástica con lanzamiento previsto en Steam.',
-        keywords: 'El Sendero de las Estrellas, Steam, RPG, aventura narrativa, videojuego',
+        description: 'Página oficial del juego El Sendero de las Estrellas. Juego de rol y aventura con mundo abierto; demo disponible en itch.io.',
+        keywords: 'El Sendero de las Estrellas, itch.io, RPG, juego de rol, aventura, videojuego indie',
       },
     },
   },
@@ -343,7 +343,7 @@ export const TRANSLATIONS: Record<Lang, any> = {
       eyebrow: 'Portfolio',
       title: 'Projects & Games',
       subtitle: "Video games, apps, and tools I've built as a developer and indie dev.",
-      steamHeading: 'Upcoming Steam release',
+      steamHeading: 'Coming soon to itch.io',
       webButton: '🌐 Game website',
       devButton: '🚧 In development',
       appsHeading: 'Apps & Tools',
@@ -355,7 +355,7 @@ export const TRANSLATIONS: Record<Lang, any> = {
       playBtn: '▶ Play on itch.io',
       games: {
         sendero: {
-          description: 'El Sendero de las Estrellas (The Path of the Stars) is a fantasy adventure set in a world fractured by an ancient magical cataclysm. You play as Will, a young man who discovers an unknown power of light when a demon attacks his village. Guided by an enigmatic traveler, you\'ll venture into the Path of the Stars, a network of portals full of trials created by the gods. Along the way you\'ll journey through realms scarred by corruption and the abuse of magic, make choices that test your character, and discover that not everything is what it seems. What starts as a mission to "save the world" becomes a story about friendship, guilt, and sacrifice. When the time comes to make a wish, you\'ll have to decide what matters more: power, or the lives of those you love.',
+          description: 'El Sendero de las Estrellas (The Path of the Stars) is a role-playing adventure. Will lives in a quiet village until an attack in the forest awakens his magic. Together with Estela and Liam he sets out for the Path of the Stars, a magical road that tests every traveller and grants a single wish. Open world, real-time magic combat, puzzles and Spanish voice acting.',
           status: 'In development',
         },
         pompita: {
@@ -529,13 +529,13 @@ export const TRANSLATIONS: Record<Lang, any> = {
       },
       portfolio: {
         title: 'Portfolio',
-        description: 'Discover the projects of Raúl Báez (Liyodev): video games for Steam and Google Play, web applications with Angular and Unity. Innovation in every line of code.',
-        keywords: 'developer portfolio, Steam projects, Google Play games, Angular applications, Unity games, El Sendero de las Estrellas, RPG video games',
+        description: 'Discover the projects of Raúl Báez (Liyodev): video games for itch.io and Google Play, web applications with Angular and Unity. Innovation in every line of code.',
+        keywords: 'developer portfolio, itch.io games, Google Play games, Angular applications, Unity games, El Sendero de las Estrellas, RPG video games',
       },
       sendero: {
         title: 'El Sendero de las Estrellas',
-        description: 'Official page for the game El Sendero de las Estrellas (The Path of the Stars). A fantasy adventure set to launch on Steam.',
-        keywords: 'El Sendero de las Estrellas, Steam, RPG, narrative adventure, video game',
+        description: 'Official page for the game El Sendero de las Estrellas (The Path of the Stars). A role-playing adventure with an open world; demo available on itch.io.',
+        keywords: 'El Sendero de las Estrellas, itch.io, RPG, role-playing game, adventure, indie video game',
       },
     },
   },
