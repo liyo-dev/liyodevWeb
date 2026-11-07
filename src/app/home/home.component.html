@@ -21,6 +21,20 @@
   <svg class="ground" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 240 0, 480 70, 720 34 S 1200 10, 1440 40 V70 H0Z"/></svg>
 </div>
 
+<!-- Concurso del minijuego (solo mientras está activo) -->
+@if (concursoActivo) {
+  <section class="concurso">
+    <div class="wrap">
+      <a class="concurso-card" routerLink="/cruza-el-portal">
+        <span class="pill">{{ i18n.t('web.juego.pillAbierto') }}</span>
+        <strong>{{ i18n.t('web.juego.titulo') }}</strong>
+        <span>{{ i18n.t('web.juego.intro') }}</span>
+        <span class="btn btn-main">{{ i18n.t('web.juego.jugar') }} →</span>
+      </a>
+    </div>
+  </section>
+}
+
 <!-- Lo que estoy haciendo ahora -->
 <section class="block" id="ahora">
   <div class="wrap">

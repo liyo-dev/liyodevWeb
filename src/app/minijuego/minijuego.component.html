@@ -1,0 +1,97 @@
+<div class="sky">
+  <div class="wrap head">
+    <span class="pill">{{ abierto() ? i18n.t('web.juego.pillAbierto') : i18n.t('web.juego.pillCerrado') }}</span>
+    <h1>{{ i18n.t('web.juego.titulo') }}</h1>
+    <p class="lead">{{ i18n.t('web.juego.intro') }}</p>
+    @if (abierto()) {
+      <p class="cuenta">{{ i18n.t('web.juego.quedan') }} <b>{{ cuentaAtras() }}</b> · {{ i18n.t('web.juego.hasta') }} {{ fechaFin() }}</p>
+    } @else {
+      <p class="cuenta">{{ i18n.t('web.juego.terminado') }}</p>
+    }
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap layout">
+    <div class="juego">
+      <div class="pantalla">
+        <canvas #lienzo id="unity-canvas" tabindex="-1"></canvas>
+        @if (!jugando()) {
+          <div class="tapa">
+            @if (cargando()) {
+              <p>{{ i18n.t('web.juego.cargando') }} {{ progreso() }}%</p>
+              <div class="barra"><i [style.width.%]="progreso()"></i></div>
+            } @else if (errorDeCarga()) {
+              <p>{{ i18n.t('web.juego.errorCarga') }}</p>
+              <button class="btn btn-main" type="button" (click)="jugar()">{{ i18n.t('web.juego.reintentar') }}</button>
+            } @else {
+              <p>{{ i18n.t('web.juego.como') }}</p>
+              <button class="btn btn-main" type="button" (click)="jugar()">{{ i18n.t('web.juego.jugar') }}</button>
+              <small>{{ i18n.t('web.juego.peso') }}</small>
+            }
+          </div>
+        }
+      </div>
+
+      @if (ultima(); as p) {
+        <form class="guardar" (ngSubmit)="guardar()" novalidate>
+          <h2>{{ i18n.t('web.juego.hasHecho') }} {{ p.puntos }} {{ i18n.t('web.juego.puntos') }}</h2>
+          <label for="m-apodo">{{ i18n.t('web.juego.apodo') }}
+            <input id="m-apodo" name="apodo" [(ngModel)]="apodo" maxlength="20" required>
+          </label>
+          <label for="m-email">{{ i18n.t('web.juego.email') }}
+            <input id="m-email" name="email" type="email" [(ngModel)]="email" autocomplete="email">
+          </label>
+          <label class="check" for="m-bases">
+            <input id="m-bases" name="bases" type="checkbox" [(ngModel)]="aceptaBases">
+            <span>{{ i18n.t('web.juego.aceptoA') }} <a href="#bases">{{ i18n.t('web.juego.bases') }}</a></span>
+          </label>
+          <button class="btn btn-main" type="submit" [disabled]="envio === 'enviando'">{{ i18n.t('web.juego.guardar') }}</button>
+        </form>
+      }
+      <p class="estado" aria-live="polite">
+        @switch (envio) {
+          @case ('enviado') { {{ i18n.t('web.juego.guardado') }} }
+          @case ('error') { {{ i18n.t('web.juego.errorGuardar') }} }
+          @case ('cerrado') { {{ i18n.t('web.juego.cerrado') }} }
+          @case ('invalido') { {{ i18n.t('web.juego.invalido') }} }
+        }
+      </p>
+    </div>
+
+    <aside class="ranking">
+      <h2>{{ i18n.t('web.juego.ranking') }}</h2>
+      @if (rankingError()) {
+        <p class="vacio">{{ i18n.t('web.juego.rankingError') }}</p>
+      } @else if (ranking().length === 0) {
+        <p class="vacio">{{ i18n.t('web.juego.rankingVacio') }}</p>
+      } @else {
+        <ol>
+          @for (f of ranking(); track $index) {
+            <li [class.primero]="$index === 0">
+              <span class="pos">{{ $index + 1 }}</span>
+              <span class="quien">{{ f.apodo }} <small>{{ f.personaje }}</small></span>
+              <b>{{ f.puntos }}</b>
+            </li>
+          }
+        </ol>
+      }
+    </aside>
+  </div>
+</section>
+
+<section class="block" id="bases">
+  <div class="wrap bases">
+    <h2 class="sec-title">{{ i18n.t('web.juego.basesTitulo') }}</h2>
+    <ol>
+      <li>{{ i18n.t('web.juego.b1') }}</li>
+      <li>{{ i18n.t('web.juego.b2') }} {{ fechaFin() }} {{ i18n.t('web.juego.b2b') }}</li>
+      <li>{{ i18n.t('web.juego.b3') }}</li>
+      <li>{{ i18n.t('web.juego.b4') }}</li>
+      <li>{{ i18n.t('web.juego.b5') }}</li>
+      <li>{{ i18n.t('web.juego.b6') }}</li>
+      <li>{{ i18n.t('web.juego.b7') }}</li>
+    </ol>
+    <p><a routerLink="/privacy-policy">{{ i18n.t('web.footer.privacy') }}</a></p>
+  </div>
+</section>

@@ -1,0 +1,56 @@
+rules_version = '2';
+
+// Ranking del minijuego «Cruza el portal».
+// - concursos/{concurso}: lo crea Raúl a mano en la consola con el campo `fin` (timestamp).
+//   Pasada esa hora ya no se aceptan partidas.
+// - concursos/{concurso}/partidas: públicas (apodo, puntos y la partida para poder comprobarla).
+// - concursos/{concurso}/contactos: emails para avisar al ganador. Se pueden crear, nunca leer
+//   desde la web; Raúl los ve en la consola de Firebase.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function abierto(concurso) {
+      let c = get(/databases/$(database)/documents/concursos/$(concurso));
+      return c != null && request.time < c.data.fin;
+    }
+
+    function partidaValida(d) {
+      return d.keys().hasOnly(['apodo', 'puntos', 'puertas', 'perfectas', 'pasos', 'semilla', 'personaje', 'version', 'toques', 'fecha'])
+        && d.apodo is string && d.apodo.size() >= 2 && d.apodo.size() <= 20
+        && d.puntos is int && d.puntos >= 0 && d.puntos <= 10000
+        && d.puertas is int && d.puertas >= 0 && d.puertas <= d.puntos
+        && d.perfectas is int && d.perfectas >= 0 && d.perfectas <= d.puertas
+        && d.pasos is int && d.pasos >= 0
+        && d.semilla is int
+        && d.personaje in ['Will', 'Estela', 'Liam']
+        && d.version is int
+        && d.toques is list && d.toques.size() <= 5000
+        && d.fecha is timestamp && d.fecha < request.time + duration.value(5, 'm');
+    }
+
+    match /concursos/{concurso} {
+      allow read: if true;
+      allow write: if false;
+
+      match /partidas/{id} {
+        allow read: if true;
+        allow create: if abierto(concurso) && partidaValida(request.resource.data);
+        allow update, delete: if false;
+      }
+
+      match /contactos/{id} {
+        allow create: if abierto(concurso)
+          && request.resource.data.keys().hasOnly(['partida', 'apodo', 'email', 'fecha'])
+          && request.resource.data.email is string && request.resource.data.email.size() <= 200
+          && request.resource.data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+          && request.resource.data.partida is string
+          && request.resource.data.apodo is string && request.resource.data.apodo.size() <= 20;
+        allow read, update, delete: if false;
+      }
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

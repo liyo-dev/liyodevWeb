@@ -5,6 +5,7 @@ import { LanguageService } from '../services/language.service';
 import { ContactComponent } from '../contact/contact.component';
 import { LiyoHeroComponent } from './liyo-hero/liyo-hero.component';
 import { HABILIDADES, HERRAMIENTAS, JUEGOS, WEB_DEL_SENDERO } from '../data/proyectos';
+import { MINIJUEGO } from '../minijuego/minijuego.config';
 
 /** La web entera en una página: portada, Sendero, juegos, otras cosas, sobre mí y contacto. */
 @Component({
@@ -19,6 +20,7 @@ export class HomeComponent {
   readonly herramientas = HERRAMIENTAS;
   readonly habilidades = HABILIDADES;
   readonly webDelSendero = WEB_DEL_SENDERO;
+  readonly concursoActivo = MINIJUEGO.activo;
 
   constructor(private seoService: SeoService, public i18n: LanguageService) {
     effect(() => {
