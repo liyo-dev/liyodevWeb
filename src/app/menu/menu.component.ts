@@ -1,43 +1,28 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, ChangeDetectorRef } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import gsap from 'gsap';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { LanguageService } from '../services/language.service';
 
+const CLAVE_TEMA = 'liyodev-theme';
+
+/** Menú superior: logo, secciones, idioma y tema claro/oscuro. */
 @Component({
   selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css'],
   standalone: true,
-  imports: [RouterModule]
+  imports: [RouterLink],
+  templateUrl: './menu.component.html',
+  styleUrl: './menu.component.css',
 })
-export class MenuComponent implements AfterViewInit {
-  @ViewChild('menu', { static: true }) menu!: ElementRef;
+export class MenuComponent {
+  constructor(public i18n: LanguageService) {}
 
-  isMobile = false;
-
-  constructor(private cdr: ChangeDetectorRef, public i18n: LanguageService) {
-    this.isMobile = window.innerWidth < 768;
+  /** Alterna claro/oscuro partiendo de lo que se ve ahora (elección guardada o la del sistema). */
+  cambiarTema(): void {
+    const raiz = document.documentElement;
+    const oscuro = raiz.dataset['theme']
+      ? raiz.dataset['theme'] === 'dark'
+      : matchMedia('(prefers-color-scheme: dark)').matches;
+    const nuevo = oscuro ? 'light' : 'dark';
+    raiz.dataset['theme'] = nuevo;
+    try { localStorage.setItem(CLAVE_TEMA, nuevo); } catch { /* sin almacenamiento */ }
   }
-
-  ngAfterViewInit(): void {
-    this.animateMenuItems();
-  }
-
-  @HostListener('window:resize')
-  onResize() {
-    const wasMobile = this.isMobile;
-    this.isMobile = window.innerWidth < 768;
-    if (wasMobile !== this.isMobile) {
-      this.cdr.detectChanges();
-    }
-  }
-
-  private animateMenuItems() {
-    gsap.fromTo(
-      this.menu.nativeElement.querySelectorAll('a'),
-      { x: -60, opacity: 0 },
-      { x: 0, opacity: 1, stagger: .2, duration: 1, ease: 'power3.out' }
-    );
-  }
-
 }

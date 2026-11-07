@@ -1,67 +1,110 @@
-<section class="home-section">
-  <div class="home-content">
-    <div class="hero-grid">
+<!-- Portada: cielo con Liyo en su nube -->
+<div class="sky">
+  <div class="hero" id="top">
+    <div class="wrap hero-grid">
       <div class="hero-text">
-        <span class="eyebrow">{{ i18n.t('home.eyebrow') }}</span>
-        <h1>Raúl Báez <span class="highlight">Liyodev</span></h1>
-        <p class="tagline">
-          {{ i18n.t('home.tagline') }}
+        <h1>{{ i18n.t('web.hero.hello') }} <span class="grad">Raúl</span></h1>
+        <p class="nick">{{ i18n.t('web.hero.nickBefore') }} <b>Liyo</b></p>
+        <p class="intro">
+          {{ i18n.t('web.hero.introA') }} <strong>{{ i18n.t('web.hero.introRole') }}</strong>
+          {{ i18n.t('web.hero.introB') }} <strong>{{ i18n.t('web.hero.introGames') }}</strong>
+          {{ i18n.t('web.hero.introC') }}
         </p>
-
-        <div class="hero-actions">
-          <a class="cta-primary" routerLink="/portfolio">{{ i18n.t('home.ctaProjects') }}</a>
-          <a class="cta-secondary" routerLink="/contact">{{ i18n.t('home.ctaContact') }}</a>
-        </div>
-
-        <div class="social-links">
-          @for (link of socialLinks; track link.url) {
-            @if (link.icon) {
-              <a [href]="link.url" target="_blank" class="social-link">
-                <img [src]="link.icon" [alt]="link.label" />
-                <span>{{ link.label }}</span>
-              </a>
-            }
-          }
+        <div class="btns">
+          <a class="btn btn-main" routerLink="/" fragment="juegos">{{ i18n.t('web.hero.ctaGames') }}</a>
+          <a class="btn btn-soft" routerLink="/" fragment="contacto">{{ i18n.t('web.hero.ctaContact') }}</a>
         </div>
       </div>
-
-      <div class="hero-card">
-        <div class="avatar-wrap">
-          <img
-            class="avatar"
-            src="https://avatars.githubusercontent.com/u/77936857?s=400&u=a748a1ec6bc40e6ec277cb309ddfd85d7f4ff8cb&v=4"
-            [alt]="i18n.t('home.avatarAlt')"
-          />
-          <span class="status-pill">{{ i18n.t('home.statusPill') }}</span>
-        </div>
-
-        <div class="hero-meta">
-          <div class="meta-item">
-            <span class="meta-label">{{ i18n.t('home.stackLabel') }}</span>
-            <span class="meta-value">Angular · Java · Spring Boot · Unity</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">{{ i18n.t('home.specialtyLabel') }}</span>
-            <span class="meta-value">{{ i18n.t('home.specialtyValue') }}</span>
-          </div>
-        </div>
-
-        <div class="code-card">
-          <div class="code-header">
-            <span>profile.ts</span>
-            <span class="code-status">ready</span>
-          </div>
-          <pre><code>const liyodev = &#123;
-  focus: ["frontend", "backend", "game-dev"],
-  mindset: "clean · fast · maintainable",
-  location: "{{ i18n.t('home.codeLocationValue') }}",
-&#125;;</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <div class="privacy-link">
-      <a routerLink="/privacy-policy">{{ i18n.t('home.privacyLink') }}</a>
+      <app-liyo-hero class="hero-art" />
     </div>
   </div>
+  <svg class="ground" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 240 0, 480 70, 720 34 S 1200 10, 1440 40 V70 H0Z"/></svg>
+</div>
+
+<!-- Lo que estoy haciendo ahora -->
+<section class="block" id="ahora">
+  <div class="wrap">
+    <h2 class="sec-title">{{ i18n.t('web.now.title') }}</h2>
+    <p class="sec-sub">{{ i18n.t('web.now.sub') }}</p>
+    <div class="now">
+      <img src="assets/img/sendero/sendero_wallpaper.webp" [alt]="i18n.t('web.now.imgAlt')" width="1248" height="832" loading="lazy">
+      <div class="now-body">
+        <span class="pill">{{ i18n.t('web.now.status') }}</span>
+        <h3>{{ i18n.t('web.now.name') }}</h3>
+        <p>{{ i18n.t('web.now.text') }}</p>
+        <p class="where">{{ i18n.t('web.now.whereA') }} <b>itch.io</b> · {{ i18n.t('web.now.whereB') }}</p>
+        <div class="btns"><a class="btn btn-main" [href]="webDelSendero" target="_blank" rel="noopener">{{ i18n.t('web.now.cta') }}</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mis juegos -->
+<section class="block" id="juegos">
+  <div class="wrap">
+    <h2 class="sec-title">{{ i18n.t('web.games.title') }}</h2>
+    <p class="sec-sub">{{ i18n.t('web.games.sub') }}</p>
+    <div class="games">
+      @for (juego of juegos; track juego.clave) {
+        <a class="game" [href]="juego.enlace" target="_blank" rel="noopener">
+          <img [src]="juego.imagen" [alt]="juego.titulo" loading="lazy">
+          <div class="body">
+            <h3>{{ juego.titulo }}</h3>
+            <div class="meta">
+              @if (juego.anio) { <span>{{ juego.anio }}</span>· }
+              <span>{{ i18n.t('web.games.genres.' + juego.clave) }}</span>
+              <span class="tag">{{ juego.plataforma }}</span>
+              @if (juego.jam) { <span class="tag jam">{{ i18n.t('web.games.jam') }}</span> }
+            </div>
+            <p>{{ i18n.t('portfolio.games.' + juego.clave + '.description') }}</p>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Otras cosas -->
+<section class="block" id="otras">
+  <div class="wrap">
+    <h2 class="sec-title">{{ i18n.t('web.things.title') }}</h2>
+    <p class="sec-sub">{{ i18n.t('web.things.sub') }}</p>
+    <div class="things">
+      @for (h of herramientas; track h.clave) {
+        <a class="thing" [href]="h.enlace" target="_blank" rel="noopener">
+          <h3>{{ h.titulo }}</h3>
+          <p>{{ i18n.t('portfolio.games.' + h.clave + '.description') }}</p>
+          <span class="stack">{{ h.tecnologias.join(' · ') }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Sobre mí -->
+<section class="block" id="sobre-mi">
+  <div class="wrap about">
+    <svg class="about-face" viewBox="136 36 148 160" aria-hidden="true" stroke-linejoin="round" stroke-linecap="round">
+        <circle cx="156" cy="138" r="12" fill="var(--skin)"/><circle cx="264" cy="138" r="12" fill="var(--skin)"/>
+        <path d="M156 130 Q156 78 210 76 Q264 78 264 130 Q264 184 210 186 Q156 184 156 130Z" fill="var(--skin)"/>
+        <path d="M180 78 Q174 56 192 50 Q192 62 202 66 Q204 44 226 42 Q218 58 224 68 Q238 54 254 58 Q242 68 244 82Z" fill="var(--hair)"/><path d="M150 140 Q138 70 210 64 Q282 70 270 140 Q266 114 250 104 Q242 120 224 108 Q212 124 192 110 Q176 122 166 108 Q156 120 150 140Z" fill="var(--hair)"/>
+        <path d="M181 122 q11 -7 22 -1 M217 121 q11 -6 22 1" stroke="var(--hair)" stroke-width="4.5" fill="none"/>
+        <path d="M184 143 q8 -10 16 0 M220 143 q8 -10 16 0" stroke="#1f1d3d" stroke-width="4" fill="none"/>
+        <circle cx="178" cy="158" r="8" fill="#ff8a8a" opacity=".35"/><circle cx="242" cy="158" r="8" fill="#ff8a8a" opacity=".35"/>
+        <path d="M196 159 Q210 180 224 159Z" fill="#7a2b3a"/>
+      </svg>
+    <div>
+      <h2 class="sec-title">{{ i18n.t('web.about.title') }}</h2>
+      <p>{{ i18n.t('web.about.p1a') }} <strong>Liyodev</strong>.</p>
+      <p>{{ i18n.t('web.about.p2') }}</p>
+      <div class="skills">
+        @for (s of habilidades; track s) { <span>{{ s }}</span> }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="block" id="contacto">
+  <app-contact />
 </section>

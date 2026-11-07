@@ -1,9 +1,12 @@
+import { WEB_EN, WEB_ES } from './web';
+
 export type Lang = 'es' | 'en';
 
 // Diccionario de traducciones de todo el sitio.
 // Estructura: TRANSLATIONS[idioma][seccion][clave]
 export const TRANSLATIONS: Record<Lang, any> = {
   es: {
+    web: WEB_ES,
     common: {
       switchToLabel: 'EN',
       switchToFlag: '🇬🇧',
@@ -267,6 +270,7 @@ export const TRANSLATIONS: Record<Lang, any> = {
     },
   },
   en: {
+    web: WEB_EN,
     common: {
       switchToLabel: 'ES',
       switchToFlag: '🇪🇸',

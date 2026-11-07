@@ -1,38 +1,15 @@
-<nav
-  #menu
-  class="floating-menu"
-  [class.floating-menu--mobile]="isMobile"
->
-  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-    <img src="/assets/icons/home.svg" [alt]="i18n.t('menu.homeAlt')" />
-    <span class="menu-label">{{ i18n.t('menu.home') }}</span>
-  </a>
-  <a routerLink="/portfolio" routerLinkActive="active">
-    <img src="/assets/icons/projects.svg" [alt]="i18n.t('menu.portfolioAlt')" />
-    <span class="menu-label">{{ i18n.t('menu.portfolio') }}</span>
-  </a>
-  <a routerLink="/about" routerLinkActive="active">
-    <img src="/assets/icons/about.svg" [alt]="i18n.t('menu.aboutAlt')" />
-    <span class="menu-label">{{ i18n.t('menu.about') }}</span>
-  </a>
-  <a routerLink="/contact" routerLinkActive="active">
-    <img src="/assets/icons/contact.svg" [alt]="i18n.t('menu.contactAlt')" />
-    <span class="menu-label">{{ i18n.t('menu.contact') }}</span>
-  </a>
-
-  <!-- Selector de idioma -->
-  <button
-    type="button"
-    class="lang-toggle"
-    (click)="i18n.toggle()"
-    [attr.aria-label]="i18n.t('common.switchLanguageAria')"
-  >
-    <img class="lang-flag" [src]="i18n.t('common.switchToFlagIcon')" [alt]="i18n.t('common.switchToFlagAlt')" />
-    <span class="lang-code">{{ i18n.t('common.switchToLabel') }}</span>
-  </button>
-
-  <!-- Copyright discreto -->
-  <div class="copyright">
-    <span>© 2024</span>
+<header class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" routerLink="/" fragment="top" [attr.aria-label]="i18n.t('web.nav.home')"><i aria-hidden="true"></i>liyodev</a>
+    <nav aria-label="Principal">
+      <a routerLink="/" fragment="juegos">{{ i18n.t('web.nav.games') }}</a>
+      <a class="hide-sm" routerLink="/" fragment="otras">{{ i18n.t('web.nav.things') }}</a>
+      <a class="hide-sm" routerLink="/" fragment="sobre-mi">{{ i18n.t('web.nav.about') }}</a>
+      <a routerLink="/" fragment="contacto">{{ i18n.t('web.nav.contact') }}</a>
+      <button type="button" class="lang" (click)="i18n.toggle()" [attr.aria-label]="i18n.t('common.switchLanguageAria')">{{ i18n.t('common.switchToLabel') }}</button>
+      <button type="button" class="theme" (click)="cambiarTema()" [attr.aria-label]="i18n.t('web.nav.theme')">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3 a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+      </button>
+    </nav>
   </div>
-</nav>
+</header>

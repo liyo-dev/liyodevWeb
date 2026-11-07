@@ -1,10 +1,32 @@
-/* 📌 Estilos globales */
+/* Estilos globales de la web de Liyo.
+   Concepto: cielo claro con Liyo sentado en una nube; colores del logo (azul a morado).
+   Modo claro por defecto, oscuro según el sistema o el botón del menú (data-theme en <html>). */
 :root {
-  color-scheme: dark;
+  --sky-top: #bfe0ff;
+  --sky-bottom: #eef6ff;
+  --bg: #fbfcff;
+  --surface: #ffffff;
+  --ink: #1f1d3d;
+  --ink-2: #55537a;
+  --ink-3: #8a88aa;
+  --blue: #1a6ff5;
+  --violet: #9b45f5;
+  --sun: #ffb938;
+  --line: #e3e6f3;
+  --cloud: #ffffff;
+  --cloud-shade: #d6e6fb;
+  --skin: #f3c7a1;
+  --skin-2: #e2a982;
+  --hair: #2d1f18;
+  --jeans: #2f3a66;
+  --jeans-2: #4a5ba3;
+  --shadow: 0 1px 2px rgba(31, 29, 61, .06), 0 10px 30px -12px rgba(31, 29, 61, .18);
+  --f-display: 'Fredoka', 'Trebuchet MS', system-ui, sans-serif;
+  --f-body: 'Figtree', 'Segoe UI', system-ui, sans-serif;
+  --logo: url('/assets/img/logo-light.png');
+
+  /* Compatibilidad con páginas antiguas (política de privacidad, página del Sendero) */
   --bg-primary: #0b0f19;
-  --bg-secondary: #111827;
-  --bg-card: rgba(17, 24, 39, 0.72);
-  --bg-glass: rgba(15, 23, 42, 0.65);
   --text-primary: #f8fafc;
   --text-secondary: #cbd5f5;
   --text-muted: #94a3b8;
@@ -12,65 +34,81 @@
   --accent-secondary: #22d3ee;
   --accent-tertiary: #a855f7;
   --border-subtle: rgba(148, 163, 184, 0.2);
-  --shadow-soft: 0 24px 60px rgba(5, 8, 17, 0.45);
-  --radius-xl: 28px;
-  --font-sans: 'Space Grotesk', 'Poppins', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-sans: var(--f-body);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-html, body {
-  height: 100%;
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --sky-top: #0f1433; --sky-bottom: #1a1c40; --bg: #12142c; --surface: #1b1e3d;
+    --ink: #f1f0fb; --ink-2: #b6b5d6; --ink-3: #85849f;
+    --blue: #5a9bff; --violet: #b77bff; --sun: #ffc85c; --line: #2b2e55;
+    --cloud: #2a2d58; --cloud-shade: #20234a;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 14px 34px -14px rgba(0, 0, 0, .6);
+    --logo: url('/assets/img/logo-dark.png');
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --sky-top: #0f1433; --sky-bottom: #1a1c40; --bg: #12142c; --surface: #1b1e3d;
+  --ink: #f1f0fb; --ink-2: #b6b5d6; --ink-3: #85849f;
+  --blue: #5a9bff; --violet: #b77bff; --sun: #ffc85c; --line: #2b2e55;
+  --cloud: #2a2d58; --cloud-shade: #20234a;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 14px 34px -14px rgba(0, 0, 0, .6);
+  --logo: url('/assets/img/logo-dark.png');
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
   margin: 0;
-  padding: 0;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-sans);
-  text-rendering: optimizeLegibility;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
+img { max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+[hidden] { display: none !important; }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
-/* 🧭 Cabecera de página reutilizable (about, contact, etc.) */
-.page-header {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto clamp(2.5rem, 6vw, 4rem);
+/* Piezas compartidas */
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
-
-.page-eyebrow {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--accent-primary);
-  margin-bottom: 0.6rem;
-}
-
-.page-header h2 {
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
-  background: linear-gradient(120deg, #38bdf8, #22d3ee, #a855f7);
+.grad {
+  background: linear-gradient(90deg, var(--blue), var(--violet));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin: 0;
-  font-weight: 700;
-  letter-spacing: 0.5px;
 }
+.btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  text-decoration: none; font: 600 16px var(--f-body);
+  padding: 12px 20px; border-radius: 14px; border: 0; cursor: pointer;
+  transition: transform .15s, box-shadow .2s, opacity .2s;
+}
+.btn:active { transform: translateY(1px) scale(.98); }
+.btn:disabled { opacity: .6; cursor: default; }
+.btn-main { background: linear-gradient(90deg, var(--blue), var(--violet)); color: #fff; box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--violet) 70%, transparent); }
+.btn-main:hover:not(:disabled) { transform: translateY(-2px); }
+.btn-soft { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+.btn-soft:hover { transform: translateY(-2px); }
 
-.page-header p {
-  color: rgba(226, 232, 240, 0.75);
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
-  line-height: 1.6;
-  margin: 0.75rem 0 0;
-}
-
-@media (max-width: 768px) {
-  .page-header h2 { font-size: clamp(1.7rem, 7vw, 2.4rem); }
-}
+section.block { padding-block: clamp(48px, 7vw, 84px); }
+.sec-title { font-family: var(--f-display); font-weight: 600; font-size: clamp(30px, 4vw, 42px); line-height: 1.1; margin: 0 0 8px; text-wrap: balance; }
+.sec-sub { color: var(--ink-2); margin: 0 0 32px; max-width: 56ch; }

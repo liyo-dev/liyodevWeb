@@ -1,106 +1,33 @@
-<section class="contact-section">
-  <header class="page-header">
-    <span class="page-eyebrow">{{ i18n.t('contact.eyebrow') }}</span>
-    <h2>{{ i18n.t('contact.title') }}</h2>
-    <p>{{ i18n.t('contact.subtitle') }}</p>
-  </header>
-
-  <div class="contact-content">
-    <!-- Columna izquierda: redes -->
-    <div class="social-block">
-      <div class="social-icons">
-        <a class="social-icon" href="https://github.com/liyo-dev" target="_blank" rel="noopener">
-          <img src="assets/icons/github.svg" alt="GitHub" />
-        </a>
-        <a class="social-icon" href="https://www.linkedin.com/in/liyodev" target="_blank" rel="noopener">
-          <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
-        </a>
-        <a class="social-icon" href="https://liyodev.itch.io/" target="_blank" rel="noopener">
-          <img src="assets/icons/itchio.svg" alt="itch.io" />
-        </a>
-      </div>
+<div class="wrap contact">
+  <div>
+    <h2 class="sec-title">{{ i18n.t('web.contact.title') }}</h2>
+    <p class="sec-sub">{{ i18n.t('web.contact.sub') }}</p>
+    <div class="socials">
+      @for (r of redes; track r.nombre) {
+        <a class="btn btn-soft" [href]="r.enlace" target="_blank" rel="noopener">{{ r.nombre }}</a>
+      }
     </div>
-
-    <!-- Columna derecha: formulario -->
-    <form class="contact-form-card" (ngSubmit)="onSubmit()" #contactFormRef="ngForm" novalidate>
-      <h3>{{ i18n.t('contact.formTitle') }}</h3>
-      <div class="contact-form-fields">
-        <div>
-          <label for="name">{{ i18n.t('contact.nameLabel') }}</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            [placeholder]="i18n.t('contact.namePlaceholder')"
-            [(ngModel)]="contactForm.name"
-            required
-            minlength="2"
-            #nameField="ngModel"
-            [class.error]="nameField.invalid && nameField.touched"
-          />
-          <span class="error-message" *ngIf="nameField.invalid && nameField.touched">
-            {{ i18n.t('contact.nameError') }}
-          </span>
-        </div>
-        <div>
-          <label for="email">{{ i18n.t('contact.emailLabel') }}</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            [placeholder]="i18n.t('contact.emailPlaceholder')"
-            [(ngModel)]="contactForm.email"
-            required
-            email
-            #emailField="ngModel"
-            [class.error]="emailField.invalid && emailField.touched"
-          />
-          <span class="error-message" *ngIf="emailField.invalid && emailField.touched">
-            <span *ngIf="emailField.errors?.['required']">{{ i18n.t('contact.emailRequiredError') }}</span>
-            <span *ngIf="emailField.errors?.['email']">{{ i18n.t('contact.emailInvalidError') }}</span>
-          </span>
-        </div>
-        <div>
-          <label for="message">{{ i18n.t('contact.messageLabel') }}</label>
-          <textarea
-            id="message"
-            name="message"
-            [placeholder]="i18n.t('contact.messagePlaceholder')"
-            [(ngModel)]="contactForm.message"
-            required
-            minlength="10"
-            #messageField="ngModel"
-            [class.error]="messageField.invalid && messageField.touched"
-          ></textarea>
-          <span class="error-message" *ngIf="messageField.invalid && messageField.touched">
-            <span *ngIf="messageField.errors?.['required']">{{ i18n.t('contact.messageRequiredError') }}</span>
-            <span *ngIf="messageField.errors?.['minlength']">{{ i18n.t('contact.messageMinError') }}</span>
-          </span>
-        </div>
-      </div>
-      <div class="contact-form-actions">
-        <button
-          type="submit"
-          class="btn-primary"
-          [disabled]="contactFormRef.invalid || isSubmitting"
-          [class.submitting]="isSubmitting"
-          [class.success]="submitSuccess"
-        >
-          <span *ngIf="!isSubmitting && !submitSuccess">{{ i18n.t('contact.sendBtn') }}</span>
-          <span *ngIf="isSubmitting">{{ i18n.t('contact.sendingBtn') }}</span>
-          <span *ngIf="submitSuccess">{{ i18n.t('contact.sentBtn') }}</span>
-        </button>
-        <div class="form-status" *ngIf="submitMessage" [class.error]="submitError" [class.success]="submitSuccess">
-          {{ submitMessage }}
-        </div>
-      </div>
-    </form>
   </div>
 
-  <!-- Enlace a política de privacidad -->
-  <div class="privacy-link">
-    <p>
-      <a routerLink="/privacy-policy">{{ i18n.t('contact.privacyLink') }}</a>
+  <form (ngSubmit)="enviar()" novalidate>
+    <label for="c-name">{{ i18n.t('web.contact.name') }}
+      <input id="c-name" name="name" autocomplete="name" [(ngModel)]="formulario.name" [placeholder]="i18n.t('web.contact.namePh')" required minlength="2">
+    </label>
+    <label for="c-email">{{ i18n.t('web.contact.email') }}
+      <input id="c-email" name="email" type="email" autocomplete="email" [(ngModel)]="formulario.email" [placeholder]="i18n.t('web.contact.emailPh')" required>
+    </label>
+    <label for="c-msg">{{ i18n.t('web.contact.message') }}
+      <textarea id="c-msg" name="message" [(ngModel)]="formulario.message" [placeholder]="i18n.t('web.contact.messagePh')" required minlength="10"></textarea>
+    </label>
+    <button class="btn btn-main" type="submit" [disabled]="estado === 'enviando'">
+      {{ estado === 'enviando' ? i18n.t('web.contact.sending') : i18n.t('web.contact.send') }}
+    </button>
+    <p class="status" aria-live="polite" [class.ok]="estado === 'enviado'" [class.bad]="estado === 'error' || estado === 'invalido'">
+      @switch (estado) {
+        @case ('enviado') { {{ i18n.t('web.contact.sent') }} }
+        @case ('error') { {{ i18n.t('web.contact.error') }} }
+        @case ('invalido') { {{ i18n.t('web.contact.invalid') }} }
+      }
     </p>
-  </div>
-</section>
+  </form>
+</div>

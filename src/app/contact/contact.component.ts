@@ -1,222 +1,56 @@
-// ...existing imports...
-import { Component, ElementRef, ViewChild, AfterViewInit, OnInit, effect } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import gsap from 'gsap';
 import emailjs from '@emailjs/browser';
 import { emailConfig } from './email.config';
-import { SeoService } from '../services/seo.service';
 import { LanguageService } from '../services/language.service';
+import { REDES } from '../data/proyectos';
 
+type EstadoEnvio = 'listo' | 'enviando' | 'enviado' | 'error' | 'invalido';
+
+/** Sección de contacto: redes y formulario que envía el mensaje por EmailJS. */
 @Component({
   selector: 'app-contact',
-  imports: [FormsModule, CommonModule, RouterLink],
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css'
+  styleUrl: './contact.component.css',
 })
-export class ContactComponent implements OnInit, AfterViewInit {
-  @ViewChild('contactSection') contactSection!: ElementRef;
-  @ViewChild('socialLinks') socialLinks!: ElementRef;
-  @ViewChild('contactForm') formElement!: ElementRef;
+export class ContactComponent {
+  readonly redes = REDES;
+  formulario = { name: '', email: '', message: '' };
+  estado: EstadoEnvio = 'listo';
 
-  contactForm = {
-    name: '',
-    email: '',
-    message: ''
-  };
-
-  // Estados del formulario
-  isSubmitting = false;
-  submitSuccess = false;
-  submitError = false;
-  submitMessage = '';
-
-  constructor(private seoService: SeoService, public i18n: LanguageService) {
-    // Inicializar EmailJS
+  constructor(public i18n: LanguageService) {
     emailjs.init(emailConfig.publicKey);
-
-    effect(() => {
-      this.i18n.lang();
-      this.updateSeo();
-    });
   }
 
-  ngOnInit(): void {}
-
-  private updateSeo(): void {
-    this.seoService.setPageSeo({
-      title: this.i18n.t('seo.contact.title'),
-      description: this.i18n.t('seo.contact.description'),
-      keywords: this.i18n.t('seo.contact.keywords'),
-      image: 'https://liyodev.web.app/completo_icon-512x512.png'
-    });
-  }
-
-
-  ngAfterViewInit() {
-    this.animateContactSection();
-  }
-
-  private animateContactSection() {
-    // Reset inicial de opacidad para asegurar visibilidad
-    gsap.set('.contact-section h2, .social-icon, .contact-form-fields div, .btn-primary', {
-      opacity: 1,
-      visibility: 'visible'
-    });
-
-    // Animación del título
-    gsap.from('.contact-section h2', {
-      y: -50,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
-    });
-
-    // Animación de los iconos sociales
-    gsap.from('.social-icon', {
-      x: -30,
-      opacity: 0,
-      stagger: 0.2,
-      duration: 0.8,
-      ease: 'power2.out',
-      delay: 0.3
-    });
-
-    // Animación de los campos del formulario
-    gsap.from('.contact-form-fields div', {
-      y: 30,
-      opacity: 0,
-      stagger: 0.2,
-      duration: 0.8,
-      delay: 0.5
-    });
-
-    // Animación del botón
-    gsap.from('.btn-primary', {
-      y: 30,
-      scale: 0.8,
-      opacity: 0,
-      duration: 1,
-      ease: 'back.out(1.7)',
-      delay: 0.8
-    });
-  }
-
-  async onSubmit() {
-    if (this.isSubmitting) return;
-
-    // Resetear estados
-    this.submitSuccess = false;
-    this.submitError = false;
-    this.submitMessage = '';
-    this.isSubmitting = true;
-
-    // Animación de inicio de envío
-    gsap.to('.btn-primary', {
-      scale: 0.95,
-      duration: 0.1
-    });
-
+  async enviar(): Promise<void> {
+    if (this.estado === 'enviando') return;
+    if (!this.esValido()) {
+      this.estado = 'invalido';
+      return;
+    }
+    this.estado = 'enviando';
     try {
-      // Simulación de envío (reemplazar con servicio real)
-      await this.sendEmail();
-      
-      // Éxito
-      this.submitSuccess = true;
-      this.submitMessage = this.i18n.t('contact.successMsg');
-      
-      // Animación de éxito
-      gsap.to('.btn-primary', {
-        scale: 1,
-        backgroundColor: '#22d3ee',
-        duration: 0.3,
-        ease: 'back.out(1.7)'
+      await emailjs.send(emailConfig.serviceId, emailConfig.templateId, {
+        from_name: this.formulario.name.trim(),
+        from_email: this.formulario.email.trim(),
+        message: this.formulario.message.trim(),
+        to_email: 'luarbaz@gmail.com',
+        reply_to: this.formulario.email.trim(),
       });
-
-      // Limpiar formulario después de 2 segundos
-      setTimeout(() => {
-        this.resetForm();
-      }, 2000);
-
+      this.estado = 'enviado';
+      this.formulario = { name: '', email: '', message: '' };
     } catch (error) {
-      // Error
-      this.submitError = true;
-      this.submitMessage = this.i18n.t('contact.errorMsg');
-      
-      // Animación de error
-      gsap.to('.btn-primary', {
-        scale: 1,
-        duration: 0.6,
-        ease: 'power2.out'
-      });
-      
-      // Animación de shake
-      gsap.to('.btn-primary', {
-        x: -10,
-        duration: 0.1,
-        repeat: 5,
-        yoyo: true,
-        ease: 'power2.inOut'
-      });
-    } finally {
-      this.isSubmitting = false;
-      
-      // Ocultar mensaje después de 5 segundos
-      setTimeout(() => {
-        this.submitMessage = '';
-        this.submitSuccess = false;
-        this.submitError = false;
-        
-        // Restaurar botón
-        gsap.to('.btn-primary', {
-          scale: 1,
-          backgroundColor: '',
-          duration: 0.3
-        });
-      }, 5000);
+      console.error('Error al enviar el mensaje:', error);
+      this.estado = 'error';
     }
   }
 
-  private async sendEmail(): Promise<void> {
-    // Preparar los parámetros del template
-    const templateParams = {
-      from_name: this.contactForm.name,
-      from_email: this.contactForm.email,
-      message: this.contactForm.message,
-      to_email: 'luarbaz@gmail.com', 
-      reply_to: this.contactForm.email
-    };
-
-    try {
-      // Enviar email usando EmailJS
-      const response = await emailjs.send(
-        emailConfig.serviceId,
-        emailConfig.templateId,
-        templateParams
-      );
-      
-      console.log('Email enviado exitosamente:', response);
-      return Promise.resolve();
-    } catch (error) {
-      console.error('Error al enviar email:', error);
-      return Promise.reject(error);
-    }
-  }
-
-  private resetForm() {
-    this.contactForm = {
-      name: '',
-      email: '',
-      message: ''
-    };
-    
-    // Animación de reset
-    gsap.from('.contact-form-fields div', {
-      opacity: 0.5,
-      y: 10,
-      stagger: 0.1,
-      duration: 0.3
-    });
+  private esValido(): boolean {
+    const f = this.formulario;
+    return f.name.trim().length >= 2
+      && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim())
+      && f.message.trim().length >= 10;
   }
 }

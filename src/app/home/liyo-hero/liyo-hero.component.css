@@ -1,0 +1,66 @@
+/* El muñeco de Liyo en su nube y la consola de Liyo Run. */
+:host { display: block; }
+
+.art { position: relative; max-width: 100%; padding-bottom: 44px; }
+.art svg { width: 100%; height: auto; display: block; overflow: visible; margin: 0 auto; transition: width .35s; }
+.art.playing svg { width: 72%; }
+
+.floaty { animation: float 6s ease-in-out infinite; transform-origin: center; }
+.floaty.b { animation-duration: 7.5s; animation-delay: -2s; }
+.floaty.c { animation-duration: 5s; animation-delay: -1s; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+.liyo { animation: bob 4s ease-in-out infinite; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.eyes { animation: blink 5s infinite; transform-origin: 210px 142px; }
+@keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.1); } }
+
+/* Estados de ánimo: idle, play (mira la pantalla), happy, oops */
+.liyo-svg .m-idle, .liyo-svg .m-play, .liyo-svg .m-happy, .liyo-svg .m-oops { display: none; }
+.liyo-svg[data-mood="idle"] .m-idle,
+.liyo-svg[data-mood="play"] .m-play,
+.liyo-svg[data-mood="happy"] .m-happy,
+.liyo-svg[data-mood="oops"] .m-oops { display: inline; }
+.liyo-svg .pupils { transition: transform .25s; }
+.liyo-svg[data-mood="play"] .pupils { transform: translate(-3px, -4px); }
+.liyo-svg .brows { transition: transform .25s; }
+.liyo-svg[data-mood="oops"] .brows { transform: translateY(-6px); }
+.liyo-svg[data-mood="happy"] .liyo { animation: cheer .5s ease-in-out 2; }
+@keyframes cheer { 50% { transform: translateY(-14px); } }
+
+/* Bocadillo */
+.bubble { opacity: 0; transition: opacity .25s, transform .25s; transform: translateY(6px); }
+.art.said .bubble { opacity: 1; transform: none; }
+
+/* Mando */
+.pad { cursor: pointer; outline: none; transition: transform .08s; }
+.pad.press { transform: translateY(3px); }
+.pad:hover path:first-child { fill: #ffffff; }
+.pad:focus-visible path:first-child { stroke: var(--blue); }
+.btn-a.lit { fill: #b6ffcb; }
+
+/* Consola */
+.console {
+  position: relative; margin: 0 auto 6px; width: min(340px, 100%);
+  background: #17152e; border-radius: 18px; padding: 10px 10px 8px;
+  box-shadow: 0 0 0 3px #1f74ff, 0 0 0 6px #9b45f5, 0 20px 40px -10px rgba(20, 18, 50, .6);
+  z-index: 3; animation: pop .3s cubic-bezier(.2, 1.4, .4, 1);
+}
+@keyframes pop { from { transform: scale(.6); opacity: 0; } }
+.console-top { display: flex; align-items: center; gap: 10px; padding: 0 4px 8px; color: #f1f0fb; }
+.console-title { font: 700 13px var(--f-display); letter-spacing: .12em; color: #ffc85c; }
+.console-score { margin-left: auto; font: 600 13px var(--f-body); font-variant-numeric: tabular-nums; color: #b6b5d6; }
+.console-close { background: #2b2e55; color: #f1f0fb; border: 0; width: 26px; height: 26px; border-radius: 8px; cursor: pointer; font-size: 18px; line-height: 1; }
+.console canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; border-radius: 10px; background: #0f1433; cursor: pointer; touch-action: manipulation; }
+.console-foot { font: 500 12px var(--f-body); color: #85849f; text-align: center; padding-top: 7px; min-height: 1.6em; }
+
+/* Invitación a jugar */
+.art-hint {
+  position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%);
+  font: 600 14px var(--f-body); color: var(--ink-2); white-space: nowrap;
+  background: var(--surface); border: 0; padding: 8px 14px; border-radius: 999px;
+  box-shadow: var(--shadow); cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+}
+.art-hint .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sun); animation: blinkdot 1.2s infinite; }
+@keyframes blinkdot { 50% { opacity: .2; } }
+.art.playing .art-hint { display: none; }

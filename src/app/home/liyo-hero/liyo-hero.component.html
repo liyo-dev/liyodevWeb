@@ -1,0 +1,133 @@
+<div class="art" #art>
+  <!-- consola del minijuego -->
+  <div class="console" #consola hidden>
+    <div class="console-top">
+      <span class="console-title">LIYO RUN</span>
+      <span class="console-score" #marcador>0</span>
+      <button class="console-close" type="button" [attr.aria-label]="i18n.t('web.runner.close')" (click)="cerrar()">×</button>
+    </div>
+    <canvas #lienzo width="160" height="64" [attr.aria-label]="i18n.t('web.runner.canvasLabel')" (pointerdown)="tocarPantalla($event)"></canvas>
+    <div class="console-foot" #pie></div>
+  </div>
+
+  <svg #liyo class="liyo-svg" data-mood="idle" viewBox="0 0 420 430" role="img" [attr.aria-label]="i18n.t('web.hero.artLabel')">
+    <defs>
+      <linearGradient id="hoodie" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f74ff"/><stop offset="1" stop-color="#9b45f5"/></linearGradient>
+      <linearGradient id="hoodie-dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1557c9"/><stop offset="1" stop-color="#7430c4"/></linearGradient>
+    </defs>
+    <!-- cosas flotando -->
+    <g class="floaty"><path d="M70 70 h12 v12 h12 v12 h-12 v12 h-12 v-12 h-12 v-12 h12z" fill="var(--sun)"/></g>
+    <g class="floaty b"><rect x="318" y="58" width="72" height="44" rx="14" fill="var(--surface)"/><text x="354" y="88" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="22" fill="var(--violet)">&lt;/&gt;</text></g>
+    <g class="floaty c"><circle cx="360" cy="200" r="13" fill="var(--sun)"/><circle cx="360" cy="200" r="7" fill="none" stroke="#fff" stroke-width="3" opacity=".7"/></g>
+    <g class="floaty c"><path d="M48 232 l6 -14 l6 14 l14 6 l-14 6 l-6 14 l-6 -14 l-14 -6z" fill="var(--violet)" opacity=".8"/></g>
+
+    <!-- nube (parte de atrás) -->
+    <g fill="var(--cloud-shade)">
+      <circle cx="118" cy="364" r="46"/><circle cx="170" cy="338" r="46"/><circle cx="240" cy="330" r="52"/><circle cx="300" cy="352" r="44"/><circle cx="346" cy="378" r="34"/><circle cx="76" cy="388" r="32"/>
+      <rect x="60" y="372" width="310" height="46" rx="23"/>
+    </g>
+    <g fill="var(--cloud)">
+      <circle cx="118" cy="360" r="44"/><circle cx="170" cy="334" r="44"/><circle cx="240" cy="326" r="50"/><circle cx="300" cy="348" r="42"/><circle cx="346" cy="374" r="32"/><circle cx="76" cy="384" r="30"/>
+      <rect x="62" y="368" width="306" height="40" rx="20"/>
+    </g>
+
+    <g class="liyo" stroke-linejoin="round" stroke-linecap="round">
+      <ellipse cx="210" cy="342" rx="104" ry="10" fill="var(--cloud-shade)"/>
+      <!-- piernas cruzadas: muslos -->
+      <path d="M214 290 Q150 286 120 304 Q100 318 112 334 Q124 344 144 336 Q176 320 214 320 Z" fill="var(--jeans)"/>
+      <path d="M210 290 Q270 286 300 304 Q320 318 308 334 Q296 344 276 336 Q244 320 210 320 Z" fill="var(--jeans-2)"/>
+      <path d="M210 292 L210 318" stroke="#1a2147" stroke-width="3" opacity=".6"/>
+      <path d="M150 314 Q210 330 270 314 L262 330 Q210 342 158 330Z" fill="#26305a"/>
+      <!-- espinillas cruzadas -->
+      <path d="M128 326 Q196 344 262 326" fill="none" stroke="var(--jeans)" stroke-width="20"/>
+      <path d="M292 326 Q224 346 158 326" fill="none" stroke="#1a2147" stroke-width="24" opacity=".35"/>
+      <path d="M292 326 Q224 346 158 326" fill="none" stroke="var(--jeans-2)" stroke-width="20"/>
+      <!-- rodillas -->
+      <path d="M118 316 Q124 306 136 302" stroke="#fff" stroke-width="3" fill="none" opacity=".18"/>
+      <path d="M302 316 Q296 306 284 302" stroke="#fff" stroke-width="3" fill="none" opacity=".18"/>
+      <!-- zapatillas (cada pie bajo la rodilla contraria) -->
+      <g transform="translate(0 -8)">
+        <path d="M150 346 Q146 328 164 326 Q176 326 178 338 Q178 348 168 348 L156 348 Q150 348 150 346Z" fill="#fff"/>
+        <path d="M148 344 L178 344 Q178 350 168 350 L156 350 Q148 350 148 344Z" fill="#c9cbe0"/>
+        <path d="M158 334 Q166 331 172 336" stroke="var(--blue)" stroke-width="3.5" fill="none"/>
+        <path d="M270 346 Q274 328 256 326 Q244 326 242 338 Q242 348 252 348 L264 348 Q270 348 270 346Z" fill="#fff"/>
+        <path d="M272 344 L242 344 Q242 350 252 350 L264 350 Q272 350 272 344Z" fill="#c9cbe0"/>
+        <path d="M262 334 Q254 331 248 336" stroke="var(--violet)" stroke-width="3.5" fill="none"/>
+      </g>
+      <!-- cuello -->
+      <rect x="199" y="176" width="22" height="34" rx="7" fill="var(--skin)"/>
+      <rect x="199" y="184" width="22" height="7" rx="3" fill="var(--skin-2)" opacity=".8"/>
+      <!-- sudadera: una sola pieza -->
+      <path d="M166 206 Q210 194 254 206 Q274 212 278 240 L284 302 Q210 320 136 302 L142 240 Q146 212 166 206Z" fill="url(#hoodie)"/>
+      <path d="M244 210 Q266 220 270 246 L276 300 Q262 304 250 306 Q258 262 244 210Z" fill="#000" opacity=".1"/>
+      <!-- capucha caída alrededor del cuello -->
+      <path d="M174 204 Q210 236 246 204" fill="none" stroke="url(#hoodie-dark)" stroke-width="9"/>
+      <!-- cordones y logo -->
+      <path d="M200 222 L199 244 M220 222 L221 244" stroke="#fff" stroke-width="3" fill="none"/>
+      <circle cx="199" cy="247" r="3" fill="#fff"/><circle cx="221" cy="247" r="3" fill="#fff"/>
+      <text x="210" y="270" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="13" fill="#fff" opacity=".85" stroke="none">&lt;/&gt;</text>
+      <!-- bajo de la sudadera -->
+      <path d="M138 296 Q210 314 282 296" fill="none" opacity=".35"/>
+
+      <!-- brazos -->
+      <path d="M160 222 Q132 266 162 300" fill="none" stroke="url(#hoodie)" stroke-width="24"/>
+      <path d="M260 222 Q288 266 258 300" fill="none" stroke="url(#hoodie)" stroke-width="24"/>
+
+      <!-- mando (grande, a propósito) -->
+      <g #pad class="pad" tabindex="0" role="button" [attr.aria-label]="i18n.t('web.runner.padLabel')" (click)="abrir()" (keydown.enter)="abrir()" (keydown.space)="$event.preventDefault(); abrir()">
+       <g transform="translate(67.2 96.64) scale(.68)">
+        <path d="M162 276 h96 a28 28 0 0 1 28 30 l-4 16 a18 18 0 0 1 -32 6 l-9 -11 h-62 l-9 11 a18 18 0 0 1 -32 -6 l-4 -16 a28 28 0 0 1 28 -30z" fill="#f6f6fc" stroke="#23223f" stroke-width="3.5" stroke-linejoin="round"/>
+        <path d="M140 318 l2 6 a18 18 0 0 0 32 6 l9 -11 h54 l9 11 a18 18 0 0 0 32 -6 l2 -6" fill="none" stroke="#c9cbe0" stroke-width="5" stroke-linecap="round"/>
+        <!-- cruceta -->
+        <path d="M163 286 h12 v11 h11 v12 h-11 v11 h-12 v-11 h-11 v-12 h11z" fill="#2a2948" stroke="#23223f" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M166 289 h6 v6" fill="none" stroke="#fff" stroke-width="2" opacity=".35" stroke-linecap="round"/>
+        <circle cx="169" cy="303" r="3" fill="#4a4970"/>
+        <!-- botones centrales -->
+        <rect x="196" y="290" width="11" height="5" rx="2.5" fill="#a5a7c2"/>
+        <rect x="213" y="290" width="11" height="5" rx="2.5" fill="#a5a7c2"/>
+        <rect x="200" y="306" width="20" height="8" rx="4" fill="url(#hoodie)"/>
+        <!-- botones de acción -->
+        <circle cx="250" cy="288" r="7" fill="#ffc23d" stroke="#23223f" stroke-width="2"/>
+        <circle cx="238" cy="300" r="7" fill="#3d8bff" stroke="#23223f" stroke-width="2"/>
+        <circle cx="262" cy="300" r="7" fill="#ff5c7a" stroke="#23223f" stroke-width="2"/>
+        <circle #botonA class="btn-a" cx="250" cy="312" r="7" fill="#46c46e" stroke="#23223f" stroke-width="2"/>
+        <g fill="#fff" opacity=".55"><circle cx="248" cy="286" r="2"/><circle cx="236" cy="298" r="2"/><circle cx="260" cy="298" r="2"/><circle cx="248" cy="310" r="2"/></g>
+       </g>
+      </g>
+      <!-- manos agarrando los lados -->
+      <circle cx="160" cy="306" r="10.5" fill="var(--skin)"/>
+      <ellipse cx="163" cy="295" rx="4.5" ry="5.5" fill="var(--skin)"/>
+      <circle cx="260" cy="306" r="10.5" fill="var(--skin)"/>
+      <ellipse cx="257" cy="295" rx="4.5" ry="5.5" fill="var(--skin)"/>
+
+      <!-- cabeza -->
+      <circle cx="155" cy="140" r="12" fill="var(--skin)"/><circle cx="157" cy="140" r="6" fill="var(--skin-2)"/>
+      <circle cx="265" cy="140" r="12" fill="var(--skin)"/><circle cx="263" cy="140" r="6" fill="var(--skin-2)"/>
+      <path d="M154 132 Q154 78 210 76 Q266 78 266 132 Q266 186 210 188 Q154 186 154 132Z" fill="var(--skin)"/>
+      <!-- pelo -->
+      <path d="M180 78 Q174 56 192 50 Q192 62 202 66 Q204 44 226 42 Q218 58 224 68 Q238 54 254 58 Q242 68 244 82Z" fill="var(--hair)"/>
+      <path d="M150 140 Q138 70 210 64 Q282 70 270 140 Q266 114 250 104 Q242 120 224 108 Q212 124 192 110 Q176 122 166 108 Q156 120 150 140Z" fill="var(--hair)"/>
+      <path d="M180 78 Q200 70 222 74" stroke="#5a3c2c" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+      <!-- cejas -->
+      <g class="brows"><path d="M180 124 q11 -7 22 -1 M218 123 q11 -6 22 1" stroke="var(--hair)" stroke-width="4.5" fill="none" stroke-linecap="round"/></g>
+      <!-- ojos -->
+      <g class="eyes m-idle m-play"><g class="pupils"><ellipse cx="192" cy="142" rx="6" ry="8.5" fill="#1f1d3d"/><ellipse cx="228" cy="142" rx="6" ry="8.5" fill="#1f1d3d"/><circle cx="194" cy="138.5" r="2.2" fill="#fff"/><circle cx="230" cy="138.5" r="2.2" fill="#fff"/></g></g>
+      <g class="m-happy"><path d="M184 145 q8 -10 16 0 M220 145 q8 -10 16 0" stroke="#1f1d3d" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+      <g class="m-oops"><circle cx="192" cy="142" r="7" fill="#fff" stroke="#1f1d3d" stroke-width="3"/><circle cx="228" cy="142" r="7" fill="#fff" stroke="#1f1d3d" stroke-width="3"/><circle cx="192" cy="142" r="2.5" fill="#1f1d3d"/><circle cx="228" cy="142" r="2.5" fill="#1f1d3d"/></g>
+      <circle cx="179" cy="160" r="8" fill="#ff8a8a" opacity=".35"/><circle cx="241" cy="160" r="8" fill="#ff8a8a" opacity=".35"/>
+      <!-- bocas -->
+      <path class="m-idle" d="M198 163 Q210 173 222 163" stroke="#1f1d3d" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path class="m-play" d="M202 166 Q210 168 218 165" stroke="#1f1d3d" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path class="m-happy" d="M196 161 Q210 182 224 161Z" fill="#7a2b3a"/>
+      <ellipse class="m-oops" cx="210" cy="168" rx="6" ry="7.5" fill="#7a2b3a"/>
+    </g>
+    <!-- nube (bultos de delante) -->
+    <g fill="var(--cloud)">
+      <circle cx="118" cy="374" r="22"/><circle cx="158" cy="372" r="19"/><circle cx="200" cy="375" r="21"/><circle cx="244" cy="372" r="19"/><circle cx="286" cy="374" r="22"/><circle cx="320" cy="378" r="18"/>
+    </g>
+    <!-- bocadillo -->
+    <g class="bubble"><rect x="226" y="6" width="178" height="44" rx="14" fill="var(--surface)"/><path d="M256 50 l-8 16 l22 -16z" fill="var(--surface)"/><text x="315" y="34" text-anchor="middle" font-family="Figtree, sans-serif" font-weight="600" font-size="15" fill="var(--ink)" #bocadillo>¡A jugar!</text></g>
+  </svg>
+
+  <button class="art-hint" type="button" (click)="abrir()"><span class="dot"></span>{{ i18n.t('web.runner.hint') }}</button>
+</div>

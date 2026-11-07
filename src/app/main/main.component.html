@@ -1,9 +1,12 @@
-<div class="main-container">
-  <div class="background" #background></div>
-
+<div class="page">
   <app-menu />
-
-  <div class="workarea" #workarea>
+  <main>
     <router-outlet />
-  </div>
+  </main>
+  <footer>
+    <div class="wrap foot">
+      <span>Raúl Báez · Liyodev · Málaga</span>
+      <a routerLink="/privacy-policy">{{ i18n.t('web.footer.privacy') }}</a>
+    </div>
+  </footer>
 </div>
