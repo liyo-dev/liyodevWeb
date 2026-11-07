@@ -48,7 +48,7 @@ export const WEB_ES = {
     whereA: 'Saldrá en',
     whereB: 'Hecho con Unity',
     cta: 'Web del juego ↗',
-    imgAlt: 'Arte de El Sendero de las Estrellas: Will frente a un portal de estrellas',
+    imgAlt: 'El Sendero de las Estrellas: Liam, Will y Estela en el camino de luz hacia la estrella',
   },
   games: {
     title: 'Mis juegos',
@@ -131,6 +131,7 @@ export const WEB_ES = {
   },
   footer: {
     privacy: 'Política de privacidad',
+    top: 'Volver arriba',
   },
 };
 
@@ -181,7 +182,7 @@ export const WEB_EN: typeof WEB_ES = {
     whereA: 'Coming to',
     whereB: 'Made with Unity',
     cta: 'Game website ↗',
-    imgAlt: 'El Sendero de las Estrellas art: Will in front of a portal of stars',
+    imgAlt: 'El Sendero de las Estrellas: Liam, Will and Estela on the road of light towards the star',
   },
   games: {
     title: 'My games',
@@ -264,5 +265,6 @@ export const WEB_EN: typeof WEB_ES = {
   },
   footer: {
     privacy: 'Privacy policy',
+    top: 'Back to top',
   },
 };
